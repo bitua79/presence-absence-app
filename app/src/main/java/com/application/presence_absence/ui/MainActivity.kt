@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
-    private val topLevelMenuItems = setOf<Int>(
-        //TODO: add top level fragments
+    private val topLevelMenuItems = setOf(
+        R.id.loginFragment
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

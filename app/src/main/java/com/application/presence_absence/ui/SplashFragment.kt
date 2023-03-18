@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.application.presence_absence.R
 import com.application.presence_absence.util.runOnMain
 import kotlinx.coroutines.Dispatchers
@@ -34,6 +35,6 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     }
 
     private fun navigate() {
-        //TODO: implement navigation to main page
+        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
     }
 }

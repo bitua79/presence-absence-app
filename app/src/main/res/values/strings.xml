@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Presence-Absence</string>
     <string name="app_name_persian">سامانه حضور و غیاب دانشجویان</string>
+
+    <!-- region login -->
+    <string name="label_login">ورود</string>
+    <string name="label_login_to_system">ورود به سامانه</string>
+    <string name="label_username">نام کاربری</string>
+    <string name="label_password">رمز عبور</string>
+    <!-- endregion -->
+
 </resources>

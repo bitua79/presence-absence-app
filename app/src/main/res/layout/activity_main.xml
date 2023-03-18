@@ -15,6 +15,8 @@
                 android:background="@color/color_primary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textDirection="rtl"
+                android:layoutDirection="rtl"
                 app:titleTextAppearance="@style/TextAppearance.MyTheme.Headline6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:title="@string/app_name_persian"
