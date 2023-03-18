@@ -10,5 +10,20 @@
         android:name="com.application.presence_absence.ui.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.application.presence_absence.ui.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+    </fragment>
+
 </navigation>
