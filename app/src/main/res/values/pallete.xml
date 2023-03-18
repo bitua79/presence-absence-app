@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="deep_orange_600">#EB5E2C</color>
+
+    <color name="pink_300">#CF6679</color>
+    <color name="pink_800">#B00020</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="cyan_600">#13B2B2</color>
+    <color name="black">#000000</color>
+
+    <!--  region grey  -->
+    <color name="grey_50">#FCFBFB</color>
+    <color name="grey_400">#C4C4C4</color>
+    <color name="grey_500">#979797</color>
+    <color name="grey_600">#717171</color>
+    <color name="grey_650">#686868</color>
+    <color name="grey_700">#585858</color>
+    <color name="grey_900_alpha_8">#14212121</color>
+    <!--endregion-->
+
+    <!--  region indigo  -->
+    <color name="indigo_a100">#97A9FF</color>
+    <color name="indigo_150">#A2ACE1</color>
+    <color name="indigo_200">#A1ACDB</color>
+    <color name="indigo_300">#727DAF</color>
+    <color name="indigo_400">#6374C3</color>
+    <color name="indigo_500">#4557AA</color>
+    <color name="indigo_800">#232a4a</color>
+    <!--endregion-->
+
+    <!--  region indigo  -->
+    <color name="blue_50">#FDFDFF</color>
+    <color name="blue_75">#ECEFFF</color>
+    <color name="blue_grey_200">#BABDCC</color>
+    <color name="blue_grey_900">#1C2449</color>
+    <color name="blue_grey_900_alpha_23">#3A1C2449</color>
+    <color name="blue_grey_950">#0D122B</color>
+    <!--  endregion  -->
+
+
+    <color name="light_green_a700">#1ECA25</color>
+    <color name="red_a700">#FF0000</color>
+    <color name="blue_600">#349beb</color>
+
+    <color name="deep_purple_a700">#6200EE</color>
+    <color name="orange_600">#FB8C00</color>
+
+
+</resources>
