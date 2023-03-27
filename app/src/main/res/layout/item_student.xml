@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="student"
+            type="com.application.presence_absence.ui.studentList.StudentView" />
+
+        <variable
+            name="isAttendanceSet"
+            type="boolean" />
+
+        <variable
+            name="isPresent"
+            type="boolean" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_4x"
+        android:layout_marginVertical="@dimen/spacing_2x"
+        android:layoutDirection="rtl"
+        app:cardCornerRadius="@dimen/spacing_5x"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="@dimen/spacing_2x"
+                android:layout_marginStart="@dimen/spacing_4x"
+                android:src="@drawable/ic_student"
+                android:tint="@color/material_on_background_emphasis_medium"
+                app:imageFromUrl="@{student.iconUrl}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_4x"
+                android:layout_marginTop="@dimen/spacing_4x"
+                android:text="@{student.name}"
+                android:textAppearance="@style/TextAppearance.MyTheme.Headline6"
+                app:layout_constraintStart_toEndOf="@id/iv_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="بیتا کارویزی" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_student_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_4x"
+                android:text="@{student.idNumber}"
+                android:textAppearance="@style/TextAppearance.MyTheme.Caption"
+                android:textColor="@color/material_on_background_emphasis_medium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                tools:text="9812762338" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_presence"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/spacing_base"
+                android:src="@drawable/ic_tick"
+                android:tint="@color/color_presence"
+                app:isVisibleOrGone="@{!isAttendanceSet}"
+                app:layout_constraintBottom_toBottomOf="@id/iv_absence"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toStartOf="@id/iv_absence"
+                app:layout_constraintTop_toTopOf="@id/iv_absence" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_absence"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/spacing_5x"
+                android:src="@drawable/ic_close"
+                android:tint="@color/color_absence"
+                android:visibility="gone"
+                app:isVisibleOrGone="@{!isAttendanceSet}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_2x"
+                android:text="@{isPresent? @string/label_present:@string/label_absent}"
+                android:textAppearance="@style/TextAppearance.MyTheme.tag"
+                android:textColor="@{isPresent? @color/color_presence:@color/color_absence}"
+                app:isVisibleOrGone="@{isAttendanceSet}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_eraser"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="حاضر" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_eraser"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/spacing_5x"
+                android:src="@drawable/ic_eraser"
+                app:isVisibleOrGone="@{isAttendanceSet}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="exam"
+            type="com.application.presence_absence.ui.examList.ExamView" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layoutDirection="rtl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tb_student_list_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textDirection="rtl"
+            app:navigationIcon="@drawable/ic_back"
+            app:navigationIconTint="@color/color_on_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/label_exam_list_fragment"
+            app:titleTextAppearance="@style/TextAppearance.MyTheme.Headline6" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_2x"
+            android:layout_marginTop="@dimen/spacing_4x"
+            app:cardCornerRadius="@dimen/spacing_4x"
+            app:layout_constraintTop_toBottomOf="@id/tb_student_list_toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_class_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/spacing_5x"
+                    android:textAppearance="@style/TextAppearance.MyTheme.Subtitle1"
+                    app:examClass="@{exam}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="کلاس B31 - ریاضی1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_std_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/spacing_2x"
+                    android:layout_marginBottom="@dimen/spacing_5x"
+                    android:text="@{exam.studentCount}"
+                    android:textAppearance="@style/TextAppearance.MyTheme.Subtitle1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_class_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_class_name"
+                    tools:text="47 دانشجو" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_do_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_2x"
+            android:text="@string/label_std_attendance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cv_info" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_student_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_4x"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_do_filter"
+            tools:listitem="@layout/item_student" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
