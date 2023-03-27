@@ -1,10 +1,11 @@
-package com.application.presence_absence.ui
+package com.application.presence_absence.ui.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.application.presence_absence.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -45,6 +46,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun goExamList() {
-        //TODO: implement navigation to exam list page
+        val action = LoginFragmentDirections.actionLoginFragmentToExamListFragment()
+        findNavController().navigate(action)
     }
 }

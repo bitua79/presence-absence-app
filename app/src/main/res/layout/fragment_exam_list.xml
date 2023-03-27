@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tb_exam_list_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textDirection="rtl"
+            app:navigationIcon="@drawable/ic_back"
+            app:navigationIconTint="@color/color_on_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/label_exam_list_fragment"
+            app:titleTextAppearance="@style/TextAppearance.MyTheme.Headline6" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_college"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_4x"
+            android:layout_marginVertical="@dimen/spacing_4x"
+            android:background="@drawable/shape_background_edit_text"
+            android:hint="@string/label_college"
+            android:padding="@dimen/spacing_3x"
+            android:textAppearance="@style/TextAppearance.MyTheme.Subtitle2"
+            app:layout_constraintTop_toBottomOf="@id/tb_exam_list_toolbar" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/shape_background_edit_text"
+            android:hint="@string/label_exam_day"
+            android:padding="@dimen/spacing_3x"
+            android:textAppearance="@style/TextAppearance.MyTheme.Subtitle2"
+            app:layout_constraintTop_toBottomOf="@id/et_college" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_hour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/shape_background_edit_text"
+            android:hint="@string/label_exam_hour"
+            android:padding="@dimen/spacing_3x"
+            android:textAppearance="@style/TextAppearance.MyTheme.Subtitle2"
+            app:layout_constraintTop_toBottomOf="@id/et_day" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_do_filter"
+            android:backgroundTint="@color/color_secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/label_do_action"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_hour" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_exam_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_4x"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_do_filter"
+            tools:listitem="@layout/item_exam" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
