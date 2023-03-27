@@ -92,7 +92,7 @@ class ExamListFragment : Fragment() {
     }
 
     private fun onItemClicked(exam: ExamView) {
-        // TODO: Implement navigation to student list
+        findNavController().navigate(ExamListFragmentDirections.actionExamListFragmentToStudentListFragment(exam))
     }
 
     private fun collectResult() {
