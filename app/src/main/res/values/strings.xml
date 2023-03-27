@@ -9,4 +9,13 @@
     <string name="label_password">رمز عبور</string>
     <!-- endregion -->
 
+    <!--  region exam  -->
+    <string name="label_exam_list_fragment">لیست امتحانات</string>
+
+    <string name="label_college">دانشکده</string>
+    <string name="label_exam_day">روز امتحان</string>
+    <string name="label_exam_hour">ساعت امتحان</string>
+
+    <string name="label_do_action">اعمال فیلتر</string>
+    <!--  endregion  -->
 </resources>
