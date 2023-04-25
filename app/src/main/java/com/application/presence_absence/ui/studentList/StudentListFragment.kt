@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.application.presence_absence.databinding.FragmentStudentListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class StudentListFragment : Fragment() {
 
     private lateinit var binding: FragmentStudentListBinding
