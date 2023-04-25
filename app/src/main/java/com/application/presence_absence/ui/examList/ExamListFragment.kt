@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.application.presence_absence.databinding.FragmentExamListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ExamListFragment : Fragment() {
 
     private lateinit var binding: FragmentExamListBinding
