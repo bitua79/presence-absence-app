@@ -26,4 +26,8 @@
     <dimen name="spacing_29x">116dp</dimen>
 
     <dimen name="divider_height">1dp</dimen>
+
+    <dimen name="radius_small">3dp</dimen>
+    <dimen name="radius_normal">7dp</dimen>
+    <dimen name="radius_big">10dp</dimen>
 </resources>

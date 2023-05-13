@@ -16,8 +16,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
-    private val topLevelMenuItems = setOf(
-        R.id.loginFragment
+    private val hasToolbarItems = setOf(
+        R.id.examListFragment,
+        R.id.studentListFragment
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,15 +38,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupNavigationUiState() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            with(binding) {
+            with(binding.toolbar) {
                 when (destination.id) {
-                    // Hide UI controllers
-                    in topLevelMenuItems -> {
-                        toolbar.visibility = View.VISIBLE
+                    in hasToolbarItems -> {
+                        visibility = View.VISIBLE
+                        title = destination.label
                     }
 
                     else -> {
-                        toolbar.visibility = View.GONE
+                        visibility = View.GONE
                     }
                 }
             }

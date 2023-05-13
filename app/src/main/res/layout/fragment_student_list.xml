@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:title="@string/label_exam_list_fragment"
-            app:titleTextAppearance="@style/TextAppearance.MyTheme.Headline6" />
+            app:titleTextAppearance="@style/TextAppearance.PresentAbsence.Headline6" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_info"
@@ -47,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/spacing_5x"
-                    android:textAppearance="@style/TextAppearance.MyTheme.Subtitle1"
+                    android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle1"
                     app:examClass="@{exam}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -60,7 +60,7 @@
                     android:layout_marginTop="@dimen/spacing_2x"
                     android:layout_marginBottom="@dimen/spacing_5x"
                     android:text="@{exam.studentCount}"
-                    android:textAppearance="@style/TextAppearance.MyTheme.Subtitle1"
+                    android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@id/tv_class_name"
                     app:layout_constraintTop_toBottomOf="@id/tv_class_name"

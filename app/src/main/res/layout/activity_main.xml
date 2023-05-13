@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layoutDirection="rtl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,7 +18,7 @@
                 android:layout_height="wrap_content"
                 android:textDirection="rtl"
                 android:layoutDirection="rtl"
-                app:titleTextAppearance="@style/TextAppearance.MyTheme.Headline6"
+                app:titleTextAppearance="@style/TextAppearance.PresentAbsence.Headline6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:title="@string/app_name_persian"
                 app:layout_constraintStart_toStartOf="parent"

@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="orange_600">#FB8C00</color>
+    <color name="orange_700">#FF8000</color>
+    <color name="orange_700_alpha10">#1AFF8000</color>
     <color name="deep_orange_600">#EB5E2C</color>
 
     <color name="pink_300">#CF6679</color>
     <color name="pink_800">#B00020</color>
+
+    <color name="red_a200">#FF5858</color>
+    <color name="red_a700">#FF0000</color>
+    <color name="red_a700_alpha10">#1AFF0000</color>
 
     <color name="white">#FFFFFF</color>
     <color name="cyan_600">#13B2B2</color>
@@ -12,11 +19,16 @@
 
     <!--  region grey  -->
     <color name="grey_50">#FCFBFB</color>
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_300">#E6E6E6</color>
     <color name="grey_400">#C4C4C4</color>
     <color name="grey_500">#979797</color>
     <color name="grey_600">#717171</color>
+    <color name="grey_625">#777777</color>
+    <color name="grey_625_alpha10">#1A777777</color>
     <color name="grey_650">#686868</color>
-    <color name="grey_700">#585858</color>
+    <color name="grey_700">#525252</color>
+    <color name="grey_900">#242424</color>
     <color name="grey_900_alpha_8">#14212121</color>
     <!--endregion-->
 
@@ -41,11 +53,10 @@
 
 
     <color name="light_green_a700">#1ECA25</color>
-    <color name="red_a700">#FF0000</color>
     <color name="blue_600">#349beb</color>
-
-    <color name="deep_purple_a700">#6200EE</color>
-    <color name="orange_600">#FB8C00</color>
-
+    <color name="deep_purple_a700">#6200ED</color>
+    <color name="deep_purple_a700_alpha8">#146200ED</color>
+    <color name="deep_purple_a700_alpha16">#296200ED</color>
+    <color name="deep_purple_a700_alpha2">#056200ED</color>
 
 </resources>

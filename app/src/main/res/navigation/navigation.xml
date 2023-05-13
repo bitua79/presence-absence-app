@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.application.presence_absence.ui.login.LoginFragment"
-        android:label="LoginFragment"
+        android:label="@string/label_login"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_examListFragment"
@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/examListFragment"
         android:name="com.application.presence_absence.ui.examList.ExamListFragment"
-        android:label="ExamListFragment"
+        android:label="@string/label_exam_list_fragment"
         tools:layout="@layout/fragment_exam_list">
 
         <action
