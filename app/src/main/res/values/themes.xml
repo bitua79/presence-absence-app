@@ -8,9 +8,24 @@
         <item name="colorSecondary">@color/color_secondary</item>
         <item name="colorOnSecondary">@color/color_on_secondary</item>
 
+        <!--Material type attributes-->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.PresentAbsence.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.PresentAbsence.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.PresentAbsence.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.PresentAbsence.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.PresentAbsence.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.PresentAbsence.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.PresentAbsence.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.PresentAbsence.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.PresentAbsence.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.PresentAbsence.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.PresentAbsence.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.PresentAbsence.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.PresentAbsence.Overline</item>
+
         <!--    component styles    -->
-        <item name="materialButtonStyle">@style/Widget.MyTheme.Button</item>
-        <item name="toolbarStyle">@style/Widget.MyTheme.Toolbar</item>
+        <item name="materialButtonStyle">@style/Widget.PresentAbsence.Button</item>
+        <item name="toolbarStyle">@style/Widget.PresentAbsence.Toolbar</item>
 
     </style>
 </resources>

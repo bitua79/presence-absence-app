@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--  region Main colors  -->
     <color name="color_primary">@color/deep_purple_a700</color>
     <color name="color_secondary">@color/orange_600</color>
 
-    <color name="color_background">@color/grey_50</color>
+    <color name="color_background">@color/grey_100</color>
     <color name="color_surface">@color/blue_50</color>
     <color name="color_error">@color/pink_800</color>
+    <!-- endregion -->
 
-    <!--  On colors  -->
+    <!--  region On colors  -->
     <color name="color_on_primary">@color/white</color>
     <color name="color_on_secondary">@color/white</color>
     <color name="color_on_background">@color/grey_700</color>
     <color name="color_on_surface">@color/black</color>
     <color name="color_on_error">@color/white</color>
+    <!--endregion-->
 
-    <!--  components color  -->
+    <!--  region components color  -->
     <color name="color_presence">@color/light_green_a700</color>
     <color name="color_absence">@color/red_a700</color>
     <color name="color_edit">@color/blue_600</color>
+
+    <color name="color_border_grey300">@color/grey_300</color>
+    <color name="color_border_grey600">@color/grey_600</color>
+    <color name="color_border_primary">@color/color_primary</color>
+    <!--endregion-->
 
 </resources>

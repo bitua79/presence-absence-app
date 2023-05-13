@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="Widget.MyTheme.Button" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/color_secondary</item>
+    <style name="Widget.PresentAbsence.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/color_primary</item>
         <item name="android:textColor">@color/color_on_primary</item>
-        <item name="android:textAppearance">@style/TextAppearance.MyTheme.Button</item>
+        <item name="android:textAppearance">@style/TextAppearance.PresentAbsence.Button</item>
         <item name="cornerRadius">@dimen/spacing_4x</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
@@ -12,13 +12,23 @@
     </style>
 
     <!--  toolbar  -->
-    <style name="Widget.MyTheme.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.MyTheme.Toolbar</item>
+    <style name="Widget.PresentAbsence.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.PresentAbsence.Toolbar</item>
     </style>
 
-    <style name="ThemeOverlay.MyTheme.Toolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+    <style name="ThemeOverlay.PresentAbsence.Toolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
         <item name="android:textColorPrimary">@color/color_on_primary</item>
         <item name="android:textColorSecondary">@color/color_on_primary</item>
     </style>
 
+    <!--  components  -->
+
+    <style name="Widget.PresentAbsence.TextInputLayout.EditText" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.PresentAbsence.TextWidget
+        </item>
+        <item name="boxBackgroundColor">@color/color_surface</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+    </style>
 </resources>

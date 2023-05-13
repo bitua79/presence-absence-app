@@ -36,10 +36,6 @@ class ExamListFragment : Fragment() {
         setupAdapter()
         setupRecyclerview()
 
-        binding.tbExamListToolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
-        }
-
         binding.btnDoFilter.setOnClickListener {
             doFilter()
         }
