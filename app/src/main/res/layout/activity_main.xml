@@ -13,14 +13,16 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
-                android:background="@color/color_primary"
+                android:background="@drawable/border_bottom_cornered"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textDirection="rtl"
-                android:layoutDirection="rtl"
-                app:titleTextAppearance="@style/TextAppearance.PresentAbsence.Headline6"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:elevation="0dp"
+                app:titleCentered="true"
                 app:title="@string/app_name_persian"
+                android:paddingVertical="@dimen/spacing_4x"
+                app:titleTextAppearance="@style/TextAppearance.PresentAbsence.Headline6.Medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:titleTextColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

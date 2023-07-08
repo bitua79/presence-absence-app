@@ -3,19 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/splashFragment">
-
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.application.presence_absence.ui.SplashFragment"
-        android:label="SplashFragment"
-        tools:layout="@layout/fragment_splash">
-        <action
-            android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
