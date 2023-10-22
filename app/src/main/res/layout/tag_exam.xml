@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="tag"
+            type="com.application.presence_absence.ui.examList.ExamTagView" />
+    </data>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:minWidth="@dimen/spacing_20x"
+        android:paddingHorizontal="@dimen/spacing_2x"
+        android:paddingVertical="@dimen/spacing_base"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.PresentAbsence.Caption"
+        app:autoSizeMaxTextSize="14sp"
+        app:autoSizeMinTextSize="10sp"
+        app:autoSizeTextType="uniform"
+        app:examTypeValue="@{tag}"
+        tools:background="@drawable/bg_exam_state_in_progress"
+        tools:layout_width="100dp"
+        tools:text="@string/label_in_progress"
+        tools:textColor="@color/color_in_progress_exam_text" />
+</layout>

@@ -51,8 +51,10 @@
     <color name="blue_grey_950">#0D122B</color>
     <!--  endregion  -->
 
+    <color name="light_green_a700">#009D34</color>
+    <color name="green_a700">#1ECA25</color>
+    <color name="green_a700_alpha10">#1A1ECA25</color>
 
-    <color name="light_green_a700">#1ECA25</color>
     <color name="blue_600">#349beb</color>
     <color name="deep_purple_a700">#6200ED</color>
     <color name="deep_purple_a700_alpha8">#146200ED</color>

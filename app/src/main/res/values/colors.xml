@@ -26,6 +26,19 @@
     <color name="color_border_grey300">@color/grey_300</color>
     <color name="color_border_grey600">@color/grey_600</color>
     <color name="color_border_primary">@color/color_primary</color>
+
+    <color name="color_in_progress_exam_text">@color/green_a700</color>
+    <color name="color_in_progress_exam_bg">@color/green_a700_alpha10</color>
+
+    <color name="color_not_started_exam_text">@color/orange_700</color>
+    <color name="color_not_started_exam_bg">@color/orange_700_alpha10</color>
+
+    <color name="color_cancelled_exam_text">@color/red_a700</color>
+    <color name="color_cancelled_exam_bg">@color/red_a700_alpha10</color>
+
+    <color name="color_finished_exam_text">@color/grey_625</color>
+    <color name="color_finished_exam_bg">@color/grey_625_alpha10</color>
+
     <!--endregion-->
 
 </resources>
