@@ -15,8 +15,6 @@ class ExamListFragment : Fragment() {
     private lateinit var binding: FragmentExamListBinding
     private lateinit var listAdapter: ExamListAdapter
 
-    private var list: List<ExamView> = mutableListOf()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,9 +34,6 @@ class ExamListFragment : Fragment() {
         setupAdapter()
         setupRecyclerview()
 
-        binding.btnDoFilter.setOnClickListener {
-            doFilter()
-        }
     }
 
     private fun setupAdapter() {
@@ -53,39 +48,6 @@ class ExamListFragment : Fragment() {
         with(binding.rvExamList) {
             setHasFixedSize(true)
             adapter = listAdapter
-        }
-
-        listAdapter.submitList(FakeExamList.list)
-        list = FakeExamList.list
-    }
-
-    private fun doFilter() {
-        with(binding) {
-            val college = etCollege.text
-            val day = etDay.text
-            val hour = etHour.text
-
-            var filteredList = list
-
-            if (!college.isNullOrEmpty()){
-                filteredList = filteredList.filter {
-                    it.collegeName == college.toString()
-                }
-            }
-
-            if (!day.isNullOrEmpty()){
-                filteredList = filteredList.filter {
-                    it.day == day.toString()
-                }
-            }
-
-            if (!hour.isNullOrEmpty()) {
-                filteredList = filteredList.filter {
-                    it.hour == hour.toString()
-                }
-            }
-
-            listAdapter.submitList(filteredList)
         }
     }
 

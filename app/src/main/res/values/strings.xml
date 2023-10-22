@@ -12,14 +12,15 @@
     <!--  region exam  -->
     <string name="label_exam_list_fragment">لیست امتحانات</string>
 
-    <string name="label_college">دانشکده</string>
-    <string name="label_exam_day">روز امتحان</string>
-    <string name="label_exam_hour">ساعت امتحان</string>
+    <string name="label_in_progress">در حال برگزاری</string>
+    <string name="label_not_started">شروع نشده</string>
+    <string name="label_cancelled">لغو شده</string>
+    <string name="label_finished">تمام شده</string>
 
     <string name="label_do_action">اعمال فیلتر</string>
     <!--  endregion  -->
 
-    <!--  region exam  -->
+    <!--  region student  -->
     <string name="label_std_attendance">حضور دانشجو</string>
 
     <string name="label_present">حاضر</string>

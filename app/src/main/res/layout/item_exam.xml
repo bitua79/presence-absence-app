@@ -1,53 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="exam"
             type="com.application.presence_absence.ui.examList.ExamView" />
+
+        <variable
+            name="tag"
+            type="com.application.presence_absence.ui.examList.ExamTagView" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_4x"
         android:layout_marginVertical="@dimen/spacing_2x"
+        android:background="@drawable/border_grey300_8dp_cornered"
         android:layoutDirection="rtl"
         app:cardCornerRadius="@dimen/spacing_5x"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_course"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_4x"
+            android:layout_marginTop="@dimen/spacing_4x"
+            android:text="@{exam.name}"
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="ریاضی 2" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_title"
+        <include
+            android:id="@+id/exam_state_tag"
+            layout="@layout/tag_exam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_4x"
+            app:layout_constraintBottom_toBottomOf="@id/tv_course"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintTop_toTopOf="@id/tv_course"
+            bind:tag="@{tag}" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/spacing_3x"
+            android:text="@{exam.day}"
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Grey700"
+            app:layout_constraintStart_toStartOf="@id/tv_course"
+            app:layout_constraintTop_toBottomOf="@id/tv_course"
+            tools:text="دوشنبه ۷ام فروردین" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_4x"
+            android:text="@{exam.hour}"
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Grey700"
+            app:layout_constraintBottom_toBottomOf="@id/tv_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_time"
+            tools:text="ساعت ۱۰" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_college"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_3x"
+            android:layout_marginBottom="@dimen/spacing_4x"
+            android:text="@{exam.collegeName}"
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Caption.Grey900"
+            app:layout_constraintBottom_toTopOf="@id/cl_expand"
+            app:layout_constraintStart_toStartOf="@id/tv_course"
+            app:layout_constraintTop_toBottomOf="@id/tv_time"
+            tools:text="دانشکده مهندسی" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_4x"
+            android:text="@{exam.className}"
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Caption.Grey900"
+            app:layout_constraintBottom_toBottomOf="@id/tv_college"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_college"
+            tools:text="کلاس B35" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:minHeight="@dimen/spacing_7x"
+            android:id="@+id/cl_expand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_exam_item_expand_more"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_4x"
-                android:layout_marginTop="@dimen/spacing_4x"
-                android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:examClass="@{exam}"
-                tools:text="کلاس b23 - امتحان ریاضی 1" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_2x"
-                android:layout_marginBottom="@dimen/spacing_4x"
-                android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2"
+                android:layout_marginVertical="@dimen/spacing_base"
+                android:src="@drawable/ic_expand"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@id/tv_title"
-                app:examDate="@{exam}"
-                app:layout_constraintTop_toBottomOf="@id/tv_title"
-                tools:text="24 دی / 10-12" />
-
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
 </layout>

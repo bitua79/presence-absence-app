@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:fillViewport="true"
         android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -97,7 +98,7 @@
                     android:id="@+id/et_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_background_edit_text"
+                    android:background="@drawable/bg_edit_text"
                     android:inputType="textPassword"
                     android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2" />
 
@@ -134,7 +135,7 @@
                     android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_background_edit_text"
+                    android:background="@drawable/bg_edit_text"
                     android:inputType="textPassword"
                     android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2" />
 
@@ -145,6 +146,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_8x"
+                android:paddingVertical="@dimen/spacing_3x"
                 android:text="@string/label_login"
                 android:textAppearance="@style/TextAppearance.PresentAbsence.Button.Big"
                 app:cornerRadius="@dimen/spacing_2x"
