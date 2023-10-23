@@ -5,4 +5,9 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/radius_big</item>
     </style>
+
+    <style name="ShapeAppearance.PresentAbsence.BottomSheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/spacing_3x</item>
+    </style>
 </resources>

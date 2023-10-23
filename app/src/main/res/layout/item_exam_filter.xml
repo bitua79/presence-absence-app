@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="selected"
+            type="Boolean" />
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@{selected ==false ? @drawable/border_grey600_8dp_cornered:@drawable/bg_filter_exam_list}"
+        tools:background="@drawable/border_grey600_8dp_cornered">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_exam_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawablePadding="@dimen/spacing_2x"
+            android:padding="@dimen/spacing_2x"
+            android:text="@{title}"
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Caption"
+            android:textColor="@{selected==false ? @color/color_border_grey600: @color/color_primary}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_close"
+            tools:text="@string/label_exam_place" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_close"
+            isVisibleOrGone="@{selected}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@{selected==false ? @color/color_border_grey600: @color/color_primary}"
+            android:layout_marginStart="@dimen/spacing_base"
+            android:src="@drawable/ic_remove"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
