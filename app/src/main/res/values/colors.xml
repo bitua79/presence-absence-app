@@ -41,4 +41,9 @@
 
     <!--endregion-->
 
+    <color name="cyan_900">#004266</color>
+    <color name="pink_650">#DA1F57</color>
+
+    <color name="color_text_calendar">@color/cyan_900</color>
+    <color name="color_text_calendar_holiday">@color/pink_650</color>
 </resources>

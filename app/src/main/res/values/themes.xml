@@ -26,6 +26,7 @@
         <!--    component styles    -->
         <item name="materialButtonStyle">@style/Widget.PresentAbsence.Button</item>
         <item name="toolbarStyle">@style/Widget.PresentAbsence.Toolbar</item>
+        <item name="bottomSheetDialogTheme">@style/Widget.PresentAbsence.BottomSheetDialog</item>
 
     </style>
 </resources>

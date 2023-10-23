@@ -17,7 +17,13 @@
     <string name="label_cancelled">لغو شده</string>
     <string name="label_finished">تمام شده</string>
 
-    <string name="label_do_action">اعمال فیلتر</string>
+    <string name="label_exam_place">محل امتحان</string>
+    <string name="label_select_exam_place">انتخاب محل امتحان</string>
+    <string name="label_exam_time">زمان امتحان</string>
+    <string name="label_select_exam_time">انتخاب زمان امتحان</string>
+    <string name="label_exam_state">وضعیت امتحان</string>
+
+    <string name="label_no_filter_match_exam">امتحانی با فیلتر اعمال شده وجود ندارد</string>
     <!--  endregion  -->
 
     <!--  region student  -->
@@ -25,6 +31,9 @@
 
     <string name="label_present">حاضر</string>
     <string name="label_absent">غایب</string>
-    <!--  endregion  -->
 
+    <string name="label_search">جستجو</string>
+    <string name="label_filter">فیلترها</string>
+
+    <!--  endregion  -->
 </resources>

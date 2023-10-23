@@ -24,6 +24,12 @@
         <action
             android:id="@+id/action_examListFragment_to_studentListFragment"
             app:destination="@id/studentListFragment" />
+        <action
+            android:id="@+id/action_examListFragment_to_chooseCollegeDialog"
+            app:destination="@id/chooseCollegeDialog" />
+        <action
+            android:id="@+id/action_examListFragment_to_examStateListBottomSheet"
+            app:destination="@id/examStateListBottomSheet" />
 
     </fragment>
 
@@ -36,4 +42,14 @@
             android:name="exam"
             app:argType="com.application.presence_absence.ui.examList.ExamView" />
     </fragment>
+    <dialog
+        android:id="@+id/chooseCollegeDialog"
+        android:name="com.application.presence_absence.ui.examList.filter.college.CollegeListBottomSheet"
+        android:label="ChooseCollegeDialog"
+        tools:layout="@layout/bottom_sheet_check_box_list" />
+    <dialog
+        android:id="@+id/examStateListBottomSheet"
+        android:name="com.application.presence_absence.ui.examList.filter.state.ExamStateListBottomSheet"
+        android:label="ExamStateListBottomSheet"
+        tools:layout="@layout/bottom_sheet_check_box_list" />
 </navigation>
