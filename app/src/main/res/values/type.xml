@@ -59,7 +59,15 @@
 
     <style name="TextAppearance.PresentAbsence.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/iran_sans_light</item>
+    </style>
+
+    <style name="TextAppearance.PresentAbsence.Subtitle2.Medium">
         <item name="fontFamily">@font/iran_sans_medium</item>
+    </style>
+
+    <style name="TextAppearance.PresentAbsence.Subtitle2.Medium.Grey700">
+        <item name="android:textColor">@color/grey_700</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Subtitle2.Grey700">

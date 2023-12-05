@@ -16,6 +16,8 @@
     <color name="white">#FFFFFF</color>
     <color name="cyan_600">#13B2B2</color>
     <color name="black">#000000</color>
+    <color name="black_alpha50">#80000000</color>
+    <color name="black_alpha70">#B3000000</color>
 
     <!--  region grey  -->
     <color name="grey_50">#FCFBFB</color>
@@ -23,6 +25,7 @@
     <color name="grey_300">#E6E6E6</color>
     <color name="grey_400">#C4C4C4</color>
     <color name="grey_500">#979797</color>
+    <color name="grey_500_2">#ABABAB</color>
     <color name="grey_600">#717171</color>
     <color name="grey_625">#777777</color>
     <color name="grey_625_alpha10">#1A777777</color>
@@ -42,9 +45,11 @@
     <color name="indigo_800">#232a4a</color>
     <!--endregion-->
 
-    <!--  region indigo  -->
+    <!--  region blue  -->
     <color name="blue_50">#FDFDFF</color>
     <color name="blue_75">#ECEFFF</color>
+    <color name="blue_600">#349beb</color>
+    <color name="blue_900_alpha20">#33000033</color>
     <color name="blue_grey_200">#BABDCC</color>
     <color name="blue_grey_900">#1C2449</color>
     <color name="blue_grey_900_alpha_23">#3A1C2449</color>
@@ -55,10 +60,10 @@
     <color name="green_a700">#1ECA25</color>
     <color name="green_a700_alpha10">#1A1ECA25</color>
 
-    <color name="blue_600">#349beb</color>
     <color name="deep_purple_a700">#6200ED</color>
     <color name="deep_purple_a700_alpha8">#146200ED</color>
     <color name="deep_purple_a700_alpha16">#296200ED</color>
     <color name="deep_purple_a700_alpha2">#056200ED</color>
+
 
 </resources>

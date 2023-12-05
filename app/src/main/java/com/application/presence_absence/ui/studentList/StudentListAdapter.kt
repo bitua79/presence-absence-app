@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.application.presence_absence.databinding.ItemStudentBinding
 
 class StudentListAdapter(
-    private val onPresence: (student: StudentView) -> Unit,
-    private val onAbsence: (student: StudentView) -> Unit,
-    private val onRemoveAttendance: (student: StudentView) -> Unit,
-
-    ) : ListAdapter<StudentView, StudentListAdapter.StudentViewHolder>(
+    private val onSetPresence: (student: StudentView) -> Unit,
+    private val onSetAbsence: (student: StudentView) -> Unit,
+    private val onRemoveAttendance: (student: StudentView) -> Unit
+) : ListAdapter<StudentView, StudentListAdapter.StudentViewHolder>(
 
     object : DiffUtil.ItemCallback<StudentView>() {
         // Id should be unique
@@ -20,8 +19,7 @@ class StudentListAdapter(
             oldItem: StudentView,
             newItem: StudentView
         ): Boolean {
-            // TODO : replace with id
-            return oldItem.name == newItem.name
+            return oldItem.idNumber == newItem.idNumber
         }
 
         override fun areContentsTheSame(
@@ -37,36 +35,24 @@ class StudentListAdapter(
     inner class StudentViewHolder(private val binding: ItemStudentBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(e: StudentView) {
+        fun bind(std: StudentView) {
             with(binding) {
-                student = e
-                isAttendanceSet = e.presence != Attendance.NoSet
-                isPresent = e.presence == Attendance.Presence
-
-                ivPresence.setOnClickListener {
-                    updateItem(e, Attendance.Presence)
-                    onPresence(e)
+                student = std
+                tag = StudentAttendanceTagView.buildTagChip(std.attendance)
+                clPresent.setOnClickListener {
+                    //TODO: update attendance
+                    onSetPresence(std)
                 }
 
-                ivAbsence.setOnClickListener {
-                    updateItem(e, Attendance.Absence)
-                    onAbsence(e)
+                clAbsence.setOnClickListener {
+                    //TODO: update attendance
+                    onSetAbsence(std)
                 }
 
-                ivEraser.setOnClickListener {
-                    updateItem(e, Attendance.NoSet)
-                    onRemoveAttendance(e)
+                incAttendanceTag.root.setOnClickListener {
+                    //TODO: update attendance
+                    onRemoveAttendance(std)
                 }
-            }
-        }
-
-        private fun updateItem(e: StudentView, attendance: Attendance) {
-            e.setAttendance(attendance = attendance)
-
-            with(binding) {
-                student = e
-                isAttendanceSet = e.presence != Attendance.NoSet
-                isPresent = e.presence == Attendance.Presence
             }
         }
     }

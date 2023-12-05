@@ -16,7 +16,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/tb_exam_list_toolbar"
             android:background="@drawable/border_bottom_cornered"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,8 +41,8 @@
             android:drawablePadding="@dimen/spacing_2x"
             android:hint="@string/label_search"
             android:padding="@dimen/spacing_3x"
-            android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Medium"
+            app:layout_constraintTop_toBottomOf="@id/tb_exam_list_toolbar" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_filter"
@@ -53,13 +53,13 @@
             android:drawableStart="@drawable/ic_filter"
             android:drawablePadding="@dimen/spacing_base"
             android:text="@string/label_filter"
-            android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2"
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Medium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_search" />
 
         <include
             android:id="@+id/inc_exam_place"
-            layout="@layout/item_exam_filter"
+            layout="@layout/item_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_4x"
@@ -70,7 +70,7 @@
 
         <include
             android:id="@+id/inc_exam_time"
-            layout="@layout/item_exam_filter"
+            layout="@layout/item_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_2x"
@@ -81,7 +81,7 @@
 
         <include
             android:id="@+id/inc_exam_state"
-            layout="@layout/item_exam_filter"
+            layout="@layout/item_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_2x"
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_4x"
             android:layout_marginTop="@dimen/spacing_4x"
-            android:paddingBottom="@dimen/spacing_6x"
+            android:paddingBottom="@dimen/spacing_4x"
             app:constraint_referenced_ids="inc_exam_place, inc_exam_time, inc_exam_state"
             app:flow_horizontalBias="0"
             app:flow_horizontalGap="@dimen/spacing_2x"
@@ -111,13 +111,21 @@
             app:layout_constraintStart_toEndOf="@id/tv_filter"
             app:layout_constraintTop_toBottomOf="@id/et_search" />
 
+        <View
+            android:id="@+id/v_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_grey300"
+            app:layout_constraintTop_toBottomOf="@id/cf_filter" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_exam_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_4x"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cf_filter"
+            app:layout_constraintTop_toBottomOf="@id/v_divider"
             tools:listitem="@layout/item_exam" />
 
         <com.google.android.material.textview.MaterialTextView

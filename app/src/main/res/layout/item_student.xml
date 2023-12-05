@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -10,40 +11,82 @@
             type="com.application.presence_absence.ui.studentList.StudentView" />
 
         <variable
-            name="isAttendanceSet"
-            type="boolean" />
+            name="tag"
+            type="com.application.presence_absence.ui.studentList.StudentAttendanceTagView" />
 
-        <variable
-            name="isPresent"
-            type="boolean" />
+        <import type="android.view.View" />
+
+        <import type="com.application.presence_absence.ui.studentList.StudentAttendance" />
+
     </data>
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing_4x"
         android:layout_marginVertical="@dimen/spacing_2x"
-        android:layoutDirection="rtl"
-        app:cardCornerRadius="@dimen/spacing_5x"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginStart="@dimen/spacing_4x"
+        android:layout_marginEnd="@dimen/spacing_2x"
+        android:layoutDirection="rtl">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:id="@+id/cl_present"
+            isVisibleOrGone="@{student.attendance==StudentAttendance.NOT_SET}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/spacing_2x"
+            android:layout_marginBottom="@dimen/spacing_base"
+            android:background="@drawable/bg_student_presence"
+            app:layout_constraintBottom_toTopOf="@id/cl_absence"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_icon"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginVertical="@dimen/spacing_2x"
-                android:layout_marginStart="@dimen/spacing_4x"
-                android:src="@drawable/ic_student"
-                android:tint="@color/material_on_background_emphasis_medium"
-                app:imageFromUrl="@{student.iconUrl}"
+                android:layout_height="@dimen/spacing_6x"
+                android:src="@drawable/ic_done"
+                android:tint="@color/color_in_progress_exam_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_absence"
+            isVisibleOrGone="@{student.attendance==StudentAttendance.NOT_SET}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_base"
+            android:layout_marginEnd="@dimen/spacing_2x"
+            android:background="@drawable/bg_student_absence"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_present"
+            tools:visibility="visible">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/spacing_6x"
+                android:layout_height="@dimen/spacing_6x"
+                android:src="@drawable/ic_close_2"
+                android:tint="@color/color_cancelled_exam_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_student_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/spacing_2x"
+            android:background="@drawable/border_grey300_8dp_cornered"
+            app:layout_constraintEnd_toStartOf="@id/cl_present"
+            app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_name"
@@ -52,76 +95,54 @@
                 android:layout_marginStart="@dimen/spacing_4x"
                 android:layout_marginTop="@dimen/spacing_4x"
                 android:text="@{student.name}"
-                android:textAppearance="@style/TextAppearance.PresentAbsence.Headline6"
-                app:layout_constraintStart_toEndOf="@id/iv_icon"
+                android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle1"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="بیتا کارویزی" />
+                tools:text="بهداد برزگر" />
+
+            <include
+                android:id="@+id/inc_attendance_tag"
+                layout="@layout/tag_student_attendance"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/spacing_4x"
+                android:visibility="@{student.attendance==StudentAttendance.NOT_SET? View.GONE:View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toEndOf="@id/tv_name"
+                app:layout_constraintTop_toTopOf="@id/tv_name"
+                bind:tag="@{tag}"
+                tools:visibility="visible" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_student_number"
+                android:id="@+id/tv_id_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_4x"
-                android:text="@{student.idNumber}"
-                android:textAppearance="@style/TextAppearance.PresentAbsence.Caption"
-                android:textColor="@color/material_on_background_emphasis_medium"
+                android:layout_marginVertical="@dimen/spacing_3x"
+                android:text="@string/label_student_id"
+                android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Grey700"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tv_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_name"
-                tools:text="9812762338" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_presence"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="@dimen/spacing_base"
-                android:src="@drawable/ic_tick"
-                android:tint="@color/color_presence"
-                app:isVisibleOrGone="@{!isAttendanceSet}"
-                app:layout_constraintBottom_toBottomOf="@id/iv_absence"
-                app:layout_constraintDimensionRatio="1"
-                app:layout_constraintEnd_toStartOf="@id/iv_absence"
-                app:layout_constraintTop_toTopOf="@id/iv_absence" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_absence"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_margin="@dimen/spacing_5x"
-                android:src="@drawable/ic_close"
-                android:tint="@color/color_absence"
-                android:visibility="gone"
-                app:isVisibleOrGone="@{!isAttendanceSet}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintDimensionRatio="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                tools:text="شماره دانشجویی:" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/spacing_2x"
-                android:text="@{isPresent? @string/label_present:@string/label_absent}"
-                android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2"
-                android:textColor="@{isPresent? @color/color_presence:@color/color_absence}"
-                app:isVisibleOrGone="@{isAttendanceSet}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/iv_eraser"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="حاضر" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/iv_eraser"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_margin="@dimen/spacing_5x"
-                android:src="@drawable/ic_eraser"
-                app:isVisibleOrGone="@{isAttendanceSet}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintDimensionRatio="1"
+                android:layout_marginVertical="@dimen/spacing_3x"
+                android:layout_marginStart="@dimen/spacing_2x"
+                android:text="@{student.idNumber}"
+                android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Grey700"
+                android:textColor="@color/color_black_alpha70"
+                app:layout_constraintBottom_toBottomOf="@id/tv_id_title"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@id/tv_id_title"
+                app:layout_constraintTop_toTopOf="@id/tv_id_title"
+                tools:text="۹۵۱۲۴۲۴۶۲۴" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

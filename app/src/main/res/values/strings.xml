@@ -2,6 +2,9 @@
     <string name="app_name">Presence-Absence</string>
     <string name="app_name_persian">سامانه حضور و غیاب دانشجویان</string>
 
+    <string name="label_search">جستجو</string>
+    <string name="label_filter">فیلترها</string>
+
     <!-- region login -->
     <string name="label_login">ورود</string>
     <string name="label_login_to_system">ورود به سامانه</string>
@@ -27,13 +30,14 @@
     <!--  endregion  -->
 
     <!--  region student  -->
-    <string name="label_std_attendance">حضور دانشجو</string>
 
     <string name="label_present">حاضر</string>
     <string name="label_absent">غایب</string>
+    <string name="label_student_id">شماره دانشجویی:</string>
+    <string name="label_show_presents">نمایش حاضرین</string>
+    <string name="label_show_absents">نمایش غایبین</string>
 
-    <string name="label_search">جستجو</string>
-    <string name="label_filter">فیلترها</string>
+    <string name="label_no_filter_match_student">دانشجویی با فیلتر اعمال شده وجود ندارد</string>
 
     <!--  endregion  -->
 </resources>
