@@ -19,14 +19,19 @@
     <!--endregion-->
 
     <!--  region components color  -->
-    <color name="color_presence">@color/light_green_a700</color>
-    <color name="color_absence">@color/red_a700</color>
-    <color name="color_edit">@color/blue_600</color>
-
     <color name="color_border_grey300">@color/grey_300</color>
+    <color name="color_border_grey500">@color/grey_500_2</color>
     <color name="color_border_grey600">@color/grey_600</color>
     <color name="color_border_primary">@color/color_primary</color>
+    <color name="color_background_login">@color/deep_purple_a700_alpha2</color>
 
+    <color name="color_text_black_alpha50">@color/black_alpha50</color>
+    <color name="color_black_alpha70">@color/black_alpha70</color>
+
+    <color name="color_divider">@color/blue_900_alpha20</color>
+    <!--endregion-->
+
+    <!--  region exam status color  -->
     <color name="color_in_progress_exam_text">@color/green_a700</color>
     <color name="color_in_progress_exam_bg">@color/green_a700_alpha10</color>
 
@@ -38,12 +43,13 @@
 
     <color name="color_finished_exam_text">@color/grey_625</color>
     <color name="color_finished_exam_bg">@color/grey_625_alpha10</color>
-
     <!--endregion-->
 
-    <color name="cyan_900">#004266</color>
-    <color name="pink_650">#DA1F57</color>
+    <!--  region student attendance -->
+    <color name="color_presence_foreground">@color/green_a700</color>
+    <color name="color_presence_background">@color/green_a700_alpha10</color>
 
-    <color name="color_text_calendar">@color/cyan_900</color>
-    <color name="color_text_calendar_holiday">@color/pink_650</color>
+    <color name="color_absence_foreground">@color/red_a700</color>
+    <color name="color_absence_background">@color/red_a700_alpha10</color>
+    <!--  endregion  -->
 </resources>

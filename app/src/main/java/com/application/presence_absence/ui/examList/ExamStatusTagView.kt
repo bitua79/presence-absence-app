@@ -5,38 +5,38 @@ import androidx.annotation.DrawableRes
 import com.application.presence_absence.R
 import com.application.presence_absence.ui.examList.filter.state.ExamState
 
-class ExamTagView private constructor(
+class ExamStatusTagView private constructor(
     val stateType: ExamState,
     @DrawableRes
-    val backgroundColor: Int,
+    val backgroundDrawable: Int,
     @ColorRes
     val textColor: Int,
 ) {
 
     companion object {
-        fun buildTagChip(chipType: ExamState): ExamTagView {
+        fun buildTagChip(chipType: ExamState): ExamStatusTagView {
             return when (chipType) {
-                ExamState.IN_PROGRESS -> ExamTagView(
+                ExamState.IN_PROGRESS -> ExamStatusTagView(
                     chipType,
-                    backgroundColor = R.drawable.bg_exam_state_in_progress,
+                    backgroundDrawable = R.drawable.bg_exam_state_in_progress,
                     textColor = R.color.color_in_progress_exam_text
                 )
 
-                ExamState.NOT_STARTED -> ExamTagView(
+                ExamState.NOT_STARTED -> ExamStatusTagView(
                     chipType,
-                    backgroundColor = R.drawable.bg_exam_state_not_started,
+                    backgroundDrawable = R.drawable.bg_exam_state_not_started,
                     textColor = R.color.color_not_started_exam_text
                 )
 
-                ExamState.CANCELLED -> ExamTagView(
+                ExamState.CANCELLED -> ExamStatusTagView(
                     chipType,
-                    backgroundColor = R.drawable.bg_exam_state_cancelled,
+                    backgroundDrawable = R.drawable.bg_exam_state_cancelled,
                     textColor = R.color.color_cancelled_exam_text
                 )
 
-                ExamState.FINISHED -> ExamTagView(
+                ExamState.FINISHED -> ExamStatusTagView(
                     chipType,
-                    backgroundColor = R.drawable.bg_exam_state_finished,
+                    backgroundDrawable = R.drawable.bg_exam_state_finished,
                     textColor = R.color.color_finished_exam_text
                 )
             }

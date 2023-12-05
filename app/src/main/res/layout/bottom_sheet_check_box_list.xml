@@ -39,7 +39,7 @@
             android:drawablePadding="@dimen/spacing_2x"
             android:hint="@string/label_search"
             android:padding="@dimen/spacing_3x"
-            android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2"
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Medium"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
         <androidx.recyclerview.widget.RecyclerView

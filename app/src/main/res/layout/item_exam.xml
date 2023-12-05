@@ -12,7 +12,7 @@
 
         <variable
             name="tag"
-            type="com.application.presence_absence.ui.examList.ExamTagView" />
+            type="com.application.presence_absence.ui.examList.ExamStatusTagView" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,7 +39,7 @@
 
         <include
             android:id="@+id/exam_state_tag"
-            layout="@layout/tag_exam"
+            layout="@layout/tag_exam_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/spacing_4x"

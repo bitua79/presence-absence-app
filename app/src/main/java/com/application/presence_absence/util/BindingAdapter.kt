@@ -1,12 +1,15 @@
 package com.application.presence_absence.util
 
 import android.annotation.SuppressLint
+import android.graphics.PorterDuff
 import android.net.Uri
 import android.view.View
 import android.widget.TextView
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import com.application.presence_absence.ui.examList.ExamTagView
 import com.application.presence_absence.ui.examList.ExamView
 import com.bumptech.glide.Glide
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
@@ -31,10 +34,15 @@ fun bindImageFromUrl(view: ShapeableImageView, imageUrl: String?) {
 }
 
 @SuppressLint("SetTextI18n")
-@BindingAdapter("examClass")
-fun bindExamClass(view: MaterialTextView, examEntity: ExamView) {
-    // TODO: Use string resource instead
-    view.text = "${examEntity.className} - ${examEntity.name}"
+@BindingAdapter("examTime")
+fun bindExamTime(view: MaterialTextView, examEntity: ExamView) {
+    view.text = "${examEntity.day}، ساعت ${examEntity.hour}"
+}
+
+@SuppressLint("SetTextI18n")
+@BindingAdapter("examPlace")
+fun bindExamPlace(view: MaterialTextView, examEntity: ExamView) {
+    view.text = "${examEntity.collegeName}، ${examEntity.className}"
 }
 
 @BindingAdapter("isVisibleOrGone")
@@ -46,13 +54,35 @@ fun bindIsVisibleOrGone(view: View, visible: Boolean) {
     }
 }
 
-@BindingAdapter("examTypeValue")
-fun examTypeValue(textView: TextView, tagChip: ExamTagView?) {
-    tagChip?.let {
-        with(textView) {
-            textView.text = context.getString(tagChip.stateType.titleId)
-            setTextColor(ContextCompat.getColor(context, tagChip.textColor))
-            background = ContextCompat.getDrawable(context, tagChip.backgroundColor)
-        }
+@BindingAdapter("setBackgroundDrawableById")
+fun setBackgroundDrawableById(view: View, @DrawableRes bgId: Int) {
+    if (bgId == -1) return
+    with(view) {
+        background = ContextCompat.getDrawable(context, bgId)
+    }
+}
+
+@BindingAdapter("setTextColorById")
+fun setTextColorById(textView: TextView, @ColorRes colorId: Int) {
+    if (colorId == -1) return
+    with(textView) {
+        setTextColor(ContextCompat.getColor(context, colorId))
+    }
+}
+
+@BindingAdapter("setTextById")
+fun setTextById(textView: TextView, @StringRes stringId: Int) {
+    if (stringId == -1) return
+    with(textView) {
+        textView.text = context.getString(stringId)
+    }
+}
+
+@BindingAdapter("setTintById")
+fun setTintById(image: ShapeableImageView, @ColorRes colorId: Int) {
+    if (colorId == -1) return
+    with(image) {
+        val tintColor = ContextCompat.getColor(context, colorId)
+        setColorFilter(tintColor, PorterDuff.Mode.SRC_IN)
     }
 }

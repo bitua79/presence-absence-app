@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="filterState"
+            type="com.application.presence_absence.ui.studentList.StudentFilterView" />
 
         <variable
             name="exam"
@@ -11,74 +16,135 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layoutDirection="rtl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/tb_student_list_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textDirection="rtl"
-            app:navigationIcon="@drawable/ic_back"
-            app:navigationIconTint="@color/color_on_primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back"
+            app:navigationIconTint="@color/color_on_primary"
             app:title="@string/label_exam_list_fragment"
             app:titleTextAppearance="@style/TextAppearance.PresentAbsence.Headline6" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_info"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing_2x"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="@dimen/spacing_4x"
-            app:cardCornerRadius="@dimen/spacing_4x"
-            app:layout_constraintTop_toBottomOf="@id/tb_student_list_toolbar">
+            android:background="@drawable/bg_edit_text"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="@dimen/spacing_2x"
+            android:hint="@string/label_search"
+            android:padding="@dimen/spacing_3x"
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2"
+            app:layout_constraintTop_toBottomOf="@id/tb_student_list_toolbar" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tv_class_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/spacing_5x"
-                    android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle1"
-                    app:examClass="@{exam}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="کلاس B31 - ریاضی1" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tv_std_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/spacing_2x"
-                    android:layout_marginBottom="@dimen/spacing_5x"
-                    android:text="@{exam.studentCount}"
-                    android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/tv_class_name"
-                    app:layout_constraintTop_toBottomOf="@id/tv_class_name"
-                    tools:text="47 دانشجو" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_do_filter"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_2x"
-            android:text="@string/label_std_attendance"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/spacing_4x"
+            android:drawableStart="@drawable/ic_filter"
+            android:drawablePadding="@dimen/spacing_base"
+            android:text="@string/label_filter"
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2"
+            app:layout_constraintBottom_toBottomOf="@id/inc_show_presents"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cv_info" />
+            app:layout_constraintTop_toTopOf="@id/inc_show_presents" />
+
+        <include
+            android:id="@+id/inc_show_presents"
+            layout="@layout/item_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/spacing_4x"
+            android:layout_marginStart="@dimen/spacing_4x"
+            app:layout_constraintBottom_toTopOf="@id/v_divider"
+            app:layout_constraintStart_toEndOf="@id/tv_filter"
+            app:layout_constraintTop_toBottomOf="@id/et_search"
+            bind:selected="@{filterState.showPresents}" />
+
+        <include
+            android:id="@+id/inc_show_absents"
+            layout="@layout/item_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_2x"
+            app:layout_constraintBottom_toBottomOf="@id/inc_show_presents"
+            app:layout_constraintStart_toEndOf="@id/inc_show_presents"
+            app:layout_constraintTop_toTopOf="@id/inc_show_presents"
+            bind:selected="@{filterState.showAbsents}" />
+
+        <View
+            android:id="@+id/v_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/spacing_4x"
+            android:background="@color/color_border_grey300"
+            app:layout_constraintTop_toBottomOf="@id/inc_show_absents" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_exam_information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_5x"
+            app:layout_constraintStart_toStartOf="@id/tv_filter"
+            app:layout_constraintTop_toBottomOf="@id/v_divider">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{exam.name}"
+                android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Medium"
+                android:textColor="@color/black"
+                tools:text="ریاضی ۲" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/spacing_2x"
+                android:layout_marginVertical="@dimen/spacing_base"
+                android:background="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_edit"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Medium"
+                android:textColor="@color/color_text_black_alpha50"
+                android:textDirection="rtl"
+                app:examTime="@{exam}"
+                tools:text="دوشنبه ۷ام فروردین، ساعت ۱۰" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/spacing_2x"
+                android:layout_marginVertical="@dimen/spacing_base"
+                android:background="@color/color_text_black_alpha50"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_edit"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Medium"
+                android:textColor="@color/color_text_black_alpha50"
+                android:textDirection="rtl"
+                app:examPlace="@{exam}"
+                tools:text="مهندسی، کلاس B35" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_student_list"
@@ -87,7 +153,19 @@
             android:layout_marginTop="@dimen/spacing_4x"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_do_filter"
+            app:layout_constraintTop_toBottomOf="@id/ll_exam_information"
             tools:listitem="@layout/item_student" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_no_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_no_filter_match_student"
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Caption"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/rv_student_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rv_student_list" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

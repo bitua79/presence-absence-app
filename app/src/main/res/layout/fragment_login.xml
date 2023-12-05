@@ -8,12 +8,13 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:fillViewport="true"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@color/color_background_login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,8 +75,8 @@
                 android:id="@+id/tv_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_4x"
                 android:layout_marginStart="@dimen/spacing_base"
+                android:layout_marginTop="@dimen/spacing_4x"
                 android:text="@string/label_username"
                 android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle1.Grey700"
                 app:layout_constraintStart_toStartOf="@id/til_username"
@@ -100,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_edit_text"
                     android:inputType="textPassword"
-                    android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2" />
+                    android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Medium" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_base"
-                android:layout_marginTop="@dimen/spacing_8x"
+                android:layout_marginTop="@dimen/spacing_6x"
                 android:text="@string/label_password"
                 android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle1.Grey700"
                 app:layout_constraintBottom_toTopOf="@id/til_password"
@@ -137,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_edit_text"
                     android:inputType="textPassword"
-                    android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2" />
+                    android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Medium" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
