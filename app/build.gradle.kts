@@ -13,6 +13,9 @@ plugins {
 
     // Navigation
     id("androidx.navigation.safeargs.kotlin")
+
+    // KSP
+    id("com.google.devtools.ksp") version "1.9.20-1.0.14"
 }
 android {
     compileSdk = 33
@@ -63,7 +66,7 @@ dependencies {
     implementation("com.airbnb.android:lottie:5.2.0")
 
     // Glide
-    kapt("com.github.bumptech.glide:compiler:4.12.0")
+    ksp("com.github.bumptech.glide:ksp:4.14.2")
     implementation("com.github.bumptech.glide:glide:4.12.0")
     implementation("com.github.2coffees1team:GlideToVectorYou:v2.0.0")
 
