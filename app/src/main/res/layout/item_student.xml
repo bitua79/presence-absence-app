@@ -8,15 +8,15 @@
 
         <variable
             name="student"
-            type="com.application.presence_absence.ui.studentList.StudentView" />
+            type="com.application.presence_absence.ui.features.studentList.entities.StudentView" />
 
         <variable
             name="tag"
-            type="com.application.presence_absence.ui.studentList.StudentAttendanceTagView" />
+            type="com.application.presence_absence.ui.features.studentList.entities.StudentAttendanceTagView" />
 
         <import type="android.view.View" />
 
-        <import type="com.application.presence_absence.ui.studentList.StudentAttendance" />
+        <import type="com.application.presence_absence.ui.features.studentList.entities.StudentAttendanceState" />
 
     </data>
 
@@ -30,7 +30,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_present"
-            isVisibleOrGone="@{student.attendance==StudentAttendance.NOT_SET}"
+            isVisibleOrGone="@{student.attendance==StudentAttendanceState.NOT_SET}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="@dimen/spacing_2x"
@@ -56,7 +56,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_absence"
-            isVisibleOrGone="@{student.attendance==StudentAttendance.NOT_SET}"
+            isVisibleOrGone="@{student.attendance==StudentAttendanceState.NOT_SET}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/spacing_base"
@@ -106,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginEnd="@dimen/spacing_4x"
-                android:visibility="@{student.attendance==StudentAttendance.NOT_SET? View.GONE:View.VISIBLE}"
+                android:visibility="@{student.attendance==StudentAttendanceState.NOT_SET? View.GONE:View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="@id/tv_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1"

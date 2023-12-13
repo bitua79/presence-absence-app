@@ -7,7 +7,7 @@
 
         <variable
             name="tag"
-            type="com.application.presence_absence.ui.examList.ExamStatusTagView" />
+            type="com.application.presence_absence.ui.features.examList.entities.ExamStatusTagView" />
     </data>
 
     <com.google.android.material.textview.MaterialTextView
