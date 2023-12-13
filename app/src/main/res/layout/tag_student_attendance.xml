@@ -7,7 +7,7 @@
 
         <variable
             name="tag"
-            type="com.application.presence_absence.ui.studentList.StudentAttendanceTagView" />
+            type="com.application.presence_absence.ui.features.studentList.entities.StudentAttendanceTagView" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

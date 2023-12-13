@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.application.presence_absence.ui.login.LoginFragment"
+        android:name="com.application.presence_absence.ui.features.login.LoginFragment"
         android:label="@string/label_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/examListFragment"
-        android:name="com.application.presence_absence.ui.examList.ExamListFragment"
+        android:name="com.application.presence_absence.ui.features.examList.ExamListFragment"
         android:label="@string/label_exam_list_fragment"
         tools:layout="@layout/fragment_exam_list">
 
@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/studentListFragment"
-        android:name="com.application.presence_absence.ui.studentList.StudentListFragment"
+        android:name="com.application.presence_absence.ui.features.studentList.StudentListFragment"
         android:label="StudentListFragment"
         tools:layout="@layout/fragment_student_list">
         <argument
@@ -44,12 +44,12 @@
     </fragment>
     <dialog
         android:id="@+id/chooseCollegeDialog"
-        android:name="com.application.presence_absence.ui.examList.filter.college.CollegeListBottomSheet"
+        android:name="com.application.presence_absence.ui.features.examList.CollegeListBottomSheet"
         android:label="ChooseCollegeDialog"
         tools:layout="@layout/bottom_sheet_check_box_list" />
     <dialog
         android:id="@+id/examStateListBottomSheet"
-        android:name="com.application.presence_absence.ui.examList.filter.state.ExamStateListBottomSheet"
+        android:name="com.application.presence_absence.ui.features.examList.ExamStatusListBottomSheet"
         android:label="ExamStateListBottomSheet"
         tools:layout="@layout/bottom_sheet_check_box_list" />
 </navigation>

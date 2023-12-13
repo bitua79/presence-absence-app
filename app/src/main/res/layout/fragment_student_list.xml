@@ -8,11 +8,11 @@
 
         <variable
             name="filterState"
-            type="com.application.presence_absence.ui.studentList.StudentFilterView" />
+            type="com.application.presence_absence.ui.features.studentList.entities.StudentFilterStateView" />
 
         <variable
             name="exam"
-            type="com.application.presence_absence.ui.examList.ExamView" />
+            type="com.application.presence_absence.ui.features.examList.entities.ExamView" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

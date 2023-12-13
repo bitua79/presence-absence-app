@@ -7,7 +7,7 @@
 
         <variable
             name="college"
-            type="com.application.presence_absence.ui.core.CheckBoxItemView" />
+            type="com.application.presence_absence.ui.widgets.CheckBoxItemView" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,9 +16,9 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
-            android:text="@{college.text}"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/spacing_4x"
+            android:text="@{college.text}"
             android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Medium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,9 +30,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/color_primary"
+            android:checked="@{college.checked}"
             android:minWidth="0dp"
             android:minHeight="0dp"
-            android:checked="@{college.checked}"
             android:padding="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
