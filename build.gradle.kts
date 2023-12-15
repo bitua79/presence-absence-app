@@ -1,4 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+plugins {
+    id("com.google.devtools.ksp") version "1.9.21-1.0.15"
+}
 buildscript {
     repositories {
         maven {
@@ -17,7 +21,7 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.21")
 
         // Hilt
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.44")
+        classpath("com.google.dagger:hilt-android-gradle-plugin:2.49")
 
         // Navigation
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.5")
