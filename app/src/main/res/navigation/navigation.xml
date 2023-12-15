@@ -40,7 +40,7 @@
         tools:layout="@layout/fragment_student_list">
         <argument
             android:name="exam"
-            app:argType="com.application.presence_absence.ui.examList.ExamView" />
+            app:argType="com.application.presence_absence.ui.features.examList.entities.ExamView" />
     </fragment>
     <dialog
         android:id="@+id/chooseCollegeDialog"
