@@ -4,15 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.application.presence_absence.core.extensions.collectOnFragment
 import com.application.presence_absence.databinding.FragmentLoginBinding
+import com.application.presence_absence.domain.params.PostLogin
+import com.application.presence_absence.ui.widgets.UiError
+import com.application.presence_absence.ui.widgets.UiLoading
+import com.application.presence_absence.ui.widgets.UiSuccess
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,24 +35,46 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews()
+        initControllers()
     }
 
     private fun initViews() {
-
-
         // button listener
-        binding.btnLogin.setOnClickListener {
-            goExamList()
+        with(binding) {
+            binding.btnLogin.setOnClickListener {
+                val username = etUsername.text?.trim() ?: ""
+                val password = etPassword.text?.trim() ?: ""
+                if (password.isNotBlank() && username.isNotBlank()) {
+                    viewModel.invokeSignInRequest(
+                        PostLogin(
+                            username = username.toString(),
+                            password = password.toString()
+                        )
+                    )
+                } else {
+                    // TODO: handle validation
+                }
+            }
         }
     }
 
-    private fun checkInput() {
-        with(binding) {
+    private fun initControllers() {
+        viewModel.uiViewState.collectOnFragment(this) {
+            when (it) {
+                is UiLoading -> {
+                    // TODO: handle loading mode
+                }
 
-            val username = etUsername.text?.trim() ?: ""
-            val pass = etPassword.text?.trim() ?: ""
+                is UiError -> {
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                }
 
-            // TODO: send username/pass to server and verify user
+                is UiSuccess -> {
+                    goExamList()
+                }
+
+                else -> Unit
+            }
         }
     }
 
