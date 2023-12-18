@@ -1,6 +1,5 @@
 package com.application.presence_absence.core.utils
 
-import com.application.presence_absence.core.entities.AppError
 import com.application.presence_absence.core.entities.AppException
 import com.application.presence_absence.core.entities.ErrorResult
 import com.application.presence_absence.core.entities.Resource
@@ -21,9 +20,7 @@ suspend fun <T, R : Resource<T>> safeCall(call: suspend () -> Response<R>): Resu
     } catch (ex: SocketTimeoutException) {
         ErrorResult(
             AppException.RemoteDataSourceException(
-                AppError(
-                    message = "Request Timeout"
-                )
+                message = "Request Timeout"
             )
         )
     } catch (ex: Exception) {

@@ -8,5 +8,6 @@ sealed class AppException {
     data class NetworkConnectionException(val message: String = "Network Connection Error") :
         AppException()
 
-    data class RemoteDataSourceException(val error: AppError?) : AppException()
+    data class RemoteDataSourceException(val message: String? = null, val code: Int? = null) :
+        AppException()
 }

@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.application.presence_absence.core.extensions.createDialog
 import com.application.presence_absence.databinding.BottomSheetCheckBoxListBinding
-import com.application.presence_absence.ui.utils.createDialog
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 

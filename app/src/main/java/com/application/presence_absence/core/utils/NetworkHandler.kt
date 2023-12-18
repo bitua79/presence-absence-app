@@ -4,12 +4,13 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 /**
  * Checks if a network connection exists.
  */
-class NetworkHandler @Inject constructor(val context: Context) {
+class NetworkHandler @Inject constructor(@ApplicationContext val context: Context) {
 
     fun hasNetworkConnection(): Boolean {
 

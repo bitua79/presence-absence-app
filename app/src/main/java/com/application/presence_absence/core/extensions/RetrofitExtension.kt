@@ -3,6 +3,9 @@
 package com.application.presence_absence.core.extensions
 
 import com.application.presence_absence.core.entities.*
+import com.application.presence_absence.core.entities.AppException.*
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.HttpException
 import retrofit2.Response
 
@@ -26,20 +29,34 @@ inline fun <T, R : Resource<T>> Response<R>.toResult(): Result<T> = try {
         if (resource.data != null) {
             Success(resource.data)
         } else {
-            ErrorResult(AppException.RemoteDataSourceException(getError()))
+            ErrorResult(getError())
         }
     } else {
-        ErrorResult(AppException.RemoteDataSourceException(getError()))
+        ErrorResult(getError())
     }
 } catch (e: Exception) {
-    ErrorResult(AppException.IOException(e))
+    ErrorResult(IOException(e))
 }
 
-fun <T> Response<T>.getError(): AppError {
+fun <T> Response<T>.getError(): RemoteDataSourceException {
 
-    // TODO: Extract error from response json
     val errorBody: String? = this.errorBody()?.string()
     val responseCode: Int = code()
 
-    return AppError(errorBody, responseCode.toString())
+    if (errorBody == null) {
+        return RemoteDataSourceException()
+    }
+
+    try {
+        val errorBodyObject = JSONObject(errorBody)
+        val errorMessage = errorBodyObject.optString("message").orEmpty()
+
+        return RemoteDataSourceException(code = responseCode, message = errorMessage)
+
+    } catch (e: Exception) {
+        if (e is JSONException && responseCode == 501) {
+            return RemoteDataSourceException(code = 501)
+        }
+        return RemoteDataSourceException()
+    }
 }
