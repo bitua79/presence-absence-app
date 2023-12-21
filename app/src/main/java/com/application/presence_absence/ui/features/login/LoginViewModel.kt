@@ -13,7 +13,7 @@ class LoginViewModel @Inject constructor(
     private val doLogin: DoLogin
 ) : UiStateViewModel() {
 
-    fun invokeSignInRequest(param: PostLogin) {
+    fun invokeLoginRequest(param: PostLogin) {
         viewModelScope.launch {
             useCaseInvoker { doLogin(param) }
         }

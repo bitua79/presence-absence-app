@@ -10,6 +10,9 @@
     <string name="label_login_to_system">ورود به سامانه</string>
     <string name="label_username">نام کاربری</string>
     <string name="label_password">رمز عبور</string>
+
+    <string name="msg_required">مقدار این فیلد الزامی است</string>
+    <string name="msg_password_at_least_8_digit">رمز عبور باید حداقل 8 کاراکتر باشد</string>
     <!-- endregion -->
 
     <!--  region exam  -->
