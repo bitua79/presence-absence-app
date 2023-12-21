@@ -33,6 +33,11 @@ fun bindImageFromUrl(view: ShapeableImageView, imageUrl: String?) {
     }
 }
 
+@BindingAdapter("setIntAsText")
+fun setIntAsText(view: MaterialTextView, text: Int) {
+    view.text = text.toString()
+}
+
 @SuppressLint("SetTextI18n")
 @BindingAdapter("examTime")
 fun bindExamTime(view: MaterialTextView, examEntity: ExamView) {

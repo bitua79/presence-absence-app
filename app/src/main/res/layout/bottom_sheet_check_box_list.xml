@@ -6,6 +6,9 @@
 
     <data>
 
+        <variable
+            name="title"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,10 +26,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_5x"
-            tools:text="@string/label_select_exam_place"
+            android:text="@{title}"
             android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle1.Bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/label_select_exam_place" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_search"

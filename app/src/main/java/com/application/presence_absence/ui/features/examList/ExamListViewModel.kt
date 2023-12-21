@@ -1,6 +1,7 @@
 package com.application.presence_absence.ui.features.examList
 
 import androidx.lifecycle.ViewModel
+import com.application.presence_absence.ui.features.examList.entities.ExamDay
 import com.application.presence_absence.ui.features.examList.entities.ExamFilterStateView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,9 +19,8 @@ class ExamListViewModel @Inject constructor() : ViewModel() {
         _filter.value = _filter.value.copy(examPlace = examPlace)
     }
 
-    // TODO: update after implement
-    fun setExamTime(examTime: String?) {
-        _filter.value = _filter.value.copy(examTime = examTime)
+    fun setExamDay(examDay: List<ExamDay>) {
+        _filter.value = _filter.value.copy(examDay = examDay)
     }
 
     fun setExamState(examState: List<String>) {

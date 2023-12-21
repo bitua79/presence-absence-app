@@ -2,7 +2,6 @@ package com.application.presence_absence.ui.features.examList.entities
 
 data class ExamFilterStateView(
     val examPlace: List<String> = listOf(),
-    // TODO: update after implement
-    val examTime: String? = null,
+    val examDay: List<ExamDay> = listOf(),
     val examState: List<String> = listOf()
 )

@@ -22,9 +22,10 @@
 
     <string name="label_exam_place">محل امتحان</string>
     <string name="label_select_exam_place">انتخاب محل امتحان</string>
-    <string name="label_exam_time">زمان امتحان</string>
-    <string name="label_select_exam_time">انتخاب زمان امتحان</string>
+    <string name="label_exam_day">روز امتحان</string>
+    <string name="label_select_exam_day">انتخاب روز امتحان</string>
     <string name="label_exam_state">وضعیت امتحان</string>
+    <string name="label_select_exam_state">انتخاب وضعیت امتحان</string>
 
     <string name="label_no_filter_match_exam">امتحانی با فیلتر اعمال شده وجود ندارد</string>
     <!--  endregion  -->

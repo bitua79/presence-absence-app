@@ -9,7 +9,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "مهندسی",
             className = "B35",
-            day = "سوم",
+            day = 3,
             hour = "10",
             studentCount = "46",
             state = ExamStatus.CANCELLED
@@ -18,7 +18,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "مهندسی",
             className = "B35",
-            day = "دوم",
+            day = 2,
             hour = "10",
             studentCount = "46",
             state = ExamStatus.IN_PROGRESS
@@ -27,7 +27,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "مهندسی",
             className = "B35",
-            day = "صفرم",
+            day = 0,
             hour = "10",
             studentCount = "46",
             state = ExamStatus.NOT_STARTED
@@ -36,7 +36,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "مهندسی",
             className = "B35",
-            day = "هفتم",
+            day = 7,
             hour = "10",
             studentCount = "46",
             state = ExamStatus.FINISHED
@@ -45,7 +45,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "دانشکده مهندسی6",
             className = "B35",
-            day = "سه صفرم",
+            day = 0,
             hour = "6",
             studentCount = "46",
             state = ExamStatus.CANCELLED
@@ -54,7 +54,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "مهندسی",
             className = "B35",
-            day = "سوم",
+            day = 3,
             hour = "5",
             studentCount = "46",
             state = ExamStatus.CANCELLED
@@ -63,7 +63,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "دانشکده مهندسی6",
             className = "B35",
-            day = "سوم",
+            day = 3,
             hour = "10",
             studentCount = "46",
             state = ExamStatus.CANCELLED
@@ -72,7 +72,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "مهندسی",
             className = "B35",
-            day = "سوم",
+            day = 3,
             hour = "12",
             studentCount = "46",
             state = ExamStatus.CANCELLED
@@ -81,7 +81,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "مهندسی",
             className = "B35",
-            day = "سوم",
+            day = 3,
             hour = "10",
             studentCount = "46",
             state = ExamStatus.CANCELLED
@@ -90,7 +90,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "مهندسی",
             className = "B35",
-            day = "سوم",
+            day = 3,
             hour = "11",
             studentCount = "46",
             state = ExamStatus.CANCELLED
@@ -99,7 +99,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "مهندسی",
             className = "B35",
-            day = "سوم",
+            day = 3,
             hour = "10",
             studentCount = "46",
             state = ExamStatus.CANCELLED
@@ -108,7 +108,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "دانشکده مهندسی6",
             className = "B35",
-            day = "سوم",
+            day = 3,
             hour = "7",
             studentCount = "46",
             state = ExamStatus.CANCELLED
@@ -117,7 +117,7 @@ object FakeExamList {
             name = "ریاضی",
             collegeName = "مهندسی",
             className = "B35",
-            day = "سوم",
+            day = 3,
             hour = "10",
             studentCount = "46",
             state = ExamStatus.CANCELLED

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.lifecycleScope
@@ -47,7 +46,7 @@ class ExamListFragment : Fragment() {
 
             // Set values programmatically To widget.Flow work properly
             incExamPlace.title = getString(R.string.label_exam_place)
-            incExamTime.title = getString(R.string.label_exam_time)
+            incExamDay.title = getString(R.string.label_exam_day)
             incExamState.title = getString(R.string.label_exam_state)
         }
 
@@ -58,7 +57,7 @@ class ExamListFragment : Fragment() {
         with(binding) {
             incExamPlace.let {
                 it.root.setOnClickListener {
-                    findNavController().navigate(ExamListFragmentDirections.actionExamListFragmentToChooseCollegeDialog())
+                    findNavController().navigate(ExamListFragmentDirections.actionExamListFragmentToCollegeListBottomSheet())
                 }
 
                 // Reset exam place filter value
@@ -67,15 +66,14 @@ class ExamListFragment : Fragment() {
                 }
             }
 
-            incExamTime.let {
+            incExamDay.let {
                 it.root.setOnClickListener {
-                    // TODO: update after implement
-                    Toast.makeText(requireContext(), "به زودی...", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(ExamListFragmentDirections.actionExamListFragmentToExamDayListBottomSheet())
                 }
 
                 // Reset exam time filter value
                 it.ivClose.setOnClickListener {
-                    sharedViewModel.setExamTime(null)
+                    sharedViewModel.setExamDay(listOf())
                 }
             }
 
@@ -124,7 +122,7 @@ class ExamListFragment : Fragment() {
 
                 // Update list
                 val college = examFilter.examPlace
-                val time = examFilter.examTime
+                val day = examFilter.examDay.map { it.n_th }
                 val state = examFilter.examState
 
                 var filteredList = FakeExamList.list
@@ -135,8 +133,10 @@ class ExamListFragment : Fragment() {
                     }
                 }
 
-                // TODO: update after implement
-                if (!time.isNullOrEmpty()) {
+                if (day.isNotEmpty()) {
+                    filteredList = filteredList.filter {
+                        day.contains(it.day)
+                    }
                 }
 
                 if (state.isNotEmpty()) {
