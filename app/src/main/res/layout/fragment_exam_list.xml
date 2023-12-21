@@ -69,7 +69,7 @@
             bind:selected="@{!filterState.examPlace.isEmpty()}" />
 
         <include
-            android:id="@+id/inc_exam_time"
+            android:id="@+id/inc_exam_day"
             layout="@layout/item_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_filter"
             app:layout_constraintStart_toEndOf="@id/inc_exam_place"
             app:layout_constraintTop_toTopOf="@id/tv_filter"
-            bind:selected="@{filterState.examTime!=null}" />
+            bind:selected="@{!filterState.examDay.isEmpty()}" />
 
         <include
             android:id="@+id/inc_exam_state"
@@ -89,7 +89,7 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_filter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@id/inc_exam_time"
+            app:layout_constraintStart_toEndOf="@id/inc_exam_day"
             app:layout_constraintTop_toTopOf="@id/tv_filter"
             bind:selected="@{!filterState.examState.isEmpty()}" />
 
@@ -100,7 +100,7 @@
             android:layout_marginStart="@dimen/spacing_4x"
             android:layout_marginTop="@dimen/spacing_4x"
             android:paddingBottom="@dimen/spacing_4x"
-            app:constraint_referenced_ids="inc_exam_place, inc_exam_time, inc_exam_state"
+            app:constraint_referenced_ids="inc_exam_place, inc_exam_day, inc_exam_state"
             app:flow_horizontalBias="0"
             app:flow_horizontalGap="@dimen/spacing_2x"
             app:flow_horizontalStyle="packed"

@@ -38,7 +38,7 @@ class CheckBoxListAdapter(
 
         fun bind(c: CheckBoxItemView) {
             with(binding) {
-                college = c
+                item = c
 
                 with(cbSelected) {
                     setOnClickListener {

@@ -5,12 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
 import com.application.presence_absence.core.extensions.createDialog
 import com.application.presence_absence.databinding.BottomSheetCheckBoxListBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-abstract class CheckBoxListBottomSheet : BottomSheetDialogFragment() {
+abstract class CheckBoxListBottomSheet(@StringRes val title: Int) : BottomSheetDialogFragment() {
 
     private lateinit var binding: BottomSheetCheckBoxListBinding
     protected lateinit var listAdapter: CheckBoxListAdapter
@@ -31,6 +32,7 @@ abstract class CheckBoxListBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.title = getString(title)
         setupAdapter()
         setupRecyclerview()
 

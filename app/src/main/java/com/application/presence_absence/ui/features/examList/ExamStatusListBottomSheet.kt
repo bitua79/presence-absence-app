@@ -6,7 +6,7 @@ import com.application.presence_absence.ui.features.examList.entities.ExamStatus
 import com.application.presence_absence.ui.widgets.CheckBoxItemView
 import com.application.presence_absence.ui.widgets.CheckBoxListBottomSheet
 
-class ExamStatusListBottomSheet : CheckBoxListBottomSheet() {
+class ExamStatusListBottomSheet : CheckBoxListBottomSheet(title = R.string.label_select_exam_state) {
 
     private val sharedViewModel: ExamListViewModel by hiltNavGraphViewModels(navGraphId = R.id.navigation)
 
