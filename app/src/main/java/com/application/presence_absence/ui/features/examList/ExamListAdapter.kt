@@ -20,8 +20,7 @@ class ExamListAdapter(
             oldItem: ExamView,
             newItem: ExamView
         ): Boolean {
-            // TODO : replace with id
-            return oldItem.name == newItem.name
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(

@@ -1,12 +1,16 @@
 pluginManagement {
     repositories {
+        val localProperties = java.util.Properties()
+        localProperties.load(java.io.FileInputStream(file("local.properties")))
+
         maven {
             url = uri("https://inexus.samentic.com/repository/samentic-android/")
             credentials {
-                username = "bita.karvizi"
-                password = "5'&RER>>v^Xsv7?"
+                username = localProperties["nexus.username"] as? String
+                password = localProperties["nexus.password"] as? String
             }
         }
+        maven { url = uri("https://jitpack.io") }
     }
 }
 

@@ -17,18 +17,18 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/tb_exam_list_toolbar"
-            android:background="@drawable/border_bottom_cornered"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/border_bottom_cornered"
             android:elevation="0dp"
-            app:titleCentered="true"
-            app:title="@string/label_exam_list_fragment"
             android:paddingVertical="@dimen/spacing_4x"
-            app:titleTextAppearance="@style/TextAppearance.PresentAbsence.Headline6.Medium"
             app:layout_constraintEnd_toEndOf="parent"
-            app:titleTextColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/label_exam_list_fragment"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/TextAppearance.PresentAbsence.Headline6.Medium"
+            app:titleTextColor="@color/black" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_search"
@@ -118,6 +118,18 @@
             android:background="@color/color_border_grey300"
             app:layout_constraintTop_toBottomOf="@id/cf_filter" />
 
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:progressBackgroundTint="@color/color_secondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_search" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_exam_list"
             android:layout_width="match_parent"
@@ -131,12 +143,13 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_no_exam"
             android:layout_width="wrap_content"
-            android:textAppearance="@style/TextAppearance.PresentAbsence.Caption"
-            android:text="@string/label_no_filter_match_exam"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/label_no_exam_to_show"
+            android:textAppearance="@style/TextAppearance.PresentAbsence.Caption"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/rv_exam_list"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/rv_exam_list"
-            app:layout_constraintBottom_toBottomOf="@id/rv_exam_list" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rv_exam_list" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

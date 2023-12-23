@@ -8,8 +8,12 @@ import javax.inject.Inject
 class RemoteDataSource @Inject constructor(
     private val service: WebService
 ) {
-
     suspend fun login(param: PostLoginEntity) = safeCall {
         service.doLogin(param)
+    }
+
+    suspend fun getExamList() = safeCall {
+        val c = service.getAllExams()
+        c
     }
 }

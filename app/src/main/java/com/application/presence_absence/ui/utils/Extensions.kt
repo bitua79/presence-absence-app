@@ -1,21 +1,10 @@
 package com.application.presence_absence.ui.utils
 
-import android.os.Looper
 import com.application.presence_absence.core.entities.AppException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import saman.zamani.persiandate.PersianDate
 
-
-// Scopes
-suspend fun runOnMain(block: () -> Unit) {
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-        block()
-    } else {
-        withContext(Dispatchers.Main) {
-            block()
-        }
-    }
-}
 
 suspend fun <T> runIO(block: suspend () -> T): T {
     return withContext(Dispatchers.IO) {
@@ -24,7 +13,6 @@ suspend fun <T> runIO(block: suspend () -> T): T {
 }
 
 // Convert AppException to UiError
-// TODO: Fix error messages
 fun AppException.getError(): String {
     var message = "خطا در ارتباط با سرور"
     when (this) {
@@ -49,4 +37,8 @@ fun AppException.getError(): String {
         }
     }
     return message
+}
+
+fun PersianDate.getShDate(): String {
+    return "${dayName()} $shMonth/$shDay"
 }

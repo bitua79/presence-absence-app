@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/spacing_3x"
-            app:setIntAsText="@{exam.day}"
+            android:text="@{exam.dateView}"
             android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Grey700"
             app:layout_constraintStart_toStartOf="@id/tv_course"
             app:layout_constraintTop_toBottomOf="@id/tv_course"
@@ -65,20 +65,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/spacing_4x"
-            android:text="@{exam.hour}"
             android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Grey700"
             app:layout_constraintBottom_toBottomOf="@id/tv_time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_time"
+            app:setExamHour="@{exam.hour}"
             tools:text="ساعت ۱۰" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_college"
+            android:id="@+id/tv_faculty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_3x"
             android:layout_marginBottom="@dimen/spacing_4x"
-            android:text="@{exam.collegeName}"
+            android:text="@{exam.faculty}"
             android:textAppearance="@style/TextAppearance.PresentAbsence.Caption.Grey900"
             app:layout_constraintBottom_toTopOf="@id/cl_expand"
             app:layout_constraintStart_toStartOf="@id/tv_course"
@@ -92,17 +92,17 @@
             android:layout_marginEnd="@dimen/spacing_4x"
             android:text="@{exam.className}"
             android:textAppearance="@style/TextAppearance.PresentAbsence.Caption.Grey900"
-            app:layout_constraintBottom_toBottomOf="@id/tv_college"
+            app:layout_constraintBottom_toBottomOf="@id/tv_faculty"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_college"
+            app:layout_constraintTop_toTopOf="@id/tv_faculty"
             tools:text="کلاس B35" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:minHeight="@dimen/spacing_7x"
             android:id="@+id/cl_expand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_exam_item_expand_more"
+            android:minHeight="@dimen/spacing_7x"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <com.google.android.material.imageview.ShapeableImageView

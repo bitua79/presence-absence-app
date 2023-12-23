@@ -5,11 +5,12 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ExamView(
+    val id: Int,
     val name: String,
     val className: String,
-    val collegeName: String,
+    val faculty: String,
     val day: Int,
-    val hour: String,
-    val studentCount: String,
+    val dateView: String,
+    val hour: Int,
     val state: ExamStatus
 ) : Parcelable

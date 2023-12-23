@@ -11,22 +11,22 @@
     </data>
 
     <com.google.android.material.textview.MaterialTextView
+        setBackgroundDrawableById="@{tag.backgroundDrawable}"
+        setTextColorById="@{tag.textColor}"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:minWidth="@dimen/spacing_20x"
         android:paddingHorizontal="@dimen/spacing_2x"
         android:paddingVertical="@dimen/spacing_base"
+        android:text="@{tag.stateType.title}"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.PresentAbsence.Caption"
         app:autoSizeMaxTextSize="14sp"
         app:autoSizeMinTextSize="10sp"
         app:autoSizeTextType="uniform"
-        setBackgroundDrawableById="@{tag.backgroundDrawable}"
-        setTextColorById="@{tag.textColor}"
-        setTextById="@{tag.stateType.titleId}"
         tools:background="@drawable/bg_exam_state_in_progress"
         tools:layout_width="100dp"
-        tools:text="@string/label_in_progress"
+        tools:text="درحال برگزاری"
         tools:textColor="@color/color_in_progress_exam_text" />
 </layout>

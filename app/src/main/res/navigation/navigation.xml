@@ -25,8 +25,8 @@
             android:id="@+id/action_examListFragment_to_studentListFragment"
             app:destination="@id/studentListFragment" />
         <action
-            android:id="@+id/action_examListFragment_to_collegeListBottomSheet"
-            app:destination="@id/collegeListBottomSheet" />
+            android:id="@+id/action_examListFragment_to_facultyListBottomSheet"
+            app:destination="@id/facultyListBottomSheet" />
         <action
             android:id="@+id/action_examListFragment_to_examDayListBottomSheet"
             app:destination="@id/examDayListBottomSheet" />
@@ -46,9 +46,9 @@
             app:argType="com.application.presence_absence.ui.features.examList.entities.ExamView" />
     </fragment>
     <dialog
-        android:id="@+id/collegeListBottomSheet"
-        android:name="com.application.presence_absence.ui.features.examList.CollegeListBottomSheet"
-        android:label="collegeListBottomSheet"
+        android:id="@+id/facultyListBottomSheet"
+        android:name="com.application.presence_absence.ui.features.examList.FacultyListBottomSheet"
+        android:label="facultyListBottomSheet"
         tools:layout="@layout/bottom_sheet_check_box_list" />
     <dialog
         android:id="@+id/examStateListBottomSheet"
