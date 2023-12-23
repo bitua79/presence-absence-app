@@ -3,7 +3,7 @@ package com.application.presence_absence.ui.features.examList
 import com.application.presence_absence.ui.widgets.CheckBoxItemView
 
 
-object CollegeList {
+object FacultyList {
     val list = listOf(
         CheckBoxItemView(text = "دانشکده کامپیوتر"),
         CheckBoxItemView(text = "دانشکده برق"),

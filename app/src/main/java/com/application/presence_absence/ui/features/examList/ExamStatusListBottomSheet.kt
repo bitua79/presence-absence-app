@@ -6,7 +6,8 @@ import com.application.presence_absence.ui.features.examList.entities.ExamStatus
 import com.application.presence_absence.ui.widgets.CheckBoxItemView
 import com.application.presence_absence.ui.widgets.CheckBoxListBottomSheet
 
-class ExamStatusListBottomSheet : CheckBoxListBottomSheet(title = R.string.label_select_exam_state) {
+class ExamStatusListBottomSheet :
+    CheckBoxListBottomSheet(title = R.string.label_select_exam_state) {
 
     private val sharedViewModel: ExamListViewModel by hiltNavGraphViewModels(navGraphId = R.id.navigation)
 
@@ -18,7 +19,7 @@ class ExamStatusListBottomSheet : CheckBoxListBottomSheet(title = R.string.label
 
     override fun initValues() {
         val list = ExamStatus.values().map {
-            CheckBoxItemView(getString(it.titleId), checked = false)
+            CheckBoxItemView(it.title, checked = false)
         }
         listAdapter.submitList(list)
     }

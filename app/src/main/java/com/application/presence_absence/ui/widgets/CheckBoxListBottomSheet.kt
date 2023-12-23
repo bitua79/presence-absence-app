@@ -53,7 +53,7 @@ abstract class CheckBoxListBottomSheet(@StringRes val title: Int) : BottomSheetD
     }
 
     private fun setupRecyclerview() {
-        with(binding.rvCollegeList) {
+        with(binding.rvItemList) {
             setHasFixedSize(true)
             adapter = listAdapter
         }

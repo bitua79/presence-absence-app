@@ -92,4 +92,6 @@ dependencies {
     // Gson
     implementation("com.google.code.gson:gson:2.9.0")
 
+    // Persian date
+    implementation("com.github.samanzamani:PersianDate:1.7.1")
 }

@@ -5,7 +5,7 @@ import com.application.presence_absence.R
 import com.application.presence_absence.ui.widgets.CheckBoxItemView
 import com.application.presence_absence.ui.widgets.CheckBoxListBottomSheet
 
-class CollegeListBottomSheet : CheckBoxListBottomSheet(R.string.label_select_exam_place) {
+class FacultyListBottomSheet : CheckBoxListBottomSheet(R.string.label_select_exam_place) {
 
     private val sharedViewModel: ExamListViewModel by hiltNavGraphViewModels(navGraphId = R.id.navigation)
 
@@ -16,7 +16,7 @@ class CollegeListBottomSheet : CheckBoxListBottomSheet(R.string.label_select_exa
     }
 
     override fun initValues() {
-        val list = CollegeList.list
+        val list = FacultyList.list
         listAdapter.submitList(list)
     }
 

@@ -1,5 +1,6 @@
 package com.application.presence_absence.di
 
+import com.application.presence_absence.core.utils.TokenInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,6 +34,7 @@ object NetworkModule {
             }
 
         client.addNetworkInterceptor(logging)
+        client.addInterceptor(TokenInterceptor())
         return client.build()
     }
 

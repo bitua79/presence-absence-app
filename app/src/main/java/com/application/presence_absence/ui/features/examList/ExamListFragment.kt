@@ -4,15 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.application.presence_absence.R
+import com.application.presence_absence.core.extensions.collectOnFragment
 import com.application.presence_absence.databinding.FragmentExamListBinding
 import com.application.presence_absence.ui.features.examList.entities.ExamView
+import com.application.presence_absence.ui.widgets.UiError
+import com.application.presence_absence.ui.widgets.UiLoading
+import com.application.presence_absence.ui.widgets.UiSuccess
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ExamListFragment : Fragment() {
@@ -57,7 +60,7 @@ class ExamListFragment : Fragment() {
         with(binding) {
             incExamPlace.let {
                 it.root.setOnClickListener {
-                    findNavController().navigate(ExamListFragmentDirections.actionExamListFragmentToCollegeListBottomSheet())
+                    findNavController().navigate(ExamListFragmentDirections.actionExamListFragmentToFacultyListBottomSheet())
                 }
 
                 // Reset exam place filter value
@@ -115,47 +118,45 @@ class ExamListFragment : Fragment() {
     }
 
     private fun initCollectors() {
-        // Update filter state
-        lifecycleScope.launch {
-            sharedViewModel.filter.collect { examFilter ->
-                binding.filterState = examFilter
 
-                // Update list
-                val college = examFilter.examPlace
-                val day = examFilter.examDay.map { it.n_th }
-                val state = examFilter.examState
-
-                var filteredList = FakeExamList.list
-
-                if (college.isNotEmpty()) {
-                    filteredList = filteredList.filter {
-                        college.contains(it.collegeName)
-                    }
+        sharedViewModel.uiViewState.collectOnFragment(this) {
+            if (it is UiLoading) {
+                with(binding) {
+                    cfFilter.visibility = View.GONE
+                    rvExamList.visibility = View.GONE
+                    pbLoading.visibility = View.VISIBLE
                 }
-
-                if (day.isNotEmpty()) {
-                    filteredList = filteredList.filter {
-                        day.contains(it.day)
-                    }
+            } else {
+                with(binding) {
+                    cfFilter.visibility = View.VISIBLE
+                    rvExamList.visibility = View.VISIBLE
+                    pbLoading.visibility = View.GONE
                 }
+            }
 
-                if (state.isNotEmpty()) {
-                    filteredList = filteredList.filter {
-                        state.contains(getString(it.state.titleId))
-                    }
-                }
-
-                setList(filteredList)
+            if (it is UiError) {
+                setList(emptyList())
+                Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                sharedViewModel.clearState()
+            } else if (it is UiSuccess) {
+                sharedViewModel.clearState()
             }
         }
 
-        // TODO: Replace static data with repo response
-        setList(FakeExamList.list)
+        // Update filter state
+        sharedViewModel.filter.collectOnFragment(this) { examFilter ->
+            binding.filterState = examFilter
+        }
+
+        sharedViewModel.dataViewState.collectOnFragment(this) {
+            setList(it.filteredList.orEmpty())
+        }
     }
 
     private fun setList(list: List<ExamView>) {
         listAdapter.submitList(list)
-        binding.tvNoExam.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
+        binding.tvNoExam.visibility =
+            if (list.isEmpty() && sharedViewModel.uiViewState.value !is UiLoading) View.VISIBLE else View.GONE
     }
 
 }
