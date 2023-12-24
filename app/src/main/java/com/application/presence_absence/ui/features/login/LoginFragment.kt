@@ -108,10 +108,11 @@ class LoginFragment : Fragment() {
 
             if (it is UiSuccess) {
                 goExamList()
+                viewModel.clearState()
             }
             if (it is UiError) {
                 Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
-
+                viewModel.clearState()
             }
         }
     }
