@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.application.presence_absence.domain.usecases.GetExamList
 import com.application.presence_absence.ui.features.examList.entities.ExamDay
 import com.application.presence_absence.ui.features.examList.entities.ExamFilterStateView
+import com.application.presence_absence.ui.features.examList.entities.ExamListViewState
 import com.application.presence_absence.ui.widgets.UiStateViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

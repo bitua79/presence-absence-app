@@ -1,6 +1,7 @@
 package com.application.presence_absence.data.remote
 
 import com.application.presence_absence.core.utils.UrlHelper
+import com.application.presence_absence.core.utils.UrlHelper.getStudentListUrl
 import com.application.presence_absence.core.utils.safeCall
 import com.application.presence_absence.data.params.PostLoginEntity
 import javax.inject.Inject
@@ -14,7 +15,12 @@ class RemoteDataSource @Inject constructor(
     }
 
     suspend fun getExamList() = safeCall {
-        val c = service.getAllExams(UrlHelper.examListUrl)
-        c
+        service.getAllExams(UrlHelper.examListUrl)
+
+    }
+
+    suspend fun getStudentList(id: String) = safeCall {
+        val x = service.getAllStudents(getStudentListUrl(id))
+        x
     }
 }

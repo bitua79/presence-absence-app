@@ -4,17 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.application.presence_absence.R
+import com.application.presence_absence.core.extensions.collectOnFragment
 import com.application.presence_absence.databinding.FragmentStudentListBinding
-import com.application.presence_absence.ui.features.studentList.entities.StudentAttendanceState
 import com.application.presence_absence.ui.features.studentList.entities.StudentView
+import com.application.presence_absence.ui.widgets.UiError
+import com.application.presence_absence.ui.widgets.UiLoading
+import com.application.presence_absence.ui.widgets.UiSuccess
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class StudentListFragment : Fragment() {
@@ -39,6 +44,8 @@ class StudentListFragment : Fragment() {
 
         initViews()
         initControllers()
+
+        viewModel.getAllStudents(args.exam.id.toString())
     }
 
     private fun initViews() {
@@ -93,7 +100,7 @@ class StudentListFragment : Fragment() {
     }
 
     private fun onStudentSetPresence(exam: StudentView) {
-
+        //  TODO
     }
 
     private fun onStudentSetAbsence(exam: StudentView) {
@@ -109,45 +116,51 @@ class StudentListFragment : Fragment() {
             setHasFixedSize(true)
             adapter = listAdapter
         }
-
-        listAdapter.submitList(FakeStudentList.list)
     }
 
     private fun initControllers() {
-        lifecycleScope.launch {
-            viewModel.filter.collect { stdFilter ->
-                binding.filterState = stdFilter
-
-                // Update list
-                val presence = stdFilter.showPresents
-                val absence = stdFilter.showAbsents
-
-
-                var filteredList = FakeStudentList.list
-
-                if (presence == true) {
-                    filteredList = filteredList.filter {
-                        it.attendance == StudentAttendanceState.PRESENCE
-                    }
+        viewModel.uiViewState.collectOnFragment(this) {
+            if (it is UiLoading) {
+                with(binding) {
+                    tvFilter.visibility = View.GONE
+                    incShowPresents.root.visibility = View.GONE
+                    incShowAbsents.root.visibility = View.GONE
+                    rvStudentList.visibility = View.GONE
+                    pbLoading.visibility = View.VISIBLE
                 }
-
-                if (absence == true) {
-                    filteredList = filteredList.filter {
-                        it.attendance == StudentAttendanceState.ABSENCE
-                    }
+            } else {
+                with(binding) {
+                    tvFilter.visibility = View.VISIBLE
+                    incShowPresents.root.visibility = View.VISIBLE
+                    incShowAbsents.root.visibility = View.VISIBLE
+                    rvStudentList.visibility = View.VISIBLE
+                    pbLoading.visibility = View.GONE
                 }
+            }
 
-                setList(filteredList)
+            if (it is UiError) {
+                setList(emptyList())
+                Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                viewModel.clearState()
+            } else if (it is UiSuccess) {
+                viewModel.clearState()
             }
         }
 
-        // TODO: Replace static data with repo response
-        setList(FakeStudentList.list)
+        viewModel.dataViewState.collectOnFragment(this) {
+            setList(it.filteredList.orEmpty())
+        }
 
+        lifecycleScope.launch {
+            viewModel.filter.collect { stdFilter ->
+                binding.filterState = stdFilter
+            }
+        }
     }
 
     private fun setList(list: List<StudentView>) {
         listAdapter.submitList(list)
-        binding.tvNoStudent.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
+        binding.tvNoStudent.visibility =
+            if (viewModel.uiViewState.value !is UiLoading && list.isEmpty()) View.VISIBLE else View.GONE
     }
 }

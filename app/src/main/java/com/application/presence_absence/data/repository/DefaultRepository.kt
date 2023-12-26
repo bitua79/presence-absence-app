@@ -8,7 +8,9 @@ import com.application.presence_absence.core.utils.TokenInterceptor
 import com.application.presence_absence.core.utils.makeRequest
 import com.application.presence_absence.data.remote.RemoteDataSource
 import com.application.presence_absence.domain.entities.Exam
+import com.application.presence_absence.domain.entities.Student
 import com.application.presence_absence.domain.entities.toExam
+import com.application.presence_absence.domain.entities.toStudent
 import com.application.presence_absence.domain.params.PostLogin
 import com.application.presence_absence.domain.repository.Repository
 import javax.inject.Inject
@@ -33,5 +35,12 @@ class DefaultRepository @Inject constructor(
             remoteDataSource.getExamList()
         }) {
             this.map { list -> list.map { it.toExam() } }
+        }
+
+    override suspend fun getStudentList(id: String): Result<List<Student>> =
+        makeRequest(networkHandler = networkHandler, action = {
+            remoteDataSource.getStudentList(id)
+        }) {
+            this.map { list -> list.map { it.toStudent() } }
         }
 }
