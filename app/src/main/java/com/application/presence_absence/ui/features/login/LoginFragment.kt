@@ -10,9 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.application.presence_absence.R
-import com.application.presence_absence.core.extensions.collectOnFragment
 import com.application.presence_absence.databinding.FragmentLoginBinding
 import com.application.presence_absence.domain.params.PostLogin
+import com.application.presence_absence.ui.utils.collectOnFragment
+import com.application.presence_absence.ui.utils.hideKeyboard
 import com.application.presence_absence.ui.widgets.UiError
 import com.application.presence_absence.ui.widgets.UiLoading
 import com.application.presence_absence.ui.widgets.UiSuccess
@@ -61,6 +62,7 @@ class LoginFragment : Fragment() {
 
             // Handle Login request by button
             btnLogin.setOnClickListener {
+                hideKeyboard()
                 val username = etUsername.text?.trim()
                 val password = etPassword.text?.trim()
                 if (validate(username, password))

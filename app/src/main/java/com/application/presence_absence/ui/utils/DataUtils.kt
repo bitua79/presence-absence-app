@@ -1,16 +1,10 @@
 package com.application.presence_absence.ui.utils
 
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.application.presence_absence.core.entities.AppException
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import saman.zamani.persiandate.PersianDate
-
-
-suspend fun <T> runIO(block: suspend () -> T): T {
-    return withContext(Dispatchers.IO) {
-        block()
-    }
-}
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 
 // Convert AppException to UiError
 fun AppException.getError(): String {
@@ -39,6 +33,10 @@ fun AppException.getError(): String {
     return message
 }
 
-fun PersianDate.getShDate(): String {
-    return "${dayName()} $shMonth/$shDay"
+inline fun <T> Flow<T>.collectOnFragment(fragment: Fragment, crossinline onCollect: (T) -> Unit) {
+    fragment.lifecycleScope.launchWhenStarted {
+        this@collectOnFragment.collectLatest {
+            onCollect(it)
+        }
+    }
 }

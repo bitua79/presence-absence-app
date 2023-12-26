@@ -35,12 +35,12 @@
             app:layout_constraintStart_toEndOf="@id/v_divider"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/label_present"
-            tools:textColor="@color/color_in_progress_exam_text" />
+            tools:textColor="@color/color_presence_foreground" />
 
         <View
             android:id="@+id/v_divider"
-            android:layout_width="0.5dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/divider_height_half"
+            android:layout_height="@dimen/spacing_zero"
             android:layout_marginHorizontal="@dimen/spacing_2x"
             android:layout_marginVertical="@dimen/spacing_base"
             android:background="@color/color_divider"
@@ -50,7 +50,7 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_edit"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/spacing_zero"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_2x"
             android:src="@drawable/ic_edit"
@@ -59,7 +59,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:setTintById="@{tag.foregroundColor}"
-            tools:tint="@color/color_in_progress_exam_text" />
+            tools:tint="@color/color_presence_foreground" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

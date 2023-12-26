@@ -1,20 +1,12 @@
-package com.application.presence_absence.core.extensions
+package com.application.presence_absence.ui.utils
 
+import android.app.Activity
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
-
-inline fun <T> Flow<T>.collectOnFragment(fragment: Fragment, crossinline onCollect: (T) -> Unit) {
-    fragment.lifecycleScope.launchWhenStarted {
-        this@collectOnFragment.collectLatest {
-            onCollect(it)
-        }
-    }
-}
+import saman.zamani.persiandate.PersianDate
 
 // Set dialog setting
 fun BottomSheetDialog.createDialog(): BottomSheetDialog {
@@ -42,4 +34,19 @@ fun BottomSheetDialog.createDialog(): BottomSheetDialog {
 
     }
     return this
+}
+
+
+fun Fragment.hideKeyboard() {
+    val imm =
+        requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    var view = requireActivity().currentFocus
+    if (view == null) {
+        view = View(requireActivity())
+    }
+    imm.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
+fun PersianDate.getShDate(): String {
+    return "${dayName()} $shMonth/$shDay"
 }

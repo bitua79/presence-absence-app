@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import com.application.presence_absence.R
-import com.application.presence_absence.core.extensions.collectOnFragment
 import com.application.presence_absence.databinding.FragmentExamListBinding
 import com.application.presence_absence.ui.features.examList.entities.ExamView
+import com.application.presence_absence.ui.utils.collectOnFragment
 import com.application.presence_absence.ui.widgets.UiError
 import com.application.presence_absence.ui.widgets.UiLoading
 import com.application.presence_absence.ui.widgets.UiSuccess
