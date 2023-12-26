@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_bottom_cornered"
-            android:elevation="0dp"
+            android:elevation="@dimen/spacing_zero"
             android:paddingVertical="@dimen/spacing_4x"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +95,7 @@
 
         <androidx.constraintlayout.helper.widget.Flow
             android:id="@+id/cf_filter"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/spacing_zero"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_4x"
             android:layout_marginTop="@dimen/spacing_4x"
@@ -114,7 +114,7 @@
         <View
             android:id="@+id/v_divider"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/divider_height"
             android:background="@color/color_border_grey300"
             app:layout_constraintTop_toBottomOf="@id/cf_filter" />
 
@@ -133,7 +133,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_exam_list"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/spacing_zero"
             android:layout_marginTop="@dimen/spacing_4x"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -26,6 +26,8 @@
     <dimen name="spacing_29x">116dp</dimen>
 
     <dimen name="divider_height">1dp</dimen>
+    <dimen name="divider_height_half">1dp</dimen>
+    <dimen name="min_bottom_sheet_height">500dp</dimen>
 
     <dimen name="radius_small">3dp</dimen>
     <dimen name="radius_normal">7dp</dimen>

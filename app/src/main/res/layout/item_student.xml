@@ -31,8 +31,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_present"
             isVisibleOrGone="@{student.attendance==StudentAttendanceState.NOT_SET}"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/spacing_zero"
+            android:layout_height="@dimen/spacing_zero"
             android:layout_marginEnd="@dimen/spacing_2x"
             android:layout_marginBottom="@dimen/spacing_base"
             android:background="@drawable/bg_student_presence"
@@ -43,10 +43,10 @@
             tools:visibility="visible">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="0dp"
+                android:layout_width="@dimen/spacing_zero"
                 android:layout_height="@dimen/spacing_6x"
                 android:src="@drawable/ic_done"
-                android:tint="@color/color_in_progress_exam_text"
+                android:tint="@color/color_presence_foreground"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -57,8 +57,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_absence"
             isVisibleOrGone="@{student.attendance==StudentAttendanceState.NOT_SET}"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/spacing_zero"
+            android:layout_height="@dimen/spacing_zero"
             android:layout_marginTop="@dimen/spacing_base"
             android:layout_marginEnd="@dimen/spacing_2x"
             android:background="@drawable/bg_student_absence"
@@ -72,7 +72,7 @@
                 android:layout_width="@dimen/spacing_6x"
                 android:layout_height="@dimen/spacing_6x"
                 android:src="@drawable/ic_close_2"
-                android:tint="@color/color_cancelled_exam_text"
+                android:tint="@color/color_absence_foreground"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_student_item"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/spacing_zero"
             android:layout_height="match_parent"
             android:layout_marginEnd="@dimen/spacing_2x"
             android:background="@drawable/border_grey300_8dp_cornered"
@@ -104,7 +104,7 @@
                 android:id="@+id/inc_attendance_tag"
                 layout="@layout/tag_student_attendance"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="@dimen/spacing_zero"
                 android:layout_marginEnd="@dimen/spacing_4x"
                 android:visibility="@{student.attendance==StudentAttendanceState.NOT_SET? View.GONE:View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="@id/tv_name"
