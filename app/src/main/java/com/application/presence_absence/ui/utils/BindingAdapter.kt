@@ -46,7 +46,7 @@ fun bindExamHour(view: MaterialTextView, hour: Int) {
 @SuppressLint("SetTextI18n")
 @BindingAdapter("examTime")
 fun bindExamTime(view: MaterialTextView, examEntity: ExamView) {
-    view.text = "${examEntity.day}، ساعت ${examEntity.hour}"
+    view.text = "${examEntity.dateView}، ساعت ${examEntity.hour}"
 }
 
 @SuppressLint("SetTextI18n")
