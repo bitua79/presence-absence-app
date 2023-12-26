@@ -1,6 +1,7 @@
 package com.application.presence_absence.di
 
 import com.application.presence_absence.core.utils.TokenInterceptor
+import com.application.presence_absence.core.utils.UrlHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,7 +45,7 @@ object NetworkModule {
     fun provideRetrofit(
         client: OkHttpClient
     ): Retrofit = Retrofit.Builder()
-        .baseUrl("http://10.0.2.2:8000/api/").client(client)
+        .baseUrl(UrlHelper.BASE_URL).client(client)
         .addConverterFactory(GsonConverterFactory.create()).build()
 
 }
