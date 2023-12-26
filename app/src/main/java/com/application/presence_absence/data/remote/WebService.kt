@@ -8,14 +8,16 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Url
 
 interface WebService {
-    @POST("auth/login")
+    @POST
     suspend fun doLogin(
+        @Url url: String,
         @Body param: PostLoginEntity
     ): Response<Resource<LoginEntity>>
 
-    @GET("exams")
-    suspend fun getAllExams(): Response<Resource<List<ExamEntity>>>
+    @GET
+    suspend fun getAllExams(@Url url: String): Response<Resource<List<ExamEntity>>>
 
 }
