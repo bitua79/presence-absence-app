@@ -7,7 +7,11 @@ import com.application.presence_absence.ui.features.examList.entities.findByTitl
 import com.application.presence_absence.ui.widgets.CheckBoxItemView
 import com.application.presence_absence.ui.widgets.CheckBoxListBottomSheet
 
-class ExamDayListBottomSheet : CheckBoxListBottomSheet(R.string.label_select_exam_day) {
+class ExamDayListBottomSheet : CheckBoxListBottomSheet(R.string.label_select_exam_day, true) {
+
+    // Convert ExamTime items to checkBocItemViews to insert in listAdapter<CheckBocItemViews>
+    override var itemList: List<CheckBoxItemView> =
+        ExamDay.values().map { CheckBoxItemView(it.title, false) }
 
     private val sharedViewModel: ExamListViewModel by hiltNavGraphViewModels(navGraphId = R.id.navigation)
 
@@ -15,12 +19,6 @@ class ExamDayListBottomSheet : CheckBoxListBottomSheet(R.string.label_select_exa
         listAdapter.currentList.forEach { item ->
             item.checked = sharedViewModel.filter.value.examDay.map { it.title }.contains(item.text)
         }
-    }
-
-    override fun initValues() {
-        // Convert ExamTime items to checkBocItemViews to insert in listAdapter<CheckBocItemViews>
-        val list = ExamDay.values().map { CheckBoxItemView(it.title, false) }
-        listAdapter.submitList(list)
     }
 
     override fun onItemChecked(c: CheckBoxItemView) {

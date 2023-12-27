@@ -8,6 +8,15 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import saman.zamani.persiandate.PersianDate
 
+
+fun View.gone() {
+    visibility = View.GONE
+}
+
+fun View.visible() {
+    visibility = View.VISIBLE
+}
+
 // Set dialog setting
 fun BottomSheetDialog.createDialog(): BottomSheetDialog {
     setOnShowListener {
