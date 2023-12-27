@@ -5,19 +5,15 @@ import com.application.presence_absence.R
 import com.application.presence_absence.ui.widgets.CheckBoxItemView
 import com.application.presence_absence.ui.widgets.CheckBoxListBottomSheet
 
-class FacultyListBottomSheet : CheckBoxListBottomSheet(R.string.label_select_exam_place) {
+class FacultyListBottomSheet : CheckBoxListBottomSheet(R.string.label_select_exam_place, true) {
 
+    override var itemList = FacultyList.list
     private val sharedViewModel: ExamListViewModel by hiltNavGraphViewModels(navGraphId = R.id.navigation)
 
     override fun initFilteredOptions() {
         listAdapter.currentList.forEach {
             it.checked = sharedViewModel.filter.value.examPlace.contains(it.text)
         }
-    }
-
-    override fun initValues() {
-        val list = FacultyList.list
-        listAdapter.submitList(list)
     }
 
     override fun onItemChecked(c: CheckBoxItemView) {

@@ -11,9 +11,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.application.presence_absence.R
-import com.application.presence_absence.core.extensions.collectOnFragment
 import com.application.presence_absence.databinding.FragmentStudentListBinding
 import com.application.presence_absence.ui.features.studentList.entities.StudentView
+import com.application.presence_absence.ui.utils.collectOnFragment
+import com.application.presence_absence.ui.utils.gone
+import com.application.presence_absence.ui.utils.visible
 import com.application.presence_absence.ui.widgets.UiError
 import com.application.presence_absence.ui.widgets.UiLoading
 import com.application.presence_absence.ui.widgets.UiSuccess
@@ -122,19 +124,19 @@ class StudentListFragment : Fragment() {
         viewModel.uiViewState.collectOnFragment(this) {
             if (it is UiLoading) {
                 with(binding) {
-                    tvFilter.visibility = View.GONE
-                    incShowPresents.root.visibility = View.GONE
-                    incShowAbsents.root.visibility = View.GONE
-                    rvStudentList.visibility = View.GONE
-                    pbLoading.visibility = View.VISIBLE
+                    tvFilter.gone()
+                    incShowPresents.root.gone()
+                    incShowAbsents.root.gone()
+                    rvStudentList.gone()
+                    pbLoading.visible()
                 }
             } else {
                 with(binding) {
-                    tvFilter.visibility = View.VISIBLE
-                    incShowPresents.root.visibility = View.VISIBLE
-                    incShowAbsents.root.visibility = View.VISIBLE
-                    rvStudentList.visibility = View.VISIBLE
-                    pbLoading.visibility = View.GONE
+                    tvFilter.visible()
+                    incShowPresents.root.visible()
+                    incShowAbsents.root.visible()
+                    rvStudentList.visible()
+                    pbLoading.gone()
                 }
             }
 

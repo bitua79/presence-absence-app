@@ -13,7 +13,9 @@ import com.application.presence_absence.R
 import com.application.presence_absence.databinding.FragmentLoginBinding
 import com.application.presence_absence.domain.params.PostLogin
 import com.application.presence_absence.ui.utils.collectOnFragment
+import com.application.presence_absence.ui.utils.gone
 import com.application.presence_absence.ui.utils.hideKeyboard
+import com.application.presence_absence.ui.utils.visible
 import com.application.presence_absence.ui.widgets.UiError
 import com.application.presence_absence.ui.widgets.UiLoading
 import com.application.presence_absence.ui.widgets.UiSuccess
@@ -101,11 +103,11 @@ class LoginFragment : Fragment() {
     private fun initControllers() {
         viewModel.uiViewState.collectOnFragment(this) {
             if (it is UiLoading) {
-                binding.btnLogin.visibility = View.INVISIBLE
-                binding.pbLoading.visibility = View.VISIBLE
+                binding.btnLogin.gone()
+                binding.pbLoading.visible()
             } else {
-                binding.pbLoading.visibility = View.GONE
-                binding.btnLogin.visibility = View.VISIBLE
+                binding.pbLoading.gone()
+                binding.btnLogin.visible()
             }
 
             if (it is UiSuccess) {

@@ -1,9 +1,9 @@
 package com.application.presence_absence.domain.usecases
 
 import com.application.presence_absence.core.entities.Result
+import com.application.presence_absence.core.extensions.runIO
 import com.application.presence_absence.domain.params.PostLogin
 import com.application.presence_absence.domain.repository.Repository
-import com.application.presence_absence.ui.utils.runIO
 import javax.inject.Inject
 
 

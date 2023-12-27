@@ -51,12 +51,18 @@ class ExamListViewModel @Inject constructor(
         actFilters()
     }
 
+    fun setExamQuery(query: String) {
+        _filter.value = _filter.value.copy(examQuery = query)
+        actFilters()
+    }
+
     private fun actFilters() {
         val examFilter = _filter.value
         // Update list
         val faculty = examFilter.examPlace
         val day = examFilter.examDay.map { it.n_th }
         val state = examFilter.examState
+        val query = examFilter.examQuery
 
         var filteredList = _dataViewState.value.allList.orEmpty()
 
@@ -75,6 +81,12 @@ class ExamListViewModel @Inject constructor(
         if (state.isNotEmpty()) {
             filteredList = filteredList.filter {
                 state.contains(it.state.title)
+            }
+        }
+
+        if (query.isNotEmpty()) {
+            filteredList = filteredList.filter {
+                it.name.contains(query)
             }
         }
 

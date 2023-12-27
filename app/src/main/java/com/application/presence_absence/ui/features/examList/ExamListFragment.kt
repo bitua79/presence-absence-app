@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
@@ -12,6 +13,8 @@ import com.application.presence_absence.R
 import com.application.presence_absence.databinding.FragmentExamListBinding
 import com.application.presence_absence.ui.features.examList.entities.ExamView
 import com.application.presence_absence.ui.utils.collectOnFragment
+import com.application.presence_absence.ui.utils.gone
+import com.application.presence_absence.ui.utils.visible
 import com.application.presence_absence.ui.widgets.UiError
 import com.application.presence_absence.ui.widgets.UiLoading
 import com.application.presence_absence.ui.widgets.UiSuccess
@@ -91,6 +94,9 @@ class ExamListFragment : Fragment() {
                     sharedViewModel.setExamState(listOf())
                 }
             }
+            etSearch.doAfterTextChanged {
+                sharedViewModel.setExamQuery(etSearch.text?.toString()?.trim().orEmpty())
+            }
         }
     }
 
@@ -122,15 +128,15 @@ class ExamListFragment : Fragment() {
         sharedViewModel.uiViewState.collectOnFragment(this) {
             if (it is UiLoading) {
                 with(binding) {
-                    cfFilter.visibility = View.GONE
-                    rvExamList.visibility = View.GONE
-                    pbLoading.visibility = View.VISIBLE
+                    cfFilter.gone()
+                    rvExamList.gone()
+                    pbLoading.visible()
                 }
             } else {
                 with(binding) {
-                    cfFilter.visibility = View.VISIBLE
-                    rvExamList.visibility = View.VISIBLE
-                    pbLoading.visibility = View.GONE
+                    cfFilter.visible()
+                    rvExamList.visible()
+                    pbLoading.gone()
                 }
             }
 
@@ -155,8 +161,10 @@ class ExamListFragment : Fragment() {
 
     private fun setList(list: List<ExamView>) {
         listAdapter.submitList(list)
-        binding.tvNoExam.visibility =
-            if (list.isEmpty() && sharedViewModel.uiViewState.value !is UiLoading) View.VISIBLE else View.GONE
+        with(binding.tvNoExam) {
+            if (list.isEmpty() && sharedViewModel.uiViewState.value !is UiLoading)
+                visible() else gone()
+        }
     }
 
 }
