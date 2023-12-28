@@ -92,6 +92,7 @@
             android:layout_marginEnd="@dimen/spacing_4x"
             android:text="@{exam.className}"
             android:textAppearance="@style/TextAppearance.PresentAbsence.Caption.Grey900"
+            android:fontFamily="@font/iran_sans_en"
             app:layout_constraintBottom_toBottomOf="@id/tv_faculty"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_faculty"

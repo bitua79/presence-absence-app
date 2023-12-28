@@ -4,53 +4,53 @@
 
     <style name="TextAppearance.PresentAbsence.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="android:textSize">96sp</item>
-        <item name="fontFamily">@font/iran_sans_light</item>
+        <item name="fontFamily">@font/iran_sans_light_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="android:textSize">60sp</item>
-        <item name="fontFamily">@font/iran_sans_light</item>
+        <item name="fontFamily">@font/iran_sans_light_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
         <item name="android:textSize">48sp</item>
-        <item name="fontFamily">@font/iran_sans</item>
+        <item name="fontFamily">@font/iran_sans_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:textSize">34sp</item>
-        <item name="fontFamily">@font/iran_sans</item>
+        <item name="fontFamily">@font/iran_sans_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:textSize">24sp</item>
-        <item name="fontFamily">@font/iran_sans</item>
+        <item name="fontFamily">@font/iran_sans_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Headline5.Bold">
-        <item name="fontFamily">@font/iran_sans_bold</item>
+        <item name="fontFamily">@font/iran_sans_bold_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="android:textSize">20sp</item>
-        <item name="fontFamily">@font/iran_sans_light</item>
+        <item name="fontFamily">@font/iran_sans_light_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Headline6.Medium">
-        <item name="fontFamily">@font/iran_sans_medium</item>
+        <item name="fontFamily">@font/iran_sans_medium_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Headline6.Bold">
-        <item name="fontFamily">@font/iran_sans_bold</item>
+        <item name="fontFamily">@font/iran_sans_bold_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:textSize">16sp</item>
-        <item name="fontFamily">@font/iran_sans</item>
+        <item name="fontFamily">@font/iran_sans_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Subtitle1.Bold">
-        <item name="fontFamily">@font/iran_sans_bold</item>
+        <item name="fontFamily">@font/iran_sans_bold_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Subtitle1.Grey700">
@@ -59,11 +59,11 @@
 
     <style name="TextAppearance.PresentAbsence.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:textSize">14sp</item>
-        <item name="fontFamily">@font/iran_sans_light</item>
+        <item name="fontFamily">@font/iran_sans_light_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Subtitle2.Medium">
-        <item name="fontFamily">@font/iran_sans_medium</item>
+        <item name="fontFamily">@font/iran_sans_medium_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Subtitle2.Medium.Grey700">
@@ -76,18 +76,18 @@
 
     <style name="TextAppearance.PresentAbsence.Body1" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textSize">16sp</item>
-        <item name="fontFamily">@font/iran_sans</item>
+        <item name="fontFamily">@font/iran_sans_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Body2" parent="TextAppearance.MaterialComponents.Body2">
         <item name="android:textSize">14sp</item>
-        <item name="fontFamily">@font/iran_sans</item>
+        <item name="fontFamily">@font/iran_sans_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Button" parent="TextAppearance.MaterialComponents.Button">
         <item name="android:textSize">14sp</item>
         <item name="android:textAllCaps">true</item>
-        <item name="fontFamily">@font/iran_sans_medium</item>
+        <item name="fontFamily">@font/iran_sans_medium_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Button.Big">
@@ -96,7 +96,7 @@
 
     <style name="TextAppearance.PresentAbsence.Caption" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">12sp</item>
-        <item name="fontFamily">@font/iran_sans</item>
+        <item name="fontFamily">@font/iran_sans_fa</item>
     </style>
 
     <style name="TextAppearance.PresentAbsence.Caption.Grey900">
@@ -106,6 +106,6 @@
     <style name="TextAppearance.PresentAbsence.Overline" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:textSize">10sp</item>
         <item name="android:textAllCaps">true</item>
-        <item name="fontFamily">@font/iran_sans</item>
+        <item name="fontFamily">@font/iran_sans_fa</item>
     </style>
 </resources>
