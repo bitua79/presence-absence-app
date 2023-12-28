@@ -20,7 +20,7 @@ enum class ExamDay(val n_th: Int, val title: String) {
     DAY_16(16, "روز شانزدهم");
 }
 
-fun findByTitle(title: String): ExamDay? {
+fun findExamDayByTitle(title: String): ExamDay? {
     ExamDay.values().forEach {
         if (title == it.title) {
             return it
@@ -29,7 +29,7 @@ fun findByTitle(title: String): ExamDay? {
     return null
 }
 
-fun findByNth(n_th: Int): ExamDay? {
+fun findExamDayByNth(n_th: Int): ExamDay? {
     ExamDay.values().forEach {
         if (n_th == it.n_th) {
             return it

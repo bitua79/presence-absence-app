@@ -4,7 +4,7 @@ import com.application.presence_absence.data.entities.ExamEntity
 import com.application.presence_absence.ui.features.examList.entities.ExamDay
 import com.application.presence_absence.ui.features.examList.entities.ExamStatus
 import com.application.presence_absence.ui.features.examList.entities.ExamView
-import com.application.presence_absence.ui.features.examList.entities.findByNth
+import com.application.presence_absence.ui.features.examList.entities.findExamDayByNth
 import com.application.presence_absence.ui.utils.getShDate
 import saman.zamani.persiandate.PersianDate
 import java.util.concurrent.TimeUnit
@@ -24,7 +24,7 @@ data class Exam(
         name = title,
         className = class_name,
         faculty = faculty,
-        day = findByNth(nth_day) ?: ExamDay.DAY_0,
+        day = findExamDayByNth(nth_day) ?: ExamDay.DAY_0,
         dateView = PersianDate(date).getShDate(),
         hour = time,
         state = getStatue()

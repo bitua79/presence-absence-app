@@ -16,7 +16,7 @@
 
         <import type="android.view.View" />
 
-        <import type="com.application.presence_absence.ui.features.studentList.entities.StudentAttendanceState" />
+        <import type="com.application.presence_absence.ui.features.studentList.entities.StudentStatus" />
 
     </data>
 
@@ -30,7 +30,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_present"
-            isVisibleOrGone="@{student.attendance==StudentAttendanceState.NOT_SET}"
+            isVisibleOrGone="@{student.status==StudentStatus.NOT_SET}"
             android:layout_width="@dimen/spacing_zero"
             android:layout_height="@dimen/spacing_zero"
             android:layout_marginEnd="@dimen/spacing_2x"
@@ -56,7 +56,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_absence"
-            isVisibleOrGone="@{student.attendance==StudentAttendanceState.NOT_SET}"
+            isVisibleOrGone="@{student.status==StudentStatus.NOT_SET}"
             android:layout_width="@dimen/spacing_zero"
             android:layout_height="@dimen/spacing_zero"
             android:layout_marginTop="@dimen/spacing_base"
@@ -106,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/spacing_zero"
                 android:layout_marginEnd="@dimen/spacing_4x"
-                android:visibility="@{student.attendance==StudentAttendanceState.NOT_SET? View.GONE:View.VISIBLE}"
+                android:visibility="@{student.status==StudentStatus.NOT_SET? View.GONE:View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="@id/tv_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1"

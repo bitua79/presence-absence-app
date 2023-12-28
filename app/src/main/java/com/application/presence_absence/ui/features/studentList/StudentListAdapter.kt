@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.application.presence_absence.databinding.ItemStudentBinding
+import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
 import com.application.presence_absence.ui.features.studentList.entities.StudentAttendanceTagView
 import com.application.presence_absence.ui.features.studentList.entities.StudentView
 
@@ -40,20 +41,35 @@ class StudentListAdapter(
         fun bind(std: StudentView) {
             with(binding) {
                 student = std
-                tag = StudentAttendanceTagView.buildTagChip(std.attendance)
+                tag = StudentAttendanceTagView.buildTagChip(std.status)
                 clPresent.setOnClickListener {
-                    //TODO: update attendance
                     onSetPresence(std)
+                    val status = StudentStatus.PRESENCE
+                    tag = StudentAttendanceTagView.buildTagChip(status)
+                    val newS = student
+                    newS?.setAttendance(status)
+                    student = newS ?: null
+                    incAttendanceTag.tag = tag
                 }
 
                 clAbsence.setOnClickListener {
-                    //TODO: update attendance
                     onSetAbsence(std)
+                    val status = StudentStatus.ABSENCE
+                    tag = StudentAttendanceTagView.buildTagChip(status)
+                    val newS = student ?: null
+                    newS?.setAttendance(status)
+                    student = newS
+                    incAttendanceTag.tag = tag
                 }
 
-                incAttendanceTag.root.setOnClickListener {
-                    //TODO: update attendance
+                incAttendanceTag.ivEdit.setOnClickListener {
                     onRemoveAttendance(std)
+                    val status = StudentStatus.NOT_SET
+                    tag = StudentAttendanceTagView.buildTagChip(status)
+                    val newS = student ?: null
+                    newS?.setAttendance(status)
+                    student = newS
+                    incAttendanceTag.tag = tag
                 }
             }
         }

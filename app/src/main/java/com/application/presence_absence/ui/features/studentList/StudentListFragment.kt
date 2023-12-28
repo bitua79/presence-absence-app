@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.application.presence_absence.R
 import com.application.presence_absence.databinding.FragmentStudentListBinding
+import com.application.presence_absence.ui.features.examList.entities.ExamView
+import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
 import com.application.presence_absence.ui.features.studentList.entities.StudentView
 import com.application.presence_absence.ui.utils.collectOnFragment
 import com.application.presence_absence.ui.utils.gone
@@ -30,6 +32,7 @@ class StudentListFragment : Fragment() {
     private lateinit var listAdapter: StudentListAdapter
 
     private val args by navArgs<StudentListFragmentArgs>()
+    lateinit var exam: ExamView
 
     private val viewModel: StudentListViewModel by viewModels()
 
@@ -47,7 +50,8 @@ class StudentListFragment : Fragment() {
         initViews()
         initControllers()
 
-        viewModel.getAllStudents(args.exam.id.toString())
+        exam = args.exam
+        viewModel.getAllStudents(exam.id.toString())
     }
 
     private fun initViews() {
@@ -101,16 +105,28 @@ class StudentListFragment : Fragment() {
         )
     }
 
-    private fun onStudentSetPresence(exam: StudentView) {
-        //  TODO
+    private fun onStudentSetPresence(student: StudentView) {
+        viewModel.setStudentAttendanceStatus(
+            examId = exam.id.toString(),
+            studentId = student.id.toString(),
+            state = StudentStatus.PRESENCE
+        )
     }
 
-    private fun onStudentSetAbsence(exam: StudentView) {
-        //  TODO
+    private fun onStudentSetAbsence(student: StudentView) {
+        viewModel.setStudentAttendanceStatus(
+            examId = exam.id.toString(),
+            studentId = student.id.toString(),
+            state = StudentStatus.ABSENCE
+        )
     }
 
-    private fun onRemoveAttendance(exam: StudentView) {
-        //  TODO
+    private fun onRemoveAttendance(student: StudentView) {
+        viewModel.setStudentAttendanceStatus(
+            examId = exam.id.toString(),
+            studentId = student.id.toString(),
+            state = StudentStatus.NOT_SET
+        )
     }
 
     private fun setupRecyclerview() {

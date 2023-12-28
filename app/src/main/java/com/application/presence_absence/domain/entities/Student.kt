@@ -1,8 +1,9 @@
 package com.application.presence_absence.domain.entities
 
 import com.application.presence_absence.data.entities.StudentEntity
-import com.application.presence_absence.ui.features.studentList.entities.StudentAttendanceState
+import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
 import com.application.presence_absence.ui.features.studentList.entities.StudentView
+import com.application.presence_absence.ui.features.studentList.entities.findStudentStatusByNumValue
 
 data class Student(
     val first_name: String,
@@ -18,7 +19,7 @@ data class Student(
         name = first_name,
         iconUrl = profile,
         idNumber = national_code,
-        attendance = StudentAttendanceState.PRESENCE
+        status = findStudentStatusByNumValue(status) ?: StudentStatus.NOT_SET
     )
 }
 
