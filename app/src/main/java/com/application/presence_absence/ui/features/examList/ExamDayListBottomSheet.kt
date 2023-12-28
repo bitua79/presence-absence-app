@@ -3,7 +3,7 @@ package com.application.presence_absence.ui.features.examList
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import com.application.presence_absence.R
 import com.application.presence_absence.ui.features.examList.entities.ExamDay
-import com.application.presence_absence.ui.features.examList.entities.findByTitle
+import com.application.presence_absence.ui.features.examList.entities.findExamDayByTitle
 import com.application.presence_absence.ui.widgets.CheckBoxItemView
 import com.application.presence_absence.ui.widgets.CheckBoxListBottomSheet
 
@@ -27,7 +27,7 @@ class ExamDayListBottomSheet : CheckBoxListBottomSheet(R.string.label_select_exa
         val index = titleList.indexOf(c.text)
         if (index == -1) {
             val l = list.toMutableList()
-            findByTitle(c.text)?.let {
+            findExamDayByTitle(c.text)?.let {
                 l.add(it)
                 sharedViewModel.setExamDay(l)
             }
@@ -40,7 +40,7 @@ class ExamDayListBottomSheet : CheckBoxListBottomSheet(R.string.label_select_exa
         val index = titleList.indexOf(c.text)
         if (index != -1) {
             val l = list.toMutableList()
-            findByTitle(c.text)?.let {
+            findExamDayByTitle(c.text)?.let {
                 l.remove(it)
                 sharedViewModel.setExamDay(l)
             }

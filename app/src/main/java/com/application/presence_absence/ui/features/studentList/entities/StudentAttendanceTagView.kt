@@ -5,7 +5,7 @@ import androidx.annotation.DrawableRes
 import com.application.presence_absence.R
 
 class StudentAttendanceTagView private constructor(
-    val status: StudentAttendanceState,
+    val status: StudentStatus,
     @DrawableRes
     val backgroundDrawable: Int,
     @ColorRes
@@ -13,21 +13,21 @@ class StudentAttendanceTagView private constructor(
 ) {
 
     companion object {
-        fun buildTagChip(status: StudentAttendanceState): StudentAttendanceTagView {
+        fun buildTagChip(status: StudentStatus): StudentAttendanceTagView {
             return when (status) {
-                StudentAttendanceState.PRESENCE -> StudentAttendanceTagView(
+                StudentStatus.PRESENCE -> StudentAttendanceTagView(
                     status,
                     backgroundDrawable = R.drawable.bg_student_presence,
                     foregroundColor = R.color.color_presence_foreground
                 )
 
-                StudentAttendanceState.ABSENCE -> StudentAttendanceTagView(
+                StudentStatus.ABSENCE -> StudentAttendanceTagView(
                     status,
                     backgroundDrawable = R.drawable.bg_student_absence,
                     foregroundColor = R.color.color_absence_foreground
                 )
 
-                StudentAttendanceState.NOT_SET -> StudentAttendanceTagView(
+                StudentStatus.NOT_SET -> StudentAttendanceTagView(
                     status,
                     backgroundDrawable = -1,
                     foregroundColor = -1

@@ -5,6 +5,7 @@ import com.application.presence_absence.data.entities.ExamEntity
 import com.application.presence_absence.data.entities.LoginEntity
 import com.application.presence_absence.data.entities.StudentEntity
 import com.application.presence_absence.data.params.PostLoginEntity
+import com.application.presence_absence.data.params.PostStatusEntity
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -23,5 +24,11 @@ interface WebService {
 
     @GET
     suspend fun getAllStudents(@Url url: String): Response<Resource<List<StudentEntity>>>
+
+    @POST
+    suspend fun setStudentStatus(
+        @Url url: String,
+        @Body param: PostStatusEntity
+    ): Response<Resource<StudentEntity>>
 
 }

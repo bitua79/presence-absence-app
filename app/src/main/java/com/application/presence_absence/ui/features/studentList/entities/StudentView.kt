@@ -5,5 +5,9 @@ data class StudentView(
     val name: String,
     val iconUrl: String?,
     val idNumber: String,
-    var attendance: StudentAttendanceState
-)
+    var status: StudentStatus
+) {
+    fun setAttendance(attendance: StudentStatus) {
+        this.status = attendance
+    }
+}

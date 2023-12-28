@@ -1,8 +1,10 @@
 package com.application.presence_absence.ui.features.studentList
 
 import androidx.lifecycle.viewModelScope
+import com.application.presence_absence.domain.params.PostStatus
 import com.application.presence_absence.domain.usecases.GetStudentList
-import com.application.presence_absence.ui.features.studentList.entities.StudentAttendanceState
+import com.application.presence_absence.domain.usecases.SetStudentStatus
+import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
 import com.application.presence_absence.ui.features.studentList.entities.StudentFilterStateView
 import com.application.presence_absence.ui.features.studentList.entities.StudentListViewState
 import com.application.presence_absence.ui.widgets.UiStateViewModel
@@ -15,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class StudentListViewModel @Inject constructor(
-    private val getStudentList: GetStudentList
+    private val getStudentList: GetStudentList,
+    private val setStudentStatus: SetStudentStatus
 ) : UiStateViewModel() {
 
     private val _dataViewState = MutableStateFlow(StudentListViewState())
@@ -28,6 +31,22 @@ class StudentListViewModel @Inject constructor(
                     val studentList = list.map { item -> item.toStudentView() }
                     it.copy(allList = studentList, filteredList = studentList)
                 }
+            })
+        }
+    }
+
+    fun setStudentAttendanceStatus(
+        examId: String,
+        studentId: String,
+        state: StudentStatus
+    ) {
+        viewModelScope.launch {
+            useCaseInvoker(useCase = {
+                setStudentStatus(
+                    examId,
+                    studentId,
+                    PostStatus(state.numValue)
+                )
             })
         }
     }
@@ -54,13 +73,13 @@ class StudentListViewModel @Inject constructor(
 
         if (presence == true) {
             filteredList = filteredList.filter {
-                it.attendance == StudentAttendanceState.PRESENCE
+                it.status == StudentStatus.PRESENCE
             }
         }
 
         if (absence == true) {
             filteredList = filteredList.filter {
-                it.attendance == StudentAttendanceState.ABSENCE
+                it.status == StudentStatus.ABSENCE
             }
         }
 

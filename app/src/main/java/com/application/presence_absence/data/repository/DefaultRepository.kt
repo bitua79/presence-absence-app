@@ -12,6 +12,7 @@ import com.application.presence_absence.domain.entities.Student
 import com.application.presence_absence.domain.entities.toExam
 import com.application.presence_absence.domain.entities.toStudent
 import com.application.presence_absence.domain.params.PostLogin
+import com.application.presence_absence.domain.params.PostStatus
 import com.application.presence_absence.domain.repository.Repository
 import javax.inject.Inject
 
@@ -42,5 +43,18 @@ class DefaultRepository @Inject constructor(
             remoteDataSource.getStudentList(id)
         }) {
             this.map { list -> list.map { it.toStudent() } }
+        }
+
+    override suspend fun setStudentStatus(
+        examId: String,
+        studentId: String,
+        param: PostStatus
+    ): Result<Student> =
+        makeRequest(networkHandler = networkHandler, action = {
+            remoteDataSource.setStudentStatus(examId, studentId, param.toPostStatus())
+        }) {
+            this.map {
+                it.toStudent()
+            }
         }
 }
