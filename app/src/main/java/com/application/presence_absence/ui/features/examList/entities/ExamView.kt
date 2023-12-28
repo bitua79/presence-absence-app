@@ -9,7 +9,7 @@ data class ExamView(
     val name: String,
     val className: String,
     val faculty: String,
-    val day: Int,
+    val day: ExamDay,
     val dateView: String,
     val hour: Int,
     val state: ExamStatus

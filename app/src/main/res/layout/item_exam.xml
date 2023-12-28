@@ -54,11 +54,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/spacing_3x"
-            android:text="@{exam.dateView}"
+            app:setExamDay="@{exam}"
             android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Grey700"
             app:layout_constraintStart_toStartOf="@id/tv_course"
             app:layout_constraintTop_toBottomOf="@id/tv_course"
-            tools:text="دوشنبه ۷ام فروردین" />
+            tools:text="روز دوم، 12/12" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_hour"
