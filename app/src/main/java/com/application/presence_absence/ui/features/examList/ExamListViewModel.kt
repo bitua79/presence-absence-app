@@ -60,7 +60,7 @@ class ExamListViewModel @Inject constructor(
         val examFilter = _filter.value
         // Update list
         val faculty = examFilter.examPlace
-        val day = examFilter.examDay.map { it.n_th }
+        val day = examFilter.examDay
         val state = examFilter.examState
         val query = examFilter.examQuery
 
