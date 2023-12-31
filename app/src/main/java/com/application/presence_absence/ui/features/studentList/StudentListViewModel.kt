@@ -4,9 +4,9 @@ import androidx.lifecycle.viewModelScope
 import com.application.presence_absence.domain.params.PostStatus
 import com.application.presence_absence.domain.usecases.GetStudentList
 import com.application.presence_absence.domain.usecases.SetStudentStatus
-import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
-import com.application.presence_absence.ui.features.studentList.entities.StudentFilterStateView
+import com.application.presence_absence.ui.features.studentList.entities.StudentFilterViewState
 import com.application.presence_absence.ui.features.studentList.entities.StudentListViewState
+import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
 import com.application.presence_absence.ui.widgets.UiStateViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -51,7 +51,7 @@ class StudentListViewModel @Inject constructor(
         }
     }
 
-    private val _filter = MutableStateFlow(StudentFilterStateView())
+    private val _filter = MutableStateFlow(StudentFilterViewState())
     val filter = _filter.asStateFlow()
 
     fun setShowPresents(boolean: Boolean?) {
@@ -64,10 +64,16 @@ class StudentListViewModel @Inject constructor(
         actFilters()
     }
 
+    fun setStudentQuery(query: String) {
+        _filter.value = _filter.value.copy(studentQuery = query)
+        actFilters()
+    }
+
     private fun actFilters() {
         val filterState = _filter.value
         val presence = filterState.showPresents
         val absence = filterState.showAbsents
+        val query = filterState.studentQuery
 
         var filteredList = _dataViewState.value.allList.orEmpty()
 
@@ -83,6 +89,11 @@ class StudentListViewModel @Inject constructor(
             }
         }
 
+        if (query.isNotEmpty()) {
+            filteredList = filteredList.filter {
+                it.name.contains(query)
+            }
+        }
         _dataViewState.update { it.copy(filteredList = filteredList) }
     }
 }

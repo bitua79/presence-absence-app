@@ -8,7 +8,7 @@
 
         <variable
             name="filterState"
-            type="com.application.presence_absence.ui.features.studentList.entities.StudentFilterStateView" />
+            type="com.application.presence_absence.ui.features.studentList.entities.StudentFilterViewState" />
 
         <variable
             name="exam"
@@ -163,13 +163,13 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_submit"
             android:layout_width="wrap_content"
-            android:backgroundTint="@color/color_secondary"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:paddingHorizontal="@dimen/spacing_8x"
             android:layout_marginVertical="@dimen/spacing_4x"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:backgroundTint="@color/color_secondary"
+            android:paddingHorizontal="@dimen/spacing_8x"
             android:text="@string/label_finalize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ProgressBar
