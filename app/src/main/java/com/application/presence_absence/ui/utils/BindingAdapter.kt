@@ -42,6 +42,7 @@ fun setIntAsText(view: MaterialTextView, text: Int) {
 fun bindExamDay(view: MaterialTextView, examEntity: ExamView) {
     view.text = "${examEntity.day.title}، ${examEntity.dateView}"
 }
+
 @BindingAdapter("setExamHour")
 fun bindExamHour(view: MaterialTextView, hour: Int) {
     view.text = "ساعت ${hour}"
@@ -50,13 +51,13 @@ fun bindExamHour(view: MaterialTextView, hour: Int) {
 @SuppressLint("SetTextI18n")
 @BindingAdapter("setExamTime")
 fun bindExamTime(view: MaterialTextView, examEntity: ExamView) {
-    view.text = "${examEntity.dateView}، ساعت ${examEntity.hour}"
+    view.text = "${examEntity.day.title}، ساعت ${examEntity.hour}"
 }
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("setExamPlace")
 fun bindExamPlace(view: MaterialTextView, examEntity: ExamView) {
-    view.text = "${examEntity.faculty}، ${examEntity.className}"
+    view.text = "کلاس ${examEntity.className}"
 }
 
 @BindingAdapter("isVisibleOrGone")
