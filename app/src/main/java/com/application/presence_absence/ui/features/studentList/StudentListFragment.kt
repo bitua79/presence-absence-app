@@ -66,6 +66,7 @@ class StudentListFragment : Fragment() {
             incShowPresents.let {
                 it.root.setOnClickListener {
                     viewModel.setShowPresents(true)
+                    viewModel.setShowAbsents(null)
                 }
 
                 // Reset exam place filter value
@@ -77,6 +78,7 @@ class StudentListFragment : Fragment() {
             incShowAbsents.let {
                 it.root.setOnClickListener {
                     viewModel.setShowAbsents(true)
+                    viewModel.setShowPresents(null)
                 }
 
                 // Reset exam place filter value
