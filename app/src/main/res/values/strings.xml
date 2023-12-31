@@ -26,6 +26,7 @@
     <string name="label_select_exam_state">انتخاب وضعیت امتحان</string>
 
     <string name="label_no_exam_to_show">امتحانی برای نمایش وجود ندارد</string>
+    <string name="label_finalize">تایید نهایی لیست</string>
     <!--  endregion  -->
 
     <!--  region student  -->
