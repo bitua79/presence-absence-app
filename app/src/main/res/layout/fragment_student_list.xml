@@ -124,7 +124,7 @@
                 android:textColor="@color/color_text_black_alpha50"
                 android:textDirection="rtl"
                 app:setExamTime="@{exam}"
-                tools:text="دوشنبه ۷ام فروردین، ساعت ۱۰" />
+                tools:text="روز سوم، ساعت ۱۰" />
 
             <View
                 android:layout_width="@dimen/divider_height_half"
@@ -143,7 +143,7 @@
                 android:textColor="@color/color_text_black_alpha50"
                 android:textDirection="rtl"
                 app:setExamPlace="@{exam}"
-                tools:text="مهندسی، کلاس B35" />
+                tools:text="کلاس B35" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
