@@ -88,15 +88,26 @@
             app:layout_constraintEnd_toStartOf="@id/cl_present"
             app:layout_constraintStart_toStartOf="parent">
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_profile"
+                imageFromUrl="@{student.profileUrl}"
+                android:layout_width="@dimen/spacing_15x"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/spacing_4x"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_4x"
+                android:layout_marginStart="@dimen/spacing_2x"
                 android:layout_marginTop="@dimen/spacing_4x"
                 android:text="@{student.name}"
                 android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle1"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_profile"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="بهداد برزگر" />
 

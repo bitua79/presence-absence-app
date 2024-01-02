@@ -1,5 +1,6 @@
 package com.application.presence_absence.domain.entities
 
+import com.application.presence_absence.core.utils.UrlHelper.localHostToEmulatorLocalHost
 import com.application.presence_absence.data.entities.StudentEntity
 import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
 import com.application.presence_absence.ui.features.studentList.entities.StudentView
@@ -17,7 +18,7 @@ data class Student(
     fun toStudentView() = StudentView(
         id = id,
         name = first_name,
-        iconUrl = profile,
+        profileUrl = profile.localHostToEmulatorLocalHost(),
         idNumber = national_code,
         status = findStudentStatusByNumValue(status) ?: StudentStatus.NOT_SET
     )
