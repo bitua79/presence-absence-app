@@ -9,4 +9,8 @@ object UrlHelper {
     fun getStudentListUrl(id: String) = "${BASE_URL}students/by_exam/$id"
     fun getStudentSetStatusUrl(examId: String, studentId: String) =
         "${BASE_URL}students/set_status/$studentId/$examId"
+
+    fun String.localHostToEmulatorLocalHost():String{
+        return this.replace("localhost", "10.0.2.2")
+    }
 }
