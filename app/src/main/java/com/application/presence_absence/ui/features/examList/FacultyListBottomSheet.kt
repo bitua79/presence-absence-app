@@ -2,6 +2,7 @@ package com.application.presence_absence.ui.features.examList
 
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import com.application.presence_absence.R
+import com.application.presence_absence.ui.features.examList.entities.FacultyList
 import com.application.presence_absence.ui.widgets.CheckBoxItemView
 import com.application.presence_absence.ui.widgets.CheckBoxListBottomSheet
 

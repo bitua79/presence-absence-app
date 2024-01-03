@@ -1,5 +1,6 @@
 package com.application.presence_absence.ui.features.studentList
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,12 +14,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.application.presence_absence.R
 import com.application.presence_absence.databinding.FragmentStudentListBinding
+import com.application.presence_absence.ui.features.examList.entities.ExamStatus
 import com.application.presence_absence.ui.features.examList.entities.ExamView
 import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
 import com.application.presence_absence.ui.features.studentList.entities.StudentView
 import com.application.presence_absence.ui.utils.collectOnFragment
-import com.application.presence_absence.ui.utils.gone
-import com.application.presence_absence.ui.utils.visible
 import com.application.presence_absence.ui.widgets.UiError
 import com.application.presence_absence.ui.widgets.UiLoading
 import com.application.presence_absence.ui.widgets.UiSuccess
@@ -33,7 +33,8 @@ class StudentListFragment : Fragment() {
     private lateinit var listAdapter: StudentListAdapter
 
     private val args by navArgs<StudentListFragmentArgs>()
-    lateinit var exam: ExamView
+    lateinit var examArg: ExamView
+    var listIsInvoked = false
 
     private val viewModel: StudentListViewModel by viewModels()
 
@@ -48,19 +49,19 @@ class StudentListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        examArg = args.exam
+        viewModel.getAllStudents(examArg.id.toString())
+        listIsInvoked = examArg.isInvoked || examArg.status == ExamStatus.CANCELLED
+
         initViews()
         initControllers()
-
-        exam = args.exam
-        viewModel.getAllStudents(exam.id.toString())
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun initViews() {
-        setupAdapter()
-        setupRecyclerview()
-
         with(binding) {
             exam = args.exam
+            listInvoked = listIsInvoked
             incShowPresents.title = getString(R.string.label_show_presents)
             incShowAbsents.title = getString(R.string.label_show_absents)
 
@@ -96,6 +97,9 @@ class StudentListFragment : Fragment() {
                 viewModel.setStudentQuery(etSearch.text?.toString()?.trim().orEmpty())
             }
         }
+
+        setupAdapter()
+        setupRecyclerview()
     }
 
     private fun setupAdapter() {
@@ -108,13 +112,14 @@ class StudentListFragment : Fragment() {
             },
             onRemoveAttendance = {
                 onRemoveAttendance(it)
-            }
+            },
+            listInvoked = listIsInvoked
         )
     }
 
     private fun onStudentSetPresence(student: StudentView) {
         viewModel.setStudentAttendanceStatus(
-            examId = exam.id.toString(),
+            examId = examArg.id.toString(),
             studentId = student.id.toString(),
             state = StudentStatus.PRESENCE
         )
@@ -122,7 +127,7 @@ class StudentListFragment : Fragment() {
 
     private fun onStudentSetAbsence(student: StudentView) {
         viewModel.setStudentAttendanceStatus(
-            examId = exam.id.toString(),
+            examId = examArg.id.toString(),
             studentId = student.id.toString(),
             state = StudentStatus.ABSENCE
         )
@@ -130,7 +135,7 @@ class StudentListFragment : Fragment() {
 
     private fun onRemoveAttendance(student: StudentView) {
         viewModel.setStudentAttendanceStatus(
-            examId = exam.id.toString(),
+            examId = examArg.id.toString(),
             studentId = student.id.toString(),
             state = StudentStatus.NOT_SET
         )
@@ -145,23 +150,7 @@ class StudentListFragment : Fragment() {
 
     private fun initControllers() {
         viewModel.uiViewState.collectOnFragment(this) {
-            if (it is UiLoading) {
-                with(binding) {
-                    tvFilter.gone()
-                    incShowPresents.root.gone()
-                    incShowAbsents.root.gone()
-                    rvStudentList.gone()
-                    pbLoading.visible()
-                }
-            } else {
-                with(binding) {
-                    tvFilter.visible()
-                    incShowPresents.root.visible()
-                    incShowAbsents.root.visible()
-                    rvStudentList.visible()
-                    pbLoading.gone()
-                }
-            }
+            binding.isLoading = it is UiLoading
 
             if (it is UiError) {
                 setList(emptyList())

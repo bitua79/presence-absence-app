@@ -8,7 +8,7 @@
 
         <variable
             name="filterState"
-            type="com.application.presence_absence.ui.features.examList.entities.ExamFilterStateView" />
+            type="com.application.presence_absence.ui.features.examList.entities.ExamFilterViewState" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

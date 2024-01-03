@@ -12,5 +12,6 @@ data class ExamView(
     val day: ExamDay,
     val dateView: String,
     val hour: Int,
-    val state: ExamStatus
+    val status: ExamStatus,
+    val isInvoked: Boolean
 ) : Parcelable

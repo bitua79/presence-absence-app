@@ -8,6 +8,10 @@
         <variable
             name="tag"
             type="com.application.presence_absence.ui.features.studentList.entities.StudentAttendanceTagView" />
+
+        <variable
+            name="invoked"
+            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,6 +43,7 @@
 
         <View
             android:id="@+id/v_divider"
+            isGone="@{invoked}"
             android:layout_width="@dimen/divider_height_half"
             android:layout_height="@dimen/spacing_zero"
             android:layout_marginHorizontal="@dimen/spacing_2x"
@@ -50,6 +55,7 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_edit"
+            isGone="@{invoked}"
             android:layout_width="@dimen/spacing_zero"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_2x"

@@ -45,7 +45,7 @@ class ExamListAdapter(
         fun bind(e: ExamView) {
             with(binding) {
                 exam = e
-                tag = ExamStatusTagView.buildTagChip(e.state)
+                tag = ExamStatusTagView.buildTagChip(e.status)
             }
         }
     }

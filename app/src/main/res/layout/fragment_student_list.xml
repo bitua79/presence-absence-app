@@ -7,6 +7,14 @@
     <data>
 
         <variable
+            name="listInvoked"
+            type="Boolean" />
+
+        <variable
+            name="isLoading"
+            type="Boolean" />
+
+        <variable
             name="filterState"
             type="com.application.presence_absence.ui.features.studentList.entities.StudentFilterViewState" />
 
@@ -48,6 +56,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_filter"
+            isVisibleOrGone="@{!isLoading}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_4x"
@@ -61,6 +70,7 @@
 
         <include
             android:id="@+id/inc_show_presents"
+            isVisibleOrGone="@{!isLoading}"
             layout="@layout/item_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,6 +83,7 @@
 
         <include
             android:id="@+id/inc_show_absents"
+            isVisibleOrGone="@{!isLoading}"
             layout="@layout/item_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -149,31 +160,36 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_student_list"
+            isVisibleOrGone="@{!isLoading}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginVertical="@dimen/spacing_4x"
+            android:layout_marginTop="@dimen/spacing_4x"
             android:clipToPadding="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@id/btn_submit"
             app:layout_constraintTop_toBottomOf="@id/ll_exam_information"
             app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="-41dp"
             tools:listitem="@layout/item_student" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_submit"
+            isVisibleOrGone="@{!listInvoked &amp;&amp; !isLoading}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/spacing_4x"
+            android:layout_marginTop="@dimen/spacing_4x"
             android:backgroundTint="@color/color_secondary"
             android:paddingHorizontal="@dimen/spacing_8x"
             android:text="@string/label_finalize"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_student_list"
+            tools:visibility="gone" />
 
         <ProgressBar
             android:id="@+id/pb_loading"
+            isVisibleOrGone="@{isLoading}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true"
