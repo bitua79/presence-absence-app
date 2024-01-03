@@ -1,8 +1,10 @@
 package com.application.presence_absence.ui.features.studentList
 
 import androidx.lifecycle.viewModelScope
+import com.application.presence_absence.core.entities.Constants
 import com.application.presence_absence.domain.params.PostStatus
 import com.application.presence_absence.domain.usecases.GetStudentList
+import com.application.presence_absence.domain.usecases.SetExamStatus
 import com.application.presence_absence.domain.usecases.SetStudentStatus
 import com.application.presence_absence.ui.features.studentList.entities.StudentFilterViewState
 import com.application.presence_absence.ui.features.studentList.entities.StudentListViewState
@@ -18,7 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class StudentListViewModel @Inject constructor(
     private val getStudentList: GetStudentList,
-    private val setStudentStatus: SetStudentStatus
+    private val setStudentStatus: SetStudentStatus,
+    private val setExamStatus: SetExamStatus
 ) : UiStateViewModel() {
 
     private val _dataViewState = MutableStateFlow(StudentListViewState())
@@ -46,6 +49,21 @@ class StudentListViewModel @Inject constructor(
                     examId,
                     studentId,
                     PostStatus(state.numValue)
+                )
+            })
+        }
+    }
+
+    // After all student taken attendance, finalize exam status
+    // to 1(can not be changed exam status or student attendance)
+    fun invokeExamStatus(
+        examId: String
+    ) {
+        viewModelScope.launch {
+            useCaseInvoker(useCase = {
+                setExamStatus(
+                    examId,
+                    PostStatus(Constants.EXAM_TAKEN_ATTENDANCE)
                 )
             })
         }

@@ -49,12 +49,19 @@ class StudentListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        examArg = args.exam
-        viewModel.getAllStudents(examArg.id.toString())
-        listIsInvoked = examArg.isInvoked || examArg.status == ExamStatus.CANCELLED
-
+        initVariables()
+        initViewModel()
         initViews()
         initControllers()
+    }
+
+    private fun initVariables() {
+        examArg = args.exam
+        listIsInvoked = examArg.isInvoked || examArg.status == ExamStatus.CANCELLED
+    }
+
+    private fun initViewModel() {
+        viewModel.getAllStudents(examArg.id.toString())
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -95,6 +102,13 @@ class StudentListFragment : Fragment() {
 
             etSearch.doAfterTextChanged {
                 viewModel.setStudentQuery(etSearch.text?.toString()?.trim().orEmpty())
+            }
+
+            btnSubmit.setOnClickListener {
+                viewModel.invokeExamStatus(examArg.id.toString())
+                binding.listInvoked = true
+                listAdapter.setListInvoked(true)
+                listAdapter.notifyDataSetChanged()
             }
         }
 

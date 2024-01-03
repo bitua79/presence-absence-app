@@ -1,8 +1,9 @@
 package com.application.presence_absence.data.remote
 
 import com.application.presence_absence.core.utils.UrlHelper
+import com.application.presence_absence.core.utils.UrlHelper.getSetExamStatusUrl
+import com.application.presence_absence.core.utils.UrlHelper.getSetStudentStatusUrl
 import com.application.presence_absence.core.utils.UrlHelper.getStudentListUrl
-import com.application.presence_absence.core.utils.UrlHelper.getStudentSetStatusUrl
 import com.application.presence_absence.core.utils.safeCall
 import com.application.presence_absence.data.params.PostLoginEntity
 import com.application.presence_absence.data.params.PostStatusEntity
@@ -27,6 +28,11 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun setStudentStatus(examId: String, studentId: String, param: PostStatusEntity) =
         safeCall {
-            service.setStudentStatus(url = getStudentSetStatusUrl(examId, studentId), param = param)
+            service.setStudentStatus(url = getSetStudentStatusUrl(examId, studentId), param = param)
+        }
+
+    suspend fun setExamStatus(examId: String, param: PostStatusEntity) =
+        safeCall {
+            service.setExamStatus(url = getSetExamStatusUrl(examId), param = param)
         }
 }
