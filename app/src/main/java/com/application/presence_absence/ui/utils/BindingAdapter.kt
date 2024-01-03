@@ -38,14 +38,16 @@ fun setIntAsText(view: MaterialTextView, text: Int) {
     view.text = text.toString()
 }
 
+@SuppressLint("SetTextI18n")
 @BindingAdapter("setExamDay")
 fun bindExamDay(view: MaterialTextView, examEntity: ExamView) {
     view.text = "${examEntity.day.title}، ${examEntity.dateView}"
 }
 
+@SuppressLint("SetTextI18n")
 @BindingAdapter("setExamHour")
 fun bindExamHour(view: MaterialTextView, hour: Int) {
-    view.text = "ساعت ${hour}"
+    view.text = "ساعت $hour"
 }
 
 @SuppressLint("SetTextI18n")
@@ -66,6 +68,13 @@ fun bindIsVisibleOrGone(view: View, visible: Boolean) {
         View.VISIBLE
     } else {
         View.GONE
+    }
+}
+
+@BindingAdapter("isGone")
+fun bindIsGone(view: View, isGone: Boolean) {
+    if (isGone) {
+        view.visibility = View.GONE
     }
 }
 

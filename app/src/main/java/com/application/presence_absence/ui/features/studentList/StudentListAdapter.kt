@@ -6,14 +6,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.application.presence_absence.databinding.ItemStudentBinding
-import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
 import com.application.presence_absence.ui.features.studentList.entities.StudentAttendanceTagView
+import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
 import com.application.presence_absence.ui.features.studentList.entities.StudentView
 
 class StudentListAdapter(
     private val onSetPresence: (student: StudentView) -> Unit,
     private val onSetAbsence: (student: StudentView) -> Unit,
-    private val onRemoveAttendance: (student: StudentView) -> Unit
+    private val onRemoveAttendance: (student: StudentView) -> Unit,
+    private var listInvoked: Boolean = false
 ) : ListAdapter<StudentView, StudentListAdapter.StudentViewHolder>(
 
     object : DiffUtil.ItemCallback<StudentView>() {
@@ -40,8 +41,11 @@ class StudentListAdapter(
 
         fun bind(std: StudentView) {
             with(binding) {
+                invoked = listInvoked
+                incAttendanceTag.invoked = listInvoked
                 student = std
                 tag = StudentAttendanceTagView.buildTagChip(std.status)
+
                 clPresent.setOnClickListener {
                     onSetPresence(std)
                     val status = StudentStatus.PRESENCE
@@ -82,6 +86,10 @@ class StudentListAdapter(
             false
         )
         return StudentViewHolder(binding)
+    }
+
+    fun setListInvoked(invoked: Boolean) {
+        listInvoked = invoked
     }
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {

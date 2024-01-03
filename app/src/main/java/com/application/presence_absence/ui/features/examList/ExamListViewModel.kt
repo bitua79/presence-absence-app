@@ -3,7 +3,7 @@ package com.application.presence_absence.ui.features.examList
 import androidx.lifecycle.viewModelScope
 import com.application.presence_absence.domain.usecases.GetExamList
 import com.application.presence_absence.ui.features.examList.entities.ExamDay
-import com.application.presence_absence.ui.features.examList.entities.ExamFilterStateView
+import com.application.presence_absence.ui.features.examList.entities.ExamFilterViewState
 import com.application.presence_absence.ui.features.examList.entities.ExamListViewState
 import com.application.presence_absence.ui.widgets.UiStateViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,7 +33,7 @@ class ExamListViewModel @Inject constructor(
         }
     }
 
-    private val _filter = MutableStateFlow(ExamFilterStateView())
+    private val _filter = MutableStateFlow(ExamFilterViewState())
     val filter = _filter.asStateFlow()
 
     fun setExamPlace(examPlace: List<String>) {
@@ -80,7 +80,7 @@ class ExamListViewModel @Inject constructor(
 
         if (state.isNotEmpty()) {
             filteredList = filteredList.filter {
-                state.contains(it.state.title)
+                state.contains(it.status.title)
             }
         }
 

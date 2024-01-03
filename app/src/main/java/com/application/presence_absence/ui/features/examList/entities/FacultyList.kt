@@ -1,4 +1,4 @@
-package com.application.presence_absence.ui.features.examList
+package com.application.presence_absence.ui.features.examList.entities
 
 import com.application.presence_absence.ui.widgets.CheckBoxItemView
 

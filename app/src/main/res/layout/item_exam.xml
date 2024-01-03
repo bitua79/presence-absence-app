@@ -54,10 +54,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/spacing_3x"
-            app:setExamDay="@{exam}"
             android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2.Grey700"
             app:layout_constraintStart_toStartOf="@id/tv_course"
             app:layout_constraintTop_toBottomOf="@id/tv_course"
+            app:setExamDay="@{exam}"
             tools:text="روز دوم، 12/12" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -90,9 +90,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/spacing_4x"
+            android:fontFamily="@font/iran_sans_en"
             android:text="@{exam.className}"
             android:textAppearance="@style/TextAppearance.PresentAbsence.Caption.Grey900"
-            android:fontFamily="@font/iran_sans_en"
             app:layout_constraintBottom_toBottomOf="@id/tv_faculty"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_faculty"
@@ -102,7 +102,7 @@
             android:id="@+id/cl_expand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_exam_item_expand_more"
+            android:background="@{exam.isInvoked?@drawable/bg_invoked_exam_item_expand_more:@drawable/bg_exam_item_expand_more}"
             android:minHeight="@dimen/spacing_7x"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/spacing_base"
-                android:src="@drawable/ic_expand"
+                android:src="@{exam.isInvoked?@drawable/ic_done:@drawable/ic_expand}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

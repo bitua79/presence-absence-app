@@ -1,5 +1,7 @@
 package com.application.presence_absence.domain.entities
 
+import com.application.presence_absence.core.entities.Constants
+import com.application.presence_absence.core.entities.Constants.EXAM_CANCELLED
 import com.application.presence_absence.data.entities.ExamEntity
 import com.application.presence_absence.ui.features.examList.entities.ExamDay
 import com.application.presence_absence.ui.features.examList.entities.ExamStatus
@@ -27,14 +29,15 @@ data class Exam(
         day = findExamDayByNth(nth_day) ?: ExamDay.DAY_0,
         dateView = PersianDate(date).getShDate(),
         hour = time,
-        state = getStatue()
+        status = getStatue(),
+        isInvoked = status == Constants.EXAM_TAKEN_ATTENDANCE
     )
 
     private fun getStatue(): ExamStatus {
         val current = System.currentTimeMillis()
         val examTime = date + TimeUnit.HOURS.toMillis(time.toLong())
 
-        return if (status == -1) {
+        return if (status == EXAM_CANCELLED) {
             ExamStatus.CANCELLED
         } else if (current < examTime) {
             ExamStatus.NOT_STARTED
