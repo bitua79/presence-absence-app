@@ -31,4 +31,10 @@ interface WebService {
         @Body param: PostStatusEntity
     ): Response<Resource<StudentEntity>>
 
+    @POST
+    suspend fun setExamStatus(
+        @Url url: String,
+        @Body param: PostStatusEntity
+    ): Response<Resource<ExamEntity>>
+
 }

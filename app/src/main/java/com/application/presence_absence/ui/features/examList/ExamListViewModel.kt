@@ -22,7 +22,7 @@ class ExamListViewModel @Inject constructor(
     private val _dataViewState = MutableStateFlow(ExamListViewState())
     val dataViewState = _dataViewState.asStateFlow()
 
-    init {
+    fun getAllExamList() {
         viewModelScope.launch {
             useCaseInvoker(useCase = { getExamList() }, dataStateReady = { list ->
                 _dataViewState.update {

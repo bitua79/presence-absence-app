@@ -57,4 +57,16 @@ class DefaultRepository @Inject constructor(
                 it.toStudent()
             }
         }
+
+    override suspend fun setExamStatus(
+        examId: String,
+        param: PostStatus
+    ): Result<Exam> =
+        makeRequest(networkHandler = networkHandler, action = {
+            remoteDataSource.setExamStatus(examId, param.toPostStatus())
+        }) {
+            this.map {
+                it.toExam()
+            }
+        }
 }

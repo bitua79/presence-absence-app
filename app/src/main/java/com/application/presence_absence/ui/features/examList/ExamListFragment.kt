@@ -39,8 +39,13 @@ class ExamListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initViewModel()
         initViews()
         initCollectors()
+    }
+
+    private fun initViewModel() {
+        sharedViewModel.getAllExamList()
     }
 
     private fun initViews() {

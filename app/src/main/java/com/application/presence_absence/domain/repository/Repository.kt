@@ -17,4 +17,10 @@ interface Repository {
         studentId: String,
         param: PostStatus
     ): Result<Student>
+
+
+    suspend fun setExamStatus(
+        examId: String,
+        param: PostStatus
+    ): Result<Exam>
 }
