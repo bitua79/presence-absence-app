@@ -5,6 +5,9 @@
     <string name="label_search">جستجو</string>
     <string name="label_filter">فیلترها</string>
 
+    <string name="msg_non_security">دستگاه شما موارد امنیتی لازم را ندارد.</string>
+    <string name="label_exit">خروج</string>
+
     <!-- region login -->
     <string name="label_login">ورود</string>
     <string name="label_login_to_system">ورود به سامانه</string>
