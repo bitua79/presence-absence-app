@@ -104,4 +104,7 @@ dependencies {
     // Add the dependency for the Firebase Analytics library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-analytics")
+
+    // Rootbeer
+    implementation("com.scottyab:rootbeer-lib:0.1.0")
 }
