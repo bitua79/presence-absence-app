@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.application.presence_absence.R
+import com.application.presence_absence.core.utils.FirebaseAnalyticsHelper
 import com.application.presence_absence.databinding.FragmentLoginBinding
 import com.application.presence_absence.domain.params.PostLogin
 import com.application.presence_absence.ui.utils.collectOnFragment
@@ -65,6 +66,11 @@ class LoginFragment : Fragment() {
             // Handle Login request by button
             btnLogin.setOnClickListener {
                 hideKeyboard()
+
+                // Log login button select content
+                FirebaseAnalyticsHelper().logLoginSelectContent()
+
+                // Send Auth information to API
                 val username = etUsername.text?.trim()
                 val password = etPassword.text?.trim()
                 if (validate(username, password))

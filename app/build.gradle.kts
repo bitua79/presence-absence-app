@@ -16,6 +16,8 @@ plugins {
 
     // KSP
     id("com.google.devtools.ksp")
+
+    id("com.google.gms.google-services")
 }
 android {
     compileSdk = 34
@@ -94,4 +96,12 @@ dependencies {
 
     // Persian date
     implementation("com.github.samanzamani:PersianDate:1.7.1")
+
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.firebase:firebase-analytics")
+
+    // Add the dependency for the Firebase Analytics library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-analytics")
 }

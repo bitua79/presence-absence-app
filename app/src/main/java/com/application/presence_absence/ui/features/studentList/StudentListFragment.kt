@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.application.presence_absence.R
+import com.application.presence_absence.core.utils.FirebaseAnalyticsHelper
 import com.application.presence_absence.databinding.FragmentStudentListBinding
 import com.application.presence_absence.ui.features.examList.entities.ExamStatus
 import com.application.presence_absence.ui.features.examList.entities.ExamView
@@ -105,6 +106,9 @@ class StudentListFragment : Fragment() {
             }
 
             btnSubmit.setOnClickListener {
+                // Log submit button select content
+                FirebaseAnalyticsHelper().logInvokeExamSelectContent()
+
                 viewModel.invokeExamStatus(examArg.id.toString())
                 binding.listInvoked = true
                 listAdapter.setListInvoked(true)
