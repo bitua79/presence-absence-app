@@ -1,11 +1,12 @@
 package com.application.presence_absence.ui.utils
 
 import android.app.Activity
+import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import com.application.presence_absence.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -51,23 +52,54 @@ fun BottomSheetDialog.createDialog(): BottomSheetDialog {
     return this
 }
 
-fun Fragment.createSnackbar(@StringRes message: Int, @StringRes actionText: Int): Snackbar {
+fun Snackbar.uiSetting(context: Context) {
+    with(context) {
+        setBackgroundTint(ContextCompat.getColor(context, R.color.color_surface))
+        setTextColor(ContextCompat.getColor(context, R.color.color_on_surface))
+
+        setActionTextColor(ContextCompat.getColor(context, R.color.color_primary))
+        animationMode = Snackbar.ANIMATION_MODE_FADE
+    }
+
+    ViewCompat.setLayoutDirection(view, ViewCompat.LAYOUT_DIRECTION_RTL)
+}
+
+fun Fragment.createExitSnackbar(@StringRes message: Int, @StringRes actionText: Int): Snackbar {
     val snackbar = Snackbar.make(
         requireView(),
         getString(message),
         Snackbar.LENGTH_INDEFINITE
     )
 
-    with(snackbar) {
-        setAction(getString(actionText)) {
-            exitProcess(1)
-        }
-        setBackgroundTint(getColor(R.color.color_surface))
-        setTextColor(getColor(R.color.color_on_surface))
-
-        setActionTextColor(getColor(R.color.color_primary))
-        animationMode = Snackbar.ANIMATION_MODE_FADE
+    snackbar.setAction(getString(actionText)) {
+        exitProcess(1)
     }
+
+    snackbar.uiSetting(requireContext())
+
+    return snackbar
+}
+
+fun Fragment.createSnackbar(@StringRes message: Int): Snackbar {
+    val snackbar = Snackbar.make(
+        requireView(),
+        getString(message),
+        Snackbar.LENGTH_LONG
+    )
+
+    snackbar.uiSetting(requireContext())
+
+    return snackbar
+}
+
+fun Activity.createSnackbar(@StringRes message: Int, view: View): Snackbar {
+    val snackbar = Snackbar.make(
+        view,
+        getString(message),
+        Snackbar.LENGTH_LONG
+    )
+
+    snackbar.uiSetting(this)
 
     return snackbar
 }
@@ -84,8 +116,4 @@ fun Fragment.hideKeyboard() {
 
 fun PersianDate.getShDate(): String {
     return "${dayName()} $shMonth/$shDay"
-}
-
-fun Fragment.getColor(@ColorRes colorId: Int): Int {
-    return ContextCompat.getColor(requireContext(), colorId)
 }
