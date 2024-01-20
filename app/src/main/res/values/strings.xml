@@ -2,11 +2,15 @@
     <string name="app_name">Presence-Absence</string>
     <string name="app_name_persian">سامانه حضور و غیاب دانشجویان</string>
 
+    <!--  region general  -->
     <string name="label_search">جستجو</string>
     <string name="label_filter">فیلترها</string>
 
     <string name="msg_non_security">دستگاه شما موارد امنیتی لازم را ندارد.</string>
     <string name="label_exit">خروج</string>
+
+    <string name="msg_press_again_to_exit">برای خروج دوباره روی دکمه ی بازگشت کلیک کنید</string>
+    <!--  endregion  -->
 
     <!-- region login -->
     <string name="label_login">ورود</string>

@@ -9,7 +9,7 @@ import com.application.presence_absence.R
 import com.application.presence_absence.core.extensions.runOnMain
 import com.application.presence_absence.ui.utils.DetectionUtils.isEmulator
 import com.application.presence_absence.ui.utils.DetectionUtils.isRooted
-import com.application.presence_absence.ui.utils.createSnackbar
+import com.application.presence_absence.ui.utils.createExitSnackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -26,7 +26,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         super.onViewCreated(view, savedInstanceState)
 
         if (isRooted(requireContext()) || isEmulator(requireContext())) {
-            createSnackbar(R.string.msg_non_security, R.string.label_exit).show()
+            createExitSnackbar(R.string.msg_non_security, R.string.label_exit).show()
         } else {
             job = lifecycleScope.launch(Dispatchers.IO) {
                 delay(DELAY)
