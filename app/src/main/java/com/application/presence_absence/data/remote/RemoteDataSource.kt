@@ -1,10 +1,10 @@
 package com.application.presence_absence.data.remote
 
+import com.application.presence_absence.core.extensions.safeCall
 import com.application.presence_absence.core.utils.UrlHelper
 import com.application.presence_absence.core.utils.UrlHelper.getSetExamStatusUrl
 import com.application.presence_absence.core.utils.UrlHelper.getSetStudentStatusUrl
 import com.application.presence_absence.core.utils.UrlHelper.getStudentListUrl
-import com.application.presence_absence.core.utils.safeCall
 import com.application.presence_absence.data.params.PostLoginEntity
 import com.application.presence_absence.data.params.PostStatusEntity
 import javax.inject.Inject

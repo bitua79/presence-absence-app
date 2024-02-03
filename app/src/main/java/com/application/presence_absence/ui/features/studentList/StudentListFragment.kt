@@ -15,14 +15,16 @@ import androidx.navigation.fragment.navArgs
 import com.application.presence_absence.R
 import com.application.presence_absence.core.utils.FirebaseAnalyticsHelper
 import com.application.presence_absence.databinding.FragmentStudentListBinding
+import com.application.presence_absence.ui.core.UiError
+import com.application.presence_absence.ui.core.UiLoading
+import com.application.presence_absence.ui.core.UiSuccess
+import com.application.presence_absence.ui.core.UnAuthorizedError
 import com.application.presence_absence.ui.features.examList.entities.ExamStatus
 import com.application.presence_absence.ui.features.examList.entities.ExamView
 import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
 import com.application.presence_absence.ui.features.studentList.entities.StudentView
 import com.application.presence_absence.ui.utils.collectOnFragment
-import com.application.presence_absence.ui.widgets.UiError
-import com.application.presence_absence.ui.widgets.UiLoading
-import com.application.presence_absence.ui.widgets.UiSuccess
+import com.application.presence_absence.ui.widgets.AlertDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -172,8 +174,25 @@ class StudentListFragment : Fragment() {
 
             if (it is UiError) {
                 setList(emptyList())
-                Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+
                 viewModel.clearState()
+                if (it is UnAuthorizedError) {
+                    AlertDialog(
+                        title = getString(R.string.msg_unauthorized),
+                        description = getString(R.string.msg_navigate_to_login),
+                        buttonText = getString(R.string.label_got_it),
+                        onOkClick = {
+                            val action =
+                                StudentListFragmentDirections.actionStudentListFragmentToLoginFragment()
+                            findNavController().navigate(action)
+                        }
+                    ).show(requireFragmentManager(), "UnAuthorized")
+
+                } else {
+                    Toast.makeText(requireContext(), getString(it.errorStringId), Toast.LENGTH_LONG)
+                        .show()
+                }
+
             } else if (it is UiSuccess) {
                 viewModel.clearState()
             }

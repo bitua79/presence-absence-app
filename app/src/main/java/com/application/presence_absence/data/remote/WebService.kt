@@ -9,6 +9,7 @@ import com.application.presence_absence.data.params.PostStatusEntity
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Url
 
@@ -20,10 +21,16 @@ interface WebService {
     ): Response<Resource<LoginEntity>>
 
     @GET
-    suspend fun getAllExams(@Url url: String): Response<Resource<List<ExamEntity>>>
+    suspend fun getAllExams(
+        @Url url: String,
+        @Header("Accept") accept: String = "application/json"
+    ): Response<Resource<List<ExamEntity>>>
 
     @GET
-    suspend fun getAllStudents(@Url url: String): Response<Resource<List<StudentEntity>>>
+    suspend fun getAllStudents(
+        @Url url: String,
+        @Header("Accept") accept: String = "application/json"
+    ): Response<Resource<List<StudentEntity>>>
 
     @POST
     suspend fun setStudentStatus(

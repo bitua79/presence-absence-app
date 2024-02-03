@@ -9,7 +9,7 @@ import com.application.presence_absence.domain.usecases.SetStudentStatus
 import com.application.presence_absence.ui.features.studentList.entities.StudentFilterViewState
 import com.application.presence_absence.ui.features.studentList.entities.StudentListViewState
 import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
-import com.application.presence_absence.ui.widgets.UiStateViewModel
+import com.application.presence_absence.ui.core.UiStateViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

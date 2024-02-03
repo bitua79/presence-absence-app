@@ -17,9 +17,9 @@ import com.application.presence_absence.ui.utils.collectOnFragment
 import com.application.presence_absence.ui.utils.gone
 import com.application.presence_absence.ui.utils.hideKeyboard
 import com.application.presence_absence.ui.utils.visible
-import com.application.presence_absence.ui.widgets.UiError
-import com.application.presence_absence.ui.widgets.UiLoading
-import com.application.presence_absence.ui.widgets.UiSuccess
+import com.application.presence_absence.ui.core.UiError
+import com.application.presence_absence.ui.core.UiLoading
+import com.application.presence_absence.ui.core.UiSuccess
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -121,7 +121,7 @@ class LoginFragment : Fragment() {
                 viewModel.clearState()
             }
             if (it is UiError) {
-                Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), it.errorStringId, Toast.LENGTH_SHORT).show()
                 viewModel.clearState()
             }
         }

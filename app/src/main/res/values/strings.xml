@@ -8,6 +8,7 @@
 
     <string name="msg_non_security">دستگاه شما موارد امنیتی لازم را ندارد.</string>
     <string name="label_exit">خروج</string>
+    <string name="msg_exit_application">از اپلیکیشن خارج می شوید</string>
 
     <string name="msg_press_again_to_exit">برای خروج دوباره روی دکمه ی بازگشت کلیک کنید</string>
     <!--  endregion  -->
@@ -46,5 +47,17 @@
 
     <string name="label_no_filter_match_student">دانشجویی برای نمایش وجود ندارد</string>
 
+    <!--  endregion  -->
+
+    <!--  region errors  -->
+    <string name="msg_connection_failed">خطا در ارتباط با سرور</string>
+    <string name="msg_no_internet_connection">عدم اتصال به اینترنت</string>
+    <string name="msg_service_process_failed">خطا در پردازش سرویس</string>
+    <string name="msg_unauthorized">اتمام نشست کاربری</string>
+    <string name="msg_invalid_input">داده های ورودی نامعتبرند</string>
+
+    <string name="msg_navigate_to_login">به صفحه لاگین منتقل می شوید</string>
+
+    <string name="label_got_it">متوجه شدم</string>
     <!--  endregion  -->
 </resources>

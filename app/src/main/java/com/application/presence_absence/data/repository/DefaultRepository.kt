@@ -3,9 +3,9 @@ package com.application.presence_absence.data.repository
 import com.application.presence_absence.core.entities.Result
 import com.application.presence_absence.core.entities.Success
 import com.application.presence_absence.core.entities.map
+import com.application.presence_absence.core.extensions.makeRequest
 import com.application.presence_absence.core.utils.NetworkHandler
 import com.application.presence_absence.core.utils.TokenInterceptor
-import com.application.presence_absence.core.utils.makeRequest
 import com.application.presence_absence.data.remote.RemoteDataSource
 import com.application.presence_absence.domain.entities.Exam
 import com.application.presence_absence.domain.entities.Student
