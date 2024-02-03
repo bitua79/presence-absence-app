@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
@@ -17,9 +16,10 @@ import com.application.presence_absence.ui.core.UiSuccess
 import com.application.presence_absence.ui.core.UnAuthorizedError
 import com.application.presence_absence.ui.features.examList.entities.ExamView
 import com.application.presence_absence.ui.utils.collectOnFragment
+import com.application.presence_absence.ui.utils.createSnackbar
 import com.application.presence_absence.ui.utils.gone
 import com.application.presence_absence.ui.utils.visible
-import com.application.presence_absence.ui.widgets. AlertDialog
+import com.application.presence_absence.ui.widgets.AlertDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -161,8 +161,7 @@ class ExamListFragment : Fragment() {
                     ).show(requireFragmentManager(), "UnAuthorized")
 
                 } else {
-                    Toast.makeText(requireContext(), getString(it.errorStringId), Toast.LENGTH_LONG)
-                        .show()
+                    createSnackbar(it.errorStringId, binding.dividerSnackBarView).show()
                 }
             } else if (it is UiSuccess) {
                 sharedViewModel.clearState()
