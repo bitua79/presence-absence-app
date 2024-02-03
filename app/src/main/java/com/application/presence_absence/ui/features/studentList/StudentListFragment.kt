@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -24,6 +23,7 @@ import com.application.presence_absence.ui.features.examList.entities.ExamView
 import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
 import com.application.presence_absence.ui.features.studentList.entities.StudentView
 import com.application.presence_absence.ui.utils.collectOnFragment
+import com.application.presence_absence.ui.utils.createSnackbar
 import com.application.presence_absence.ui.widgets.AlertDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -189,8 +189,7 @@ class StudentListFragment : Fragment() {
                     ).show(requireFragmentManager(), "UnAuthorized")
 
                 } else {
-                    Toast.makeText(requireContext(), getString(it.errorStringId), Toast.LENGTH_LONG)
-                        .show()
+                    createSnackbar(it.errorStringId, binding.dividerSnackBarView).show()
                 }
 
             } else if (it is UiSuccess) {

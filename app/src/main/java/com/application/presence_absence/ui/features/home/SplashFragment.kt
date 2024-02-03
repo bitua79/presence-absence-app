@@ -26,24 +26,24 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (isRooted(requireContext()) || isEmulator(requireContext())) {
-            AlertDialog(
-                title = getString(R.string.msg_non_security),
-                description = getString(R.string.msg_exit_application),
-                buttonText = getString(R.string.label_exit),
-                onOkClick = {
-                    val action =
-                        ExamListFragmentDirections.actionExamListFragmentToLoginFragment()
-                    findNavController().navigate(action)
-                }
-            ).show(requireFragmentManager(), "Rooted")
-        } else {
+//        if (isRooted(requireContext()) || isEmulator(requireContext())) {
+//            AlertDialog(
+//                title = getString(R.string.msg_non_security),
+//                description = getString(R.string.msg_exit_application),
+//                buttonText = getString(R.string.label_exit),
+//                onOkClick = {
+//                    val action =
+//                        ExamListFragmentDirections.actionExamListFragmentToLoginFragment()
+//                    findNavController().navigate(action)
+//                }
+//            ).show(requireFragmentManager(), "Rooted")
+//        } else {
             job = lifecycleScope.launch(Dispatchers.IO) {
                 delay(DELAY)
                 runOnMain { navigate() }
                 job = null
             }
-        }
+//        }
     }
 
     override fun onDestroyView() {

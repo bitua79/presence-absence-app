@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,13 +12,14 @@ import com.application.presence_absence.R
 import com.application.presence_absence.core.utils.FirebaseAnalyticsHelper
 import com.application.presence_absence.databinding.FragmentLoginBinding
 import com.application.presence_absence.domain.params.PostLogin
-import com.application.presence_absence.ui.utils.collectOnFragment
-import com.application.presence_absence.ui.utils.gone
-import com.application.presence_absence.ui.utils.hideKeyboard
-import com.application.presence_absence.ui.utils.visible
 import com.application.presence_absence.ui.core.UiError
 import com.application.presence_absence.ui.core.UiLoading
 import com.application.presence_absence.ui.core.UiSuccess
+import com.application.presence_absence.ui.utils.collectOnFragment
+import com.application.presence_absence.ui.utils.createSnackbar
+import com.application.presence_absence.ui.utils.gone
+import com.application.presence_absence.ui.utils.hideKeyboard
+import com.application.presence_absence.ui.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -121,7 +121,7 @@ class LoginFragment : Fragment() {
                 viewModel.clearState()
             }
             if (it is UiError) {
-                Toast.makeText(requireContext(), it.errorStringId, Toast.LENGTH_SHORT).show()
+                createSnackbar(it.errorStringId, binding.dividerSnackBarView).show()
                 viewModel.clearState()
             }
         }

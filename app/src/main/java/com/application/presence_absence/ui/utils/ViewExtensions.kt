@@ -9,11 +9,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import com.application.presence_absence.R
+import com.application.presence_absence.ui.MainActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import saman.zamani.persiandate.PersianDate
-import kotlin.system.exitProcess
 
 
 fun View.gone() {
@@ -53,40 +53,25 @@ fun BottomSheetDialog.createDialog(): BottomSheetDialog {
 }
 
 fun Snackbar.uiSetting(context: Context) {
-    with(context) {
-        setBackgroundTint(ContextCompat.getColor(context, R.color.color_surface))
-        setTextColor(ContextCompat.getColor(context, R.color.color_on_surface))
+    setBackgroundTint(ContextCompat.getColor(context, R.color.color_surface))
+    setTextColor(ContextCompat.getColor(context, R.color.color_on_surface))
 
-        setActionTextColor(ContextCompat.getColor(context, R.color.color_primary))
-        animationMode = Snackbar.ANIMATION_MODE_FADE
-    }
+    setActionTextColor(ContextCompat.getColor(context, R.color.color_primary))
+    animationMode = Snackbar.ANIMATION_MODE_FADE
 
     ViewCompat.setLayoutDirection(view, ViewCompat.LAYOUT_DIRECTION_RTL)
 }
 
-fun Fragment.createExitSnackbar(@StringRes message: Int, @StringRes actionText: Int): Snackbar {
+fun Fragment.createSnackbar(@StringRes message: Int, view: View? = null): Snackbar {
     val snackbar = Snackbar.make(
-        requireView(),
+        view ?: (requireActivity() as MainActivity).findViewById(R.id.divider_snack_bar_view),
         getString(message),
         Snackbar.LENGTH_INDEFINITE
     )
 
-    snackbar.setAction(getString(actionText)) {
-        exitProcess(1)
+    snackbar.setAction(requireContext().getString(R.string.label_got_it)) {
+        snackbar.dismiss()
     }
-
-    snackbar.uiSetting(requireContext())
-
-    return snackbar
-}
-
-fun Fragment.createSnackbar(@StringRes message: Int): Snackbar {
-    val snackbar = Snackbar.make(
-        requireView(),
-        getString(message),
-        Snackbar.LENGTH_LONG
-    )
-
     snackbar.uiSetting(requireContext())
 
     return snackbar
