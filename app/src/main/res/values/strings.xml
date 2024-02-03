@@ -6,7 +6,7 @@
     <string name="label_search">جستجو</string>
     <string name="label_filter">فیلترها</string>
 
-    <string name="msg_non_security">دستگاه شما موارد امنیتی لازم را ندارد.</string>
+    <string name="msg_non_security">دستگاه شما موارد امنیتی لازم را ندارد</string>
     <string name="label_exit">خروج</string>
     <string name="msg_exit_application">از اپلیکیشن خارج می شوید</string>
 
