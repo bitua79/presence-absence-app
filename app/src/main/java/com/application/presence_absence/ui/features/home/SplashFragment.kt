@@ -7,10 +7,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.application.presence_absence.R
 import com.application.presence_absence.core.extensions.runOnMain
-import com.application.presence_absence.ui.features.examList.ExamListFragmentDirections
 import com.application.presence_absence.ui.utils.DetectionUtils.isEmulator
 import com.application.presence_absence.ui.utils.DetectionUtils.isRooted
-import com.application.presence_absence.ui.widgets.AlertDialog
+import com.application.presence_absence.ui.utils.createExitSnackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -27,16 +26,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         super.onViewCreated(view, savedInstanceState)
 
         if (isRooted(requireContext()) || isEmulator(requireContext())) {
-            AlertDialog(
-                title = getString(R.string.msg_non_security),
-                description = getString(R.string.msg_exit_application),
-                buttonText = getString(R.string.label_exit),
-                onOkClick = {
-                    val action =
-                        ExamListFragmentDirections.actionExamListFragmentToLoginFragment()
-                    findNavController().navigate(action)
-                }
-            ).show(requireFragmentManager(), "Rooted")
+            createExitSnackbar(R.string.msg_non_security, R.string.label_exit).show()
         } else {
             job = lifecycleScope.launch(Dispatchers.IO) {
                 delay(DELAY)
