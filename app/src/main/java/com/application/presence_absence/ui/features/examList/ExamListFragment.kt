@@ -156,9 +156,7 @@ class ExamListFragment : Fragment() {
                         description = getString(R.string.msg_navigate_to_login),
                         buttonText = getString(R.string.label_got_it),
                         onOkClick = {
-                            val action =
-                                ExamListFragmentDirections.actionExamListFragmentToLoginFragment()
-                            findNavController().navigate(action)
+                            findNavController().navigateUp()
                         }
                     ).show(requireFragmentManager(), "UnAuthorized")
 

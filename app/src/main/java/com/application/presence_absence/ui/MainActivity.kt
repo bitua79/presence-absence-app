@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     private var doubleBackToExitPressedOnce = false
     override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
+        if (doubleBackToExitPressedOnce || navController.currentDestination?.id != R.id.loginFragment) {
             super.onBackPressed()
             return
         }
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         this.doubleBackToExitPressedOnce = true
         createSnackbar(R.string.msg_press_again_to_exit, binding.root).show()
 
-        Handler(Looper.getMainLooper()).postDelayed(Runnable {
+        Handler(Looper.getMainLooper()).postDelayed({
             doubleBackToExitPressedOnce = false
         }, 2000)
     }
