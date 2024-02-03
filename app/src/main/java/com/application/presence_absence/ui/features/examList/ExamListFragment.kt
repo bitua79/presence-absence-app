@@ -11,13 +11,15 @@ import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import com.application.presence_absence.R
 import com.application.presence_absence.databinding.FragmentExamListBinding
+import com.application.presence_absence.ui.core.UiError
+import com.application.presence_absence.ui.core.UiLoading
+import com.application.presence_absence.ui.core.UiSuccess
+import com.application.presence_absence.ui.core.UnAuthorizedError
 import com.application.presence_absence.ui.features.examList.entities.ExamView
 import com.application.presence_absence.ui.utils.collectOnFragment
 import com.application.presence_absence.ui.utils.gone
 import com.application.presence_absence.ui.utils.visible
-import com.application.presence_absence.ui.widgets.UiError
-import com.application.presence_absence.ui.widgets.UiLoading
-import com.application.presence_absence.ui.widgets.UiSuccess
+import com.application.presence_absence.ui.widgets. AlertDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -147,8 +149,23 @@ class ExamListFragment : Fragment() {
 
             if (it is UiError) {
                 setList(emptyList())
-                Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                 sharedViewModel.clearState()
+                if (it is UnAuthorizedError) {
+                    AlertDialog(
+                        title = getString(R.string.msg_unauthorized),
+                        description = getString(R.string.msg_navigate_to_login),
+                        buttonText = getString(R.string.label_got_it),
+                        onOkClick = {
+                            val action =
+                                ExamListFragmentDirections.actionExamListFragmentToLoginFragment()
+                            findNavController().navigate(action)
+                        }
+                    ).show(requireFragmentManager(), "UnAuthorized")
+
+                } else {
+                    Toast.makeText(requireContext(), getString(it.errorStringId), Toast.LENGTH_LONG)
+                        .show()
+                }
             } else if (it is UiSuccess) {
                 sharedViewModel.clearState()
             }

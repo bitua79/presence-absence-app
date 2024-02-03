@@ -1,4 +1,4 @@
-package com.application.presence_absence.ui.widgets
+package com.application.presence_absence.ui.core
 
 import androidx.annotation.CallSuper
 import androidx.lifecycle.ViewModel
@@ -60,7 +60,7 @@ abstract class UiStateViewModel : ViewModel() {
                 )
 
                 is ErrorResult -> setUiViewState(
-                    UiError(exception.getError())
+                    exception.getError()
                 )
             }
         }
@@ -81,7 +81,7 @@ abstract class UiStateViewModel : ViewModel() {
                 }
 
                 is ErrorResult -> setUiViewState(
-                    UiError(exception.getError())
+                    exception.getError()
                 )
             }
         }

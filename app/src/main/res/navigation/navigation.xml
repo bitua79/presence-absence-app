@@ -45,6 +45,14 @@
         <action
             android:id="@+id/action_examListFragment_to_examStateListBottomSheet"
             app:destination="@id/examStateListBottomSheet" />
+        <action
+            android:id="@+id/action_examListFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            app:popUpTo="@id/examListFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_studentListFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
 
     </fragment>
 
@@ -56,6 +64,11 @@
         <argument
             android:name="exam"
             app:argType="com.application.presence_absence.ui.features.examList.entities.ExamView" />
+        <action
+            app:popUpTo="@id/studentListFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_studentListFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <dialog
         android:id="@+id/facultyListBottomSheet"

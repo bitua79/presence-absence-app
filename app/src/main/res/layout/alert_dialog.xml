@@ -43,14 +43,14 @@
                 android:layout_marginTop="@dimen/spacing_8x"
                 android:gravity="center"
                 android:text="@{title}"
-                tools:text="اتمام نشست کاربری" />
+                tools:text="@string/msg_unauthorized" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.PresentAbsence.Subtitle2"
-                tools:text="به صفحه ورود منتقل می شوید"
+                tools:text="@string/msg_navigate_to_login"
                 android:layout_marginHorizontal="@dimen/spacing_16x"
                 android:layout_marginTop="@dimen/spacing_2x"
                 android:text="@{description}"
@@ -66,7 +66,7 @@
                 android:background="@drawable/bg_button_cornered"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                tools:text="متوجه شدم"
+                tools:text="@string/label_got_it"
                 android:text="@{buttonText}"
                 android:textSize="16sp"
                 app:cornerRadius="@dimen/spacing_4x"
