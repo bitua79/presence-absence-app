@@ -41,13 +41,8 @@ class ExamListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViewModel()
         initViews()
         initCollectors()
-    }
-
-    private fun initViewModel() {
-        sharedViewModel.getAllExamList()
     }
 
     private fun initViews() {
@@ -61,6 +56,15 @@ class ExamListFragment : Fragment() {
             incExamPlace.title = getString(R.string.label_exam_place)
             incExamDay.title = getString(R.string.label_exam_day)
             incExamState.title = getString(R.string.label_exam_state)
+
+            srlRefresh.setOnRefreshListener {
+                sharedViewModel.getAllExamList()
+            }
+
+            srlRefresh.setColorSchemeResources(
+                R.color.color_primary,
+                R.color.color_secondary
+            )
         }
 
         setFilterTagClickListeners()
@@ -102,7 +106,7 @@ class ExamListFragment : Fragment() {
                 }
             }
             etSearch.doAfterTextChanged {
-                sharedViewModel.setExamQuery(etSearch.text?.toString()?.trim().orEmpty())
+                sharedViewModel.setExamQuery(etSearch.text?.toString()?.trim())
             }
         }
     }
@@ -133,23 +137,13 @@ class ExamListFragment : Fragment() {
     private fun initCollectors() {
 
         sharedViewModel.uiViewState.collectOnFragment(this) {
+            binding.isLoading = it is UiLoading
+            binding.srlRefresh.isRefreshing = it is UiLoading
             if (it is UiLoading) {
-                with(binding) {
-                    cfFilter.gone()
-                    rvExamList.gone()
-                    pbLoading.visible()
-                }
-            } else {
-                with(binding) {
-                    cfFilter.visible()
-                    rvExamList.visible()
-                    pbLoading.gone()
-                }
+                binding.tvNoExam.gone()
             }
 
             if (it is UiError) {
-                setList(emptyList())
-                sharedViewModel.clearState()
                 if (it is UnAuthorizedError) {
                     AlertDialog(
                         title = getString(R.string.msg_unauthorized),
@@ -158,11 +152,13 @@ class ExamListFragment : Fragment() {
                         onOkClick = {
                             findNavController().navigateUp()
                         }
-                    ).show(requireFragmentManager(), "UnAuthorized")
+                    ).show(requireActivity().supportFragmentManager, "UnAuthorized")
 
                 } else {
                     createSnackbar(it.errorStringId, binding.dividerSnackBarView).show()
                 }
+                sharedViewModel.clearState()
+
             } else if (it is UiSuccess) {
                 sharedViewModel.clearState()
             }

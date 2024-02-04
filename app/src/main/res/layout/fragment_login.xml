@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:indeterminate="true"
                 android:progressBackgroundTint="@color/color_secondary"
-                app:layout_constraintBottom_toBottomOf="@id/btn_login"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/btn_login" />

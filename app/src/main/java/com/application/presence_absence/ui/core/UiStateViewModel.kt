@@ -36,7 +36,8 @@ abstract class UiStateViewModel : ViewModel() {
 
     suspend fun <T> useCaseInvoker(
         useCase: suspend () -> Result<T>,
-        dataStateReady: (dataState: T) -> Unit
+        dataStateReady: (dataState: T) -> Unit,
+        onError: () -> Unit = {}
     ) {
         // Change UiState to Loading when useCase is called
         setUiViewState(UiLoading)
@@ -47,7 +48,7 @@ abstract class UiStateViewModel : ViewModel() {
                 setUiViewState(UiIdle)
 
                 // Set UiState and dataState according to result of useCase
-                getResultAndState { dataStateReady(it) }
+                getResultAndState (dataStateReady = { dataStateReady(it) }, onError = {onError()})
             }
         }
     }
@@ -67,7 +68,8 @@ abstract class UiStateViewModel : ViewModel() {
     }
 
     private suspend fun <T> Result<T>.getResultAndState(
-        dataStateReady: (dataState: T) -> Unit
+        dataStateReady: (dataState: T) -> Unit,
+        onError: () -> Unit = {}
     ) {
         runMain {
             when (this@getResultAndState) {
@@ -80,9 +82,12 @@ abstract class UiStateViewModel : ViewModel() {
                     )
                 }
 
-                is ErrorResult -> setUiViewState(
-                    exception.getError()
-                )
+                is ErrorResult -> {
+                    setUiViewState(
+                        exception.getError()
+                    )
+                    onError()
+                }
             }
         }
     }
