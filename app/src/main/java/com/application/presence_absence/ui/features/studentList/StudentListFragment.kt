@@ -24,6 +24,7 @@ import com.application.presence_absence.ui.features.studentList.entities.Student
 import com.application.presence_absence.ui.features.studentList.entities.StudentView
 import com.application.presence_absence.ui.utils.collectOnFragment
 import com.application.presence_absence.ui.utils.createSnackbar
+import com.application.presence_absence.ui.utils.gone
 import com.application.presence_absence.ui.widgets.AlertDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -116,6 +117,15 @@ class StudentListFragment : Fragment() {
                 listAdapter.setListInvoked(true)
                 listAdapter.notifyDataSetChanged()
             }
+
+            srlRefresh.setOnRefreshListener {
+                viewModel.getAllStudents(examArg.id.toString())
+            }
+
+            srlRefresh.setColorSchemeResources(
+                R.color.color_primary,
+                R.color.color_secondary
+            )
         }
 
         setupAdapter()
@@ -171,12 +181,14 @@ class StudentListFragment : Fragment() {
     private fun initControllers() {
         viewModel.uiViewState.collectOnFragment(this) {
             binding.isLoading = it is UiLoading
+            binding.srlRefresh.isRefreshing = it is UiLoading
+            if (it is UiLoading) {
+                binding.tvNoStudent.gone()
+            }
 
             if (it is UiError) {
-                setList(emptyList())
-
-                viewModel.clearState()
                 if (it is UnAuthorizedError) {
+                    setList(emptyList())
                     AlertDialog(
                         title = getString(R.string.msg_unauthorized),
                         description = getString(R.string.msg_navigate_to_login),
@@ -186,7 +198,8 @@ class StudentListFragment : Fragment() {
                                 StudentListFragmentDirections.actionStudentListFragmentToLoginFragment()
                             findNavController().navigate(action)
                         }
-                    ).show(requireFragmentManager(), "UnAuthorized")
+                    ).show(requireActivity().supportFragmentManager, "UnAuthorized")
+                    viewModel.clearState()
 
                 } else {
                     createSnackbar(it.errorStringId, binding.dividerSnackBarView).show()

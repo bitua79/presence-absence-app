@@ -43,6 +43,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_search"
             android:layout_width="match_parent"
+            android:enabled="@{!isLoading}"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_4x"
             android:layout_marginTop="@dimen/spacing_4x"
@@ -159,6 +160,15 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srl_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_4x"
+            app:swipeRefreshLayoutProgressSpinnerBackgroundColor="@color/color_primary"
+            app:layout_constraintBottom_toTopOf="@+id/btn_submit"
+            app:layout_constraintTop_toBottomOf="@id/ll_exam_information">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_student_list"
             isVisibleOrGone="@{!isLoading}"
@@ -167,10 +177,9 @@
             android:layout_marginTop="@dimen/spacing_4x"
             android:clipToPadding="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/btn_submit"
-            app:layout_constraintTop_toBottomOf="@id/ll_exam_information"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/item_student" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_submit"
@@ -185,20 +194,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_student_list"
-            tools:visibility="gone" />
-
-        <ProgressBar
-            android:id="@+id/pb_loading"
-            isVisibleOrGone="@{isLoading}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:progressBackgroundTint="@color/color_secondary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_search" />
+            app:layout_constraintTop_toBottomOf="@id/srl_refresh"
+            tools:visibility="visible" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_no_student"
@@ -207,10 +204,10 @@
             android:text="@string/label_no_filter_match_student"
             android:textAppearance="@style/TextAppearance.PresentAbsence.Caption"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/rv_student_list"
+            app:layout_constraintBottom_toBottomOf="@id/srl_refresh"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/rv_student_list" />
+            app:layout_constraintTop_toTopOf="@id/srl_refresh" />
 
         <View
             android:layout_width="match_parent"

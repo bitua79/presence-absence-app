@@ -125,7 +125,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/spacing_6x"
-                app:layout_constraintBottom_toTopOf="@id/btn_login"
+                app:layout_constraintBottom_toTopOf="@id/gl_90_percent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_username"
@@ -147,11 +147,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:indeterminate="true"
+                android:layout_marginBottom="@dimen/spacing_8x"
                 android:progressBackgroundTint="@color/color_secondary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/btn_login" />
+                app:layout_constraintTop_toBottomOf="@+id/gl_90_percent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_login"
@@ -163,16 +164,25 @@
                 android:textAppearance="@style/TextAppearance.PresentAbsence.Button.Big"
                 app:cornerRadius="@dimen/spacing_2x"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gl_90_percent"
                 app:layout_constraintVertical_bias="1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_90_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.90" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
     <View
-        android:layout_width="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/spacing_2x"
         android:id="@+id/divider_snack_bar_view"
-        android:layout_height="@dimen/spacing_zero"/>
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_zero"
+        android:layout_marginBottom="@dimen/spacing_2x"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
