@@ -145,6 +145,7 @@ class ExamListFragment : Fragment() {
 
             if (it is UiError) {
                 if (it is UnAuthorizedError) {
+                    setList(emptyList())
                     AlertDialog(
                         title = getString(R.string.msg_unauthorized),
                         description = getString(R.string.msg_navigate_to_login),
@@ -153,7 +154,6 @@ class ExamListFragment : Fragment() {
                             findNavController().navigateUp()
                         }
                     ).show(requireActivity().supportFragmentManager, "UnAuthorized")
-
                 } else {
                     createSnackbar(it.errorStringId, binding.dividerSnackBarView).show()
                 }

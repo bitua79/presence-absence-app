@@ -6,10 +6,10 @@ import com.application.presence_absence.domain.params.PostStatus
 import com.application.presence_absence.domain.usecases.GetStudentList
 import com.application.presence_absence.domain.usecases.SetExamStatus
 import com.application.presence_absence.domain.usecases.SetStudentStatus
+import com.application.presence_absence.ui.core.UiStateViewModel
 import com.application.presence_absence.ui.features.studentList.entities.StudentFilterViewState
 import com.application.presence_absence.ui.features.studentList.entities.StudentListViewState
 import com.application.presence_absence.ui.features.studentList.entities.StudentStatus
-import com.application.presence_absence.ui.core.UiStateViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,13 +28,25 @@ class StudentListViewModel @Inject constructor(
     val dataViewState = _dataViewState.asStateFlow()
 
     fun getAllStudents(id: String) {
+        resetViewState()
         viewModelScope.launch {
-            useCaseInvoker(useCase = { getStudentList(id) }, dataStateReady = { list ->
+            useCaseInvoker(useCase = { getStudentList(id) },
+                dataStateReady = { list ->
                 _dataViewState.update {
                     val studentList = list.map { item -> item.toStudentView() }
                     it.copy(allList = studentList, filteredList = studentList)
                 }
+            }, onError = {
+                _dataViewState.update {
+                    it.copy(allList = emptyList(), filteredList = emptyList())
+                }
             })
+        }
+    }
+
+    private fun resetViewState() {
+        _dataViewState.update {
+            it.copy(allList = null, filteredList = null)
         }
     }
 
