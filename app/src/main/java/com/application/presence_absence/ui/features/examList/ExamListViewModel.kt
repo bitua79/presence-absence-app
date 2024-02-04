@@ -2,10 +2,10 @@ package com.application.presence_absence.ui.features.examList
 
 import androidx.lifecycle.viewModelScope
 import com.application.presence_absence.domain.usecases.GetExamList
+import com.application.presence_absence.ui.core.UiStateViewModel
 import com.application.presence_absence.ui.features.examList.entities.ExamDay
 import com.application.presence_absence.ui.features.examList.entities.ExamFilterViewState
 import com.application.presence_absence.ui.features.examList.entities.ExamListViewState
-import com.application.presence_absence.ui.core.UiStateViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,14 +22,29 @@ class ExamListViewModel @Inject constructor(
     private val _dataViewState = MutableStateFlow(ExamListViewState())
     val dataViewState = _dataViewState.asStateFlow()
 
+    init {
+        getAllExamList()
+    }
+
     fun getAllExamList() {
+        resetViewState()
         viewModelScope.launch {
             useCaseInvoker(useCase = { getExamList() }, dataStateReady = { list ->
                 _dataViewState.update {
                     val examList = list.map { item -> item.toExamView() }
                     it.copy(allList = examList, filteredList = examList)
                 }
+            }, onError = {
+                _dataViewState.update {
+                    it.copy(allList = emptyList(), filteredList = emptyList())
+                }
             })
+        }
+    }
+
+    private fun resetViewState() {
+        _dataViewState.update {
+            it.copy(allList = null, filteredList = null)
         }
     }
 
@@ -51,7 +66,8 @@ class ExamListViewModel @Inject constructor(
         actFilters()
     }
 
-    fun setExamQuery(query: String) {
+    fun setExamQuery(query: String?) {
+        if (query == null) return
         _filter.value = _filter.value.copy(examQuery = query)
         actFilters()
     }

@@ -108,4 +108,7 @@ dependencies {
 
     // Rootbeer
     implementation("com.scottyab:rootbeer-lib:0.1.0")
+
+    // Swipe Refresh Layout
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
 }

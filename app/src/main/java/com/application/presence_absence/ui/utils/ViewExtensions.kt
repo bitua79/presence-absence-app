@@ -66,7 +66,7 @@ fun Fragment.createSnackbar(@StringRes message: Int, view: View? = null): Snackb
     val snackbar = Snackbar.make(
         view ?: (requireActivity() as MainActivity).findViewById(R.id.divider_snack_bar_view),
         getString(message),
-        Snackbar.LENGTH_INDEFINITE
+        Snackbar.LENGTH_LONG
     )
 
     snackbar.setAction(requireContext().getString(R.string.label_got_it)) {
