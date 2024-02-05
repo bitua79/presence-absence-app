@@ -6,6 +6,7 @@ import com.application.presence_absence.ui.core.UiStateViewModel
 import com.application.presence_absence.ui.features.examList.entities.ExamDay
 import com.application.presence_absence.ui.features.examList.entities.ExamFilterViewState
 import com.application.presence_absence.ui.features.examList.entities.ExamListViewState
+import com.application.presence_absence.ui.features.examList.entities.ExamView
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,17 +23,14 @@ class ExamListViewModel @Inject constructor(
     private val _dataViewState = MutableStateFlow(ExamListViewState())
     val dataViewState = _dataViewState.asStateFlow()
 
-    init {
-        getAllExamList()
-    }
-
     fun getAllExamList() {
         resetViewState()
         viewModelScope.launch {
             useCaseInvoker(useCase = { getExamList() }, dataStateReady = { list ->
                 _dataViewState.update {
                     val examList = list.map { item -> item.toExamView() }
-                    it.copy(allList = examList, filteredList = examList)
+                    val filtered = getFilteredList(examList)
+                    it.copy(allList = examList, filteredList = filtered)
                 }
             }, onError = {
                 _dataViewState.update {
@@ -72,7 +70,7 @@ class ExamListViewModel @Inject constructor(
         actFilters()
     }
 
-    private fun actFilters() {
+    private fun getFilteredList(list: List<ExamView> = _dataViewState.value.allList.orEmpty()): List<ExamView> {
         val examFilter = _filter.value
         // Update list
         val faculty = examFilter.examPlace
@@ -80,7 +78,7 @@ class ExamListViewModel @Inject constructor(
         val state = examFilter.examState
         val query = examFilter.examQuery
 
-        var filteredList = _dataViewState.value.allList.orEmpty()
+        var filteredList = list
 
         if (faculty.isNotEmpty()) {
             filteredList = filteredList.filter {
@@ -106,6 +104,10 @@ class ExamListViewModel @Inject constructor(
             }
         }
 
-        _dataViewState.update { it.copy(filteredList = filteredList) }
+        return filteredList
+    }
+
+    fun actFilters() {
+        _dataViewState.update { it.copy(filteredList = getFilteredList()) }
     }
 }

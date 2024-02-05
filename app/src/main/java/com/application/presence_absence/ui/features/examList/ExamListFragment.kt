@@ -41,8 +41,13 @@ class ExamListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initValues()
         initViews()
         initCollectors()
+    }
+
+    private fun initValues() {
+        sharedViewModel.getAllExamList()
     }
 
     private fun initViews() {
@@ -135,7 +140,6 @@ class ExamListFragment : Fragment() {
     }
 
     private fun initCollectors() {
-
         sharedViewModel.uiViewState.collectOnFragment(this) {
             binding.isLoading = it is UiLoading
             binding.srlRefresh.isRefreshing = it is UiLoading

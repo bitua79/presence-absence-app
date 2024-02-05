@@ -25,6 +25,7 @@ import com.application.presence_absence.ui.features.studentList.entities.Student
 import com.application.presence_absence.ui.utils.collectOnFragment
 import com.application.presence_absence.ui.utils.createSnackbar
 import com.application.presence_absence.ui.utils.gone
+import com.application.presence_absence.ui.utils.visible
 import com.application.presence_absence.ui.widgets.AlertDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -223,7 +224,15 @@ class StudentListFragment : Fragment() {
 
     private fun setList(list: List<StudentView>) {
         listAdapter.submitList(list)
-        binding.tvNoStudent.visibility =
-            if (viewModel.uiViewState.value !is UiLoading && list.isEmpty()) View.VISIBLE else View.GONE
+
+        val isLoading = viewModel.uiViewState.value is UiLoading
+        with(binding.btnSubmit) {
+            if (list.isEmpty()) gone()
+            else if (!isLoading && !listIsInvoked) visible()
+        }
+
+        with(binding.tvNoStudent) {
+            if (!isLoading && list.isEmpty()) visible() else gone()
+        }
     }
 }
