@@ -21,6 +21,7 @@
 
     <string name="msg_required">مقدار این فیلد الزامی است</string>
     <string name="msg_password_at_least_8_digit">رمز عبور باید حداقل 8 کاراکتر باشد</string>
+    <string name="msg_wrong_user_password">عدم تطابق نام کاربری و رمز عبور</string>
     <!-- endregion -->
 
     <!--  region exam  -->

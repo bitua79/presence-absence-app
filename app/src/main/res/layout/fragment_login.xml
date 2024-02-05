@@ -6,14 +6,9 @@
     android:layout_height="match_parent"
     android:background="@color/deep_purple_a700_alpha2">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:background="@color/color_background_login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -175,8 +170,6 @@
                 app:layout_constraintGuide_percent="0.90" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.core.widget.NestedScrollView>
 
     <View
         android:id="@+id/divider_snack_bar_view"
