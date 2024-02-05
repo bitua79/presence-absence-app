@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,6 +15,7 @@ import com.application.presence_absence.domain.params.PostLogin
 import com.application.presence_absence.ui.core.UiError
 import com.application.presence_absence.ui.core.UiLoading
 import com.application.presence_absence.ui.core.UiSuccess
+import com.application.presence_absence.ui.core.UnAuthorizedError
 import com.application.presence_absence.ui.utils.collectOnFragment
 import com.application.presence_absence.ui.utils.createSnackbar
 import com.application.presence_absence.ui.utils.gone
@@ -47,7 +48,7 @@ class LoginFragment : Fragment() {
         with(binding) {
             // Remove Edit text error by text changes
             with(etUsername) {
-                addTextChangedListener {
+                doAfterTextChanged {
                     if (!text.isNullOrBlank()) {
                         tilUsername.error = null
                         tilUsername.isErrorEnabled = false
@@ -55,7 +56,7 @@ class LoginFragment : Fragment() {
                 }
             }
             with(etPassword) {
-                addTextChangedListener {
+                doAfterTextChanged {
                     if (!text.isNullOrBlank()) {
                         tilPassword.error = null
                         tilPassword.isErrorEnabled = false
@@ -121,7 +122,14 @@ class LoginFragment : Fragment() {
                 viewModel.clearState()
             }
             if (it is UiError) {
-                createSnackbar(it.errorStringId, binding.dividerSnackBarView).show()
+                if (it is UnAuthorizedError) {
+                    createSnackbar(
+                        R.string.msg_wrong_user_password,
+                        binding.dividerSnackBarView
+                    ).show()
+                } else {
+                    createSnackbar(it.errorStringId, binding.dividerSnackBarView).show()
+                }
                 viewModel.clearState()
             }
         }
