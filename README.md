@@ -82,9 +82,15 @@ This Android application was developed as my final project for my Bachelor's deg
 
 ## Screenshots and output
 <p align="center">
-   <img src="screenshots/login.png" alt="Login Screenshot" height="400 "/>
-   <img src="screenshots/exam list.png" alt="Exam List Screenshot" height="400"/>
-   <img src="screenshots/output1.gif" alt="Output gif" height="400">
+   <img src="screenshots/exam list.png" alt="Exam List Screenshot" height="400" width="200"/>
+   <img src="screenshots/place filter.png" alt="Exam Filter Screenshot" height="400" width="200"/>
+   <img src="screenshots/status filter.png" alt="Exam Filter Screenshot" height="400" width="200"/>
+</p>
+
+<p align="center">
+   <img src="screenshots/login.png" alt="Login Screenshot" height="400" width="200"/>
+   <img src="screenshots/student list.png" alt="Student List Screenshot" height="400" width="200"/>
+   <img src="screenshots/output1.gif" alt="Output gif" height="400" width="200">
 </p>
 
 ## Installation
