@@ -84,9 +84,8 @@ This Android application was developed as my final project for my Bachelor's deg
 <p align="center">
    <img src="screenshots/login.png" alt="Login Screenshot" height="400 "/>
    <img src="screenshots/exam list.png" alt="Exam List Screenshot" height="400"/>
-   <img src="screenshots/output.gif" alt="Output gif" width="200">
+   <img src="screenshots/output1.gif" alt="Output gif" height="400">
 </p>
-
 
 ## Installation
 1. Clone the repository:
